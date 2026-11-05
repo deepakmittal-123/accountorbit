@@ -54,6 +54,10 @@ async function open(url, width, height) {
 
 const facts = (page) => page.evaluate(async () => {
   await document.fonts.ready;
+  // Scroll through the page, so lazy images load as they would for a reader.
+  for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 30)); }
+  window.scrollTo(0, 0);
+  await Promise.all([...document.images].filter((i) => getComputedStyle(i).display !== 'none' && !i.complete).map((i) => new Promise((r) => { i.onload = i.onerror = r; setTimeout(r, 5000); })));
   const links = [...document.querySelectorAll('a[href], link[href], script[src], img[src]')].map((e) => e.getAttribute('href') || e.getAttribute('src'));
   return {
     title: document.title,
@@ -66,7 +70,7 @@ const facts = (page) => page.evaluate(async () => {
     bodyFont: getComputedStyle(document.body).fontFamily,
     fontsLoaded: [...document.fonts].filter((f) => f.status === 'loaded').length,
     overflow: document.documentElement.scrollWidth - window.innerWidth,
-    imagesBroken: [...document.images].filter((i) => !i.complete || i.naturalWidth === 0).length,
+    imagesBroken: [...document.images].filter((i) => getComputedStyle(i).display !== 'none' && (!i.complete || i.naturalWidth === 0)).length,
   };
 });
 
