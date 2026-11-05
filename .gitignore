@@ -1,0 +1,29 @@
+# Dependencies and generated output
+node_modules/
+_site/
+_site_generator_test/
+qa/reports/
+coverage/
+playwright-report/
+test-results/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Internal project records, kept locally and out of this public repository
+ACCOUNTORBIT_SINGLE_SOURCE_OF_TRUTH.md
+ACCOUNTORBIT_BUILD_PROGRESS.md
+ACCOUNTORBIT_TECHNICAL_REPORT.md
+ACCOUNTORBIT_LAUNCH_CHECKLIST.md
+
+# Private details used only by local QA checks
+qa/private-terms.local.json
+
+# System and log files
+*.log
+.DS_Store
+Thumbs.db

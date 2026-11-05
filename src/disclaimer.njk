@@ -1,0 +1,57 @@
+---
+layout: layouts/page.njk
+permalink: /disclaimer/
+title: Disclaimer | AccountOrbit Referral Platform
+description: The limits of what AccountOrbit is and says. Not advice, not a CA firm, not an endorsement of any professional. Rules change, so please check before relying on it.
+eyebrow: Legal
+h1: Disclaimer
+lede: In plain words, here is what you should not take from this website, and where to check instead.
+reviewed: 2026-11-05
+reviewedLabel: November 2026
+needsReview: true
+---
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="note note--warn disclaimer-note"><strong>Draft.</strong> Not yet reviewed by a lawyer.</div>
+    <div class="disclaim-grid">
+      <article>
+        <h2>This is not advice</h2>
+        <p>Pages here explain accounting and tax topics in general terms. They do not consider your circumstances. Before you act on anything with legal or tax consequences, ask a qualified professional.</p>
+      </article>
+      <article>
+        <h2>We are not a professional firm</h2>
+        <p>AccountOrbit is not a Chartered Accountant firm, law firm, audit practice, tax authority or government service. It is not affiliated with or approved by the Government of India, ICAI, ICSI, or any software company named on this site.</p>
+      </article>
+      <article>
+        <h2>Naming is not endorsing</h2>
+        <p>Mentioning a qualification, professional type, software or official portal is not an endorsement. An introduction is not a recommendation, and it does not mean someone has been checked by us.</p>
+      </article>
+      <article>
+        <h2>Places are not offices</h2>
+        <p>Naming a Delhi market, estate or locality describes where businesses are. It does not mean that AccountOrbit or any professional has an office there, or that help is available there.</p>
+      </article>
+      <article>
+        <h2>Rules change</h2>
+        <p>Tax law, forms, deadlines and professional rules change. We show when sources were checked, and we cannot promise a page reflects the latest position when you read it.</p>
+      </article>
+      <article>
+        <h2>Examples are illustrations</h2>
+        <p>Examples and scenarios are made up to explain a point. They are not real clients or results, and yours may differ. Nothing here promises a tax saving, refund, registration or outcome.</p>
+      </article>
+    </div>
+
+    <h2 class="disclaimer-sub" id="check">Where to check instead</h2>
+    <section class="data-table-wrap" tabindex="0" aria-label="Official places to check, scrolls sideways on small screens">
+      <table class="data-table">
+        <thead><tr><th scope="col">If you want to confirm</th><th scope="col">Go to</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Whether an income tax notice is genuine</th><td>{% ext "https://eportal.incometax.gov.in/iec/foservices/#/pre-login/authenticate-notice-issued-by-itd", "Income Tax Department's notice check" %}</td></tr>
+          <tr><th scope="row">GST rules, returns and help</th><td>{% ext "https://www.gst.gov.in/", "GST portal" %}</td></tr>
+          <tr><th scope="row">Practising Chartered Accountants and firms</th><td>{% ext "https://caconnect.icai.org/search-your-ca", "ICAI CA Connect" %}</td></tr>
+          <tr><th scope="row">MSME registration, which the portal states is free</th><td>{% ext "https://udyamregistration.gov.in/", "Udyam portal" %}</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <p class="section-foot">See also the {% routeLink "/terms-and-conditions/", "terms and conditions" %} and {% routeLink "/privacy-policy/", "privacy policy" %}. To report an error on this site, please call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>.</p>
+  </div>
+</section>

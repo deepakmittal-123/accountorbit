@@ -1,0 +1,95 @@
+---
+layout: layouts/page.njk
+permalink: /how-it-works/
+title: How AccountOrbit Works | Accounting Referrals in Delhi
+description: "What happens to an accounting enquiry at AccountOrbit: who sees your details, who does the work, who charges you, and what if there is no match."
+eyebrow: How it works
+h1: What happens after you enquire, step by step
+lede: AccountOrbit is an independent referral platform. It takes your enquiry and, where it can, introduces you to a professional. This page shows who holds what at each stage, including the parts that are not settled yet.
+headTone: dark
+---
+<section class="section" aria-labelledby="stages-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="stages-title">Who holds what, at each stage</h2>
+      <p>Most sites describe a process. The questions that matter are who has your details, who is responsible for the work, and who you pay.</p>
+    </header>
+    <section class="data-table-wrap" tabindex="0" aria-label="Enquiry stages table, scrolls sideways on small screens">
+      <table class="data-table stage-table">
+        <thead>
+          <tr><th scope="col">Stage</th><th scope="col">What happens</th><th scope="col">Who has your details</th><th scope="col">Who is responsible for the work</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">1. Enquiry</th><td>You describe the work, by phone or, once it opens, by {% routeLink "/request-an-accountant/", "the enquiry form" %}.</td><td>AccountOrbit</td><td>No one yet. Nothing has been agreed.</td></tr>
+          <tr><th scope="row">2. Review</th><td>We look at what kind of professional the work calls for, including whether it is reserved for a particular qualification.</td><td>AccountOrbit</td><td>No one yet.</td></tr>
+          <tr><th scope="row">3. Introduction</th><td>If someone suitable is available and you have agreed, we introduce you.</td><td>AccountOrbit, and the professional being considered</td><td>No one yet. An introduction is not an engagement.</td></tr>
+          <tr><th scope="row">4. Your checks</th><td>You check their credentials and ask for the scope and fee in writing.</td><td>As above</td><td>No one yet. You can stop here.</td></tr>
+          <tr><th scope="row">5. Engagement</th><td>If you choose to go ahead, you and the professional agree terms directly.</td><td>You and the professional decide what is shared next</td><td>The professional, for the work they accept. You remain responsible for your own filings and records.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="not-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="not-title">What AccountOrbit does not do</h2>
+      <ul class="tick-list tick-list--no plain-list">
+        <li>Prepare or file your accounts or returns</li>
+        <li>Give personal tax or legal advice</li>
+        <li>Conduct or sign audits</li>
+        <li>Represent you before a tax authority</li>
+        <li>Set a professional's fee</li>
+        <li>Ask for passwords or OTPs</li>
+      </ul>
+    </div>
+    <div>
+      <h2>What is not yet settled</h2>
+      <p>This platform is at an early stage, and these parts must be decided before it opens. We would rather show them to you than paper over them.</p>
+      <dl class="open-points">
+        <div><dt>Who pays AccountOrbit</dt><dd>{% pending "whether enquiries are free, and whether professionals pay AccountOrbit." %}</dd></div>
+        <div><dt>How quickly you hear back</dt><dd>{% pending "who reviews enquiries and how soon." %}</dd></div>
+        <div><dt>If no one suitable is available</dt><dd>No introduction is made. {% pending "how and when you are told." %}</dd></div>
+        <div><dt>How professionals are checked</dt><dd>No checking procedure has been set, so we do not describe anyone as verified or screened. Please check credentials yourself.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="compare-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="compare-title">How a referral differs from your other options</h2>
+      <p>A referral platform is one route, and it will not suit everyone. Typical differences are below; individual businesses vary, so check the one you are considering.</p>
+    </header>
+    <section class="data-table-wrap" tabindex="0" aria-label="Comparison of options, scrolls sideways on small screens">
+      <table class="data-table">
+        <thead>
+          <tr><th scope="col">Option</th><th scope="col">Who does the work</th><th scope="col">You would choose it when</th><th scope="col">Worth checking</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Referral platform</th><td>A separate professional</td><td>You are not sure what kind of help you need</td><td>Who receives your details, and who pays the platform</td></tr>
+          <tr><th scope="row">Accounting or CA firm directly</th><td>That firm</td><td>You already know who you want</td><td>Credentials, who actually handles your file, and scope</td></tr>
+          <tr><th scope="row">Directory</th><td>Whoever you contact</td><td>You want to compare many names yourself</td><td>Whether listings are paid, and whether reviews can be checked</td></tr>
+          <tr><th scope="row">Online filing service</th><td>That company or its network</td><td>The task is standard and one-off</td><td>What is included, and who is accountable if it goes wrong</td></tr>
+          <tr><th scope="row">Hiring an accountant</th><td>Your employee</td><td>You have enough regular work for a salaried role</td><td>Reserved work may still need an outside professional</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <p class="section-foot">If your work is reserved for Chartered Accountants, you can search directly on {% ext "https://caconnect.icai.org/search-your-ca", "ICAI's CA Connect portal" %}.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-band__inner">
+    <div>
+      <h2>Ready to describe the work?</h2>
+      <p>The online form is not open yet, so please call. An introduction depends on a suitable professional being available. Professionals can read <a href="/for-accounting-professionals/">our note for them</a>.</p>
+    </div>
+    <div class="cta-band__actions">
+      <a class="btn btn--gold" href="{{ site.phoneHref }}">Call {{ site.phoneDisplay }}</a>
+      <a class="btn btn--ghost" href="/request-an-accountant/">See the enquiry form</a>
+    </div>
+  </div>
+</section>

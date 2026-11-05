@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+---
+{%- set trail = page.url | crumbs -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "{{ site.url }}/#organization", "name": "{{ site.name }}", "url": "{{ site.url }}/", "telephone": "+918290728453" },
+    {
+      "@type": "{{ schemaType or 'WebPage' }}",
+      "@id": "{{ site.url }}{{ page.url }}#main",
+      {% if schemaType == 'Article' %}"headline": {{ h1 | dump | safe }},{% if reviewed %} "dateModified": "{{ reviewed }}",{% endif %} "author": { "@id": "{{ site.url }}/#organization" }, "publisher": { "@id": "{{ site.url }}/#organization" },{% else %}"name": {{ title | dump | safe }},{% endif %}
+      "description": {{ description | dump | safe }},
+      "url": "{{ site.url }}{{ page.url }}",
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {%- for c in trail %}
+        { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ (c.name if c.url != '/' else 'Home') | dump | safe }}, "item": "{{ site.url }}{{ c.url }}" }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ]
+    }
+  ]
+}
+</script>
+<div class="page-head{% if headTone %} page-head--{{ headTone }}{% endif %}">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        {%- for c in trail %}
+        <li>{% if loop.last %}<span aria-current="page">{{ c.name if c.url != '/' else 'Home' }}</span>{% else %}<a href="{{ c.url }}">{{ 'Home' if c.url == '/' else c.name }}</a>{% endif %}</li>
+        {%- endfor %}
+      </ol>
+    </nav>
+    {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+    <h1>{{ h1 }}</h1>
+    {% if lede %}<p class="page-lede">{{ lede | safe }}</p>{% endif %}
+    {% if reviewed %}<p class="page-meta">Sources checked {{ reviewedLabel or reviewed }}.{% if needsReview %} Not yet reviewed by a qualified professional.{% endif %}</p>{% endif %}
+  </div>
+</div>
+{{ content | safe }}

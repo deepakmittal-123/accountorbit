@@ -1,0 +1,63 @@
+---
+layout: layouts/page.njk
+permalink: /industries/
+title: Accounting by Industry in Delhi | AccountOrbit Guide
+description: Accounting differs by how a business earns. Find the workflow closest to yours, whether you run on credit, cash, fees, marketplaces or production.
+eyebrow: Industries
+h1: Find the business that works most like yours
+lede: Your books depend less on your trade's name than on how money and goods move. If your exact trade is not listed, choose the closest pattern.
+headTone: dark
+groups:
+  - title: You earn fees for your time
+    note: Receipts, TDS credits and separating personal spending are the main concerns.
+    items:
+      - { url: /industries/accounting-for-doctors/, name: Doctors, what: Consultation and hospital receipts, and personal versus practice costs }
+      - { url: /industries/accounting-for-lawyers/, name: Lawyers, what: Professional fees, client expenses and TDS }
+      - { url: /industries/accounting-for-consultants/, name: Consultants, what: Project receipts and matching TDS credits }
+  - title: You sell goods
+    note: Stock and either credit or daily cash decide how the books should run.
+    items:
+      - { url: /industries/accounting-for-traders/, name: Traders and wholesalers, what: Party ledgers, credit periods and GST matching }
+      - { url: /industries/accounting-for-retail-shops/, name: Retail shops, what: Daily cash and UPI against bills }
+      - { url: /industries/accounting-for-ecommerce-sellers/, name: E-commerce sellers, what: Marketplace settlements, returns and fees }
+  - title: You make or run something daily
+    note: Costs, stock and staff need tracking through the month.
+    items:
+      - { url: /industries/accounting-for-manufacturers/, name: Manufacturers, what: Raw material, work in progress and finished goods }
+      - { url: /industries/accounting-for-restaurants/, name: Restaurants, what: POS, delivery settlements and food cost }
+      - { url: /industries/accounting-for-clinics/, name: Clinics, what: Patient billing, staff and equipment }
+  - title: You are early, or deal in large one-off transactions
+    note: Set-up decisions or individual transactions matter most.
+    items:
+      - { url: /industries/accounting-for-small-businesses/, name: Small businesses, what: How much help you need at each stage }
+      - { url: /industries/accounting-for-startups/, name: Startups, what: Founder expenses and investor-ready records }
+      - { url: /industries/accounting-for-real-estate-businesses/, name: Real estate, what: Brokerage, project costs and TDS on property }
+---
+<section class="section">
+  <div class="wrap service-bands">
+    {%- for group in groups %}
+    {%- set live = [] %}
+    {%- for item in group.items %}{% if item.url | built %}{% set live = (live.push(item), live) %}{% endif %}{% endfor %}
+    {%- if live.length %}
+    <section class="service-band" aria-labelledby="ind-{{ loop.index }}">
+      <div>
+        <h2 id="ind-{{ loop.index }}">{{ group.title }}</h2>
+        <p>{{ group.note }}</p>
+      </div>
+      <ul class="guide-list guide-list--single">
+        {%- for item in live %}
+        <li><a href="{{ item.url }}"><span class="guide-list__q">{{ item.name }}</span><span class="guide-list__a">{{ item.what }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+</section>
+<section class="section section--tint">
+  <div class="wrap prose">
+    <h2 class="first-h2">Experience is worth asking about</h2>
+    <p>A qualification does not show that someone knows your trade. Ask what clients like you they have handled and what they would need from you each month. See {% routeLink "/guides/how-to-hire-an-accountant-in-delhi/", "how to hire an accountant" %}.</p>
+    <p>AccountOrbit makes no claim that a provider with experience of your trade is available. You can <a href="/request-an-accountant/">describe your business</a>, and an introduction depends on someone suitable being available.</p>
+  </div>
+</section>

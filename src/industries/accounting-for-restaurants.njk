@@ -1,0 +1,100 @@
+---
+layout: layouts/page.njk
+permalink: /industries/accounting-for-restaurants/
+title: Accounting for Restaurants in Delhi | POS, Delivery and Food Cost
+description: Accounting for Delhi restaurants. Matching POS sales with cash, cards and delivery payouts, tracking food cost, and the GST points to confirm for your premises.
+eyebrow: Industry
+h1: Accounting for restaurants, one day's sales at a time
+lede: A restaurant has many small sales, perishable stock, staff on shifts and platforms that pay weeks later, net of deductions. Three reconciliations and one number do most of the work.
+reviewed: 2026-11-05
+reviewedLabel: November 2026
+needsReview: true
+---
+<section class="section section--tight" aria-labelledby="three-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="three-title">Three reconciliations</h2>
+    </header>
+    <div class="deliver-grid">
+      <article><h3>POS to tender, daily</h3><p>Match the POS day-end report with cash counted and card and UPI batches. Investigate cancelled and discounted bills, as these are common places for leakage.</p></article>
+      <article><h3>Platforms to bank, by settlement</h3><p>Match delivery orders with each payout. Separate commission, ads, penalties and tax so that you can see true income.</p></article>
+      <article><h3>Purchases to kitchen, weekly</h3><p>Check vendor bills against goods received and rates agreed. Many restaurants buy daily and record monthly, so errors build up.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="cost-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="cost-title">The one number: food cost</h2>
+      <div class="formula">Food cost % = (Opening stock + Purchases − Closing stock) ÷ Food sales × 100</div>
+      <p class="para">This needs a real closing stock count. Without one, you are only measuring purchases. Check it monthly, and investigate any jump before blaming suppliers: consider wastage, staff meals, portion size, theft or missing bills.</p>
+      <p class="para">Benchmarks vary by concept, so track your own trend first.</p>
+    </div>
+    <div>
+      <h2>GST points to confirm</h2>
+      <p>As reported by secondary sources, and to be checked with your adviser:</p>
+      <ul class="tick-list plain-list">
+        <li>Many restaurants pay 5% without input tax credit</li>
+        <li>A restaurant in "specified premises", linked to hotel room tariffs above ₹7,500 a day, is treated differently, at 18% with credit</li>
+        <li>On food ordered through a delivery platform, the platform generally pays the GST under section 9(5)</li>
+        <li>Your restaurant then does not treat those orders the same way as dine-in, so they need separate reporting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="month-title">
+  <div class="wrap layout-side">
+    <div class="prose">
+      <h2 id="month-title" class="first-h2">What to hand your accountant each month</h2>
+      <ul>
+        <li>POS monthly summary, with discounts, cancellations and tender types</li>
+        <li>Delivery platform statements and fee invoices</li>
+        <li>Vendor bills and payment details, including cash purchases with vouchers</li>
+        <li>Closing stock count of main items</li>
+        <li>Staff attendance, wages and advances</li>
+        <li>Rent, electricity, gas and repairs</li>
+        <li>Any licences or renewal fees paid, such as FSSAI</li>
+      </ul>
+
+      <h2 id="problems">Where restaurants' books go wrong</h2>
+      <ul>
+        <li><strong>Cash purchases with no bill.</strong> Vegetables and small items are often bought in cash. Use a simple voucher, and pay by traceable means where you can.</li>
+        <li><strong>Booking platform payouts as sales.</strong> This understates turnover and hides fees.</li>
+        <li><strong>Staff meals and wastage ignored,</strong> so that food cost looks unexplained.</li>
+        <li><strong>Tips and service charges unclear.</strong> Decide how they are handled, and record it.</li>
+        <li><strong>Payroll in cash, without records.</strong> It is hard to defend later. See {% routeLink "/services/payroll-services/", "payroll" %}.</li>
+      </ul>
+
+      <h2 id="ask">What to ask an accountant</h2>
+      <ul>
+        <li>Have you worked with restaurants on my POS and delivery platforms?</li>
+        <li>How do you report dine-in and delivery sales separately for GST?</li>
+        <li>Will you give me monthly food cost and labour cost?</li>
+        <li>How do you handle my cash purchases?</li>
+      </ul>
+
+      <div class="source-list">
+        <h2>Sources checked, November 2026</h2>
+        <ul>
+          <li>{% ext "https://busy.in/gst-rates/restaurant-meals", "Busy on GST on restaurant meals" %}, {% ext "https://blog.petpooja.com/finance-compliance/gst-billing-for-restaurants/", "Petpooja on GST billing" %}, {% ext "https://carajput.com/learn/important-gst-update-for-restaurants-effective-from-1st-april-2025.html", "update effective April 2025" %} (secondary)</li>
+          <li>CBIC notifications were not read directly. Sources mention a September 2025 rate change without clear detail</li>
+        </ul>
+      </div>
+    </div>
+    <aside class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ul>
+        <li><a href="#three-title">Reconciliations</a></li>
+        <li><a href="#cost-title">Food cost and GST</a></li>
+        <li><a href="#month-title">Monthly handover</a></li>
+        <li><a href="#problems">Where books go wrong</a></li>
+        <li><a href="#ask">What to ask</a></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+{% set ctaTitle = "Run a restaurant or cloud kitchen?" %}{% set ctaText = "Tell us your POS, the delivery platforms you use, and your staff count." %}
+{% include "partials/cta.njk" %}
+{% related ["/services/payroll-services/|Payroll", "/services/gst-return-filing/|GST return filing", "/industries/accounting-for-ecommerce-sellers/|Accounting for e-commerce sellers"] %}

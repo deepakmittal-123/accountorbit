@@ -1,0 +1,69 @@
+---
+layout: layouts/page.njk
+permalink: /guides/
+title: Accounting Guides for Delhi Businesses | AccountOrbit
+description: Plain answers to the questions business owners ask before hiring accounting help, from who can do what to which documents to keep. Useful with or without an enquiry.
+eyebrow: Guides
+h1: Start with the question you actually have
+lede: These guides are written to be useful whether or not you ever enquire through AccountOrbit. Each shows when its sources were checked.
+headTone: dark
+groups:
+  - title: Choosing someone
+    items:
+      - url: /guides/how-to-hire-an-accountant-in-delhi/
+        q: How do I hire an accountant without regretting it?
+        a: Defining the work, checking credentials, written scope, portal access and exit.
+      - url: /guides/accountant-vs-chartered-accountant/
+        q: Do I need a CA, or will an accountant do?
+        a: What each title means, which work is reserved, and how to check a credential.
+      - url: /guides/bookkeeping-vs-outsourced-accounting/
+        q: Should I outsource my accounts?
+        a: Separating what work you need from who should do it.
+      - url: /guides/accounting-services-cost-in-delhi/
+        q: What should accounting help cost?
+        a: What drives fees, using dated published examples.
+  - title: Keeping records
+    items:
+      - url: /guides/monthly-accounting-documents-checklist/
+        q: What should I give my accountant each month?
+        a: A core list, extra items by kind of business, and a folder system.
+      - url: /guides/documents-required-for-gst-return-filing/
+        q: What do I need for GST returns?
+        a: Records you keep compared with what the portal asks for.
+      - url: /guides/accounting-for-small-businesses-guide/
+        q: How do I start keeping accounts?
+        a: Foundations for an owner doing it alone at first.
+      - url: /guides/what-is-tally-accounting/
+        q: What is Tally accounting?
+        a: How it works, in plain terms.
+---
+<section class="section">
+  <div class="wrap guide-index">
+    {%- for group in groups %}
+    <section aria-labelledby="group-{{ loop.index }}">
+      <h2 id="group-{{ loop.index }}" class="plain-h2">{{ group.title }}</h2>
+      <ul class="guide-list">
+        {%- for item in group.items %}
+        {%- if item.url | built %}
+        <li>
+          <a href="{{ item.url }}"><span class="guide-list__q">{{ item.q }}</span><span class="guide-list__a">{{ item.a }}</span></a>
+        </li>
+        {%- endif %}
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endfor %}
+  </div>
+</section>
+<section class="section section--tint">
+  <div class="wrap two-col">
+    <div>
+      <h2>Official sources first</h2>
+      <p>For rules and deadlines, the official portals are the final word: {% ext "https://www.gst.gov.in/", "GST" %}, {% ext "https://www.incometax.gov.in/", "income tax" %}, {% ext "https://udyamregistration.gov.in/", "Udyam" %} and {% ext "https://caconnect.icai.org/search-your-ca", "ICAI's CA search" %}.</p>
+    </div>
+    <div>
+      <h2>A limit to keep in mind</h2>
+      <p>These guides are general and have not yet been reviewed by a qualified professional. They cannot consider your circumstances. See the <a href="/disclaimer/">disclaimer</a>.</p>
+    </div>
+  </div>
+</section>

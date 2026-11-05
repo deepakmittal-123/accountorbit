@@ -1,0 +1,193 @@
+---
+layout: layouts/page.njk
+permalink: /request-an-accountant/
+title: Request an Accountant in Delhi | AccountOrbit Enquiry
+description: Describe the accounting or tax help you need in Delhi. See what we ask, why we ask it, what happens next, and what you should never send with an enquiry.
+eyebrow: Enquiry
+h1: Tell us what accounting help you need
+lede: A short description of the work is enough to start. An introduction depends on a suitable professional being available, and the decision to engage anyone stays with you.
+extraJs: /assets/js/enquiry-form.js
+---
+<section class="section section--tight">
+  <div class="wrap enquiry">
+    <div class="enquiry__main">
+      {% if not form.endpoint %}
+      <div class="notice" role="note">
+        <h2>Online enquiries are not open yet</h2>
+        <p>You can see the form below, but it cannot be sent until its secure destination and privacy process are in place. To enquire today, call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>.</p>
+      </div>
+      {% endif %}
+
+      <div id="form-status" class="form-status" tabindex="-1" role="status" hidden></div>
+      <div id="form-errors" class="form-errors" tabindex="-1" role="alert" hidden>
+        <h2>Please check these details</h2>
+        <ul></ul>
+      </div>
+
+      <form id="enquiry-form" class="form" novalidate{% if form.endpoint %} action="{{ form.endpoint }}" method="post"{% endif %} data-endpoint="{{ form.endpoint }}" data-phone="{{ site.phoneDisplay }}">
+        <fieldset>
+          <legend>About you</legend>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error" maxlength="80">
+            <p id="name-error" class="field__error" hidden></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Mobile number</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="phone-hint phone-error" maxlength="16">
+              <p id="phone-hint" class="field__hint">So that we can reach you about this enquiry.</p>
+              <p id="phone-error" class="field__error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="email">Email <span class="field__optional">(optional)</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" maxlength="120">
+              <p id="email-error" class="field__error" hidden></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>About the work</legend>
+          <div class="field">
+            <label for="service">What do you need help with?</label>
+            <select id="service" name="service" required aria-describedby="service-error">
+              <option value="">Choose one</option>
+              <optgroup label="Everyday accounts">
+                <option>Accounting and bookkeeping</option><option>Outsourced accounting</option><option>Tally or Zoho accounting</option><option>Payroll</option>
+              </optgroup>
+              <optgroup label="GST">
+                <option>GST registration</option><option>GST return filing</option><option>GST notice or dispute</option>
+              </optgroup>
+              <optgroup label="Income tax and TDS">
+                <option>Income tax return</option><option>Income tax notice</option><option>TDS return</option>
+              </optgroup>
+              <optgroup label="Company and growth">
+                <option>Company or LLP registration</option><option>ROC or MCA compliance</option><option>Udyam registration help</option><option>Audit support</option><option>Virtual CFO</option>
+              </optgroup>
+              <option>Not sure yet</option>
+            </select>
+            <p id="service-error" class="field__error" hidden></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="business">Which describes you best?</label>
+              <select id="business" name="business" required aria-describedby="business-error">
+                <option value="">Choose one</option>
+                <option>Doctor</option><option>Clinic</option><option>Lawyer</option><option>Consultant</option><option>Retail shop</option><option>Trader or wholesaler</option><option>E-commerce seller</option><option>Restaurant</option><option>Manufacturer</option><option>Real estate business</option><option>Startup</option><option>Other small business</option><option>Individual</option><option>Something else</option>
+              </select>
+              <p id="business-error" class="field__error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="area">Your part of Delhi</label>
+              <input id="area" name="area" type="text" autocomplete="address-level2" required aria-describedby="area-hint area-error" maxlength="60">
+              <p id="area-hint" class="field__hint">An area name is enough. We do not need your address.</p>
+              <p id="area-error" class="field__error" hidden></p>
+            </div>
+          </div>
+          <fieldset class="choice" aria-describedby="frequency-error">
+            <legend>How often is this needed?</legend>
+            <div class="choice__row">
+              <label><input type="radio" id="frequency-once" name="frequency" value="One-time" required> One-time</label>
+              <label><input type="radio" id="frequency-recurring" name="frequency" value="Recurring"> Recurring</label>
+              <label><input type="radio" id="frequency-unsure" name="frequency" value="Not sure"> Not sure</label>
+            </div>
+            <p id="frequency-error" class="field__error" hidden></p>
+          </fieldset>
+          <div class="field">
+            <label for="details">Describe what you need done</label>
+            <textarea id="details" name="details" rows="5" maxlength="600" required aria-describedby="details-hint details-count details-error"></textarea>
+            <p id="details-hint" class="field__hint">Please leave out PAN, Aadhaar and bank account numbers, and never include a password or OTP.</p>
+            <p id="details-count" class="field__hint" aria-live="polite">0 of 600 characters</p>
+            <p id="details-error" class="field__error" hidden></p>
+          </div>
+        </fieldset>
+
+        <div class="form-trap" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <fieldset id="privacy">
+          <legend>Your details and your consent</legend>
+          <div class="privacy-note">
+            <p><strong>What we collect:</strong> your name, mobile number, email if you give it, the type of help you need, your type of business, your area of Delhi, how often you need help, and your description.</p>
+            <p><strong>Why:</strong> to review your enquiry and, only if you agree below, to share these details with a professional being considered for your work.</p>
+            <p><strong>Changing your mind:</strong> {% pending "how to withdraw consent, have details deleted or complain, and how long enquiries are kept." %}</p>
+            {% if '/privacy-policy/' | built %}<p>Read the full {% routeLink "/privacy-policy/", "privacy policy" %}.</p>{% endif %}
+          </div>
+          <div class="check">
+            <input id="consent_process" name="consent_process" type="checkbox" value="yes" required aria-describedby="consent_process-error">
+            <label for="consent_process">AccountOrbit may use these details to review my enquiry and contact me about it.</label>
+            <p id="consent_process-error" class="field__error" hidden></p>
+          </div>
+          <div class="check">
+            <input id="consent_share" name="consent_share" type="checkbox" value="yes" aria-describedby="consent_share-hint">
+            <label for="consent_share">AccountOrbit may share these details with a professional being considered for my work.</label>
+            <p id="consent_share-hint" class="field__hint">Optional. Without this we cannot introduce you to anyone, but we can still talk to you about your enquiry.</p>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="btn btn--large-text" type="submit"{% if not form.endpoint %} disabled aria-describedby="submit-note"{% endif %}>Send my enquiry</button>
+          {% if not form.endpoint %}<p id="submit-note" class="field__hint">Sending is switched off until the form is connected. Please call instead.</p>{% endif %}
+        </div>
+      </form>
+    </div>
+
+    <aside class="enquiry__side" aria-label="Before you enquire">
+      <div class="side-card side-card--dark">
+        <h2>Prefer to talk?</h2>
+        <p>Have the same details ready and call. For anything else, see <a href="/contact-us/">contact</a>.</p>
+        <a class="btn btn--gold btn--wide" href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>
+      </div>
+      <div class="side-card">
+        <h2>What happens next</h2>
+        <ol class="mini-steps">
+          <li>We review what you have described.</li>
+          <li>We look at what kind of professional the work calls for.</li>
+          <li>If someone suitable is available and you have agreed, we introduce you.</li>
+          <li>You check them, agree scope and fee with them, and decide.</li>
+        </ol>
+        <p class="side-note">We cannot promise that a professional will be available. {% pending "how soon people hear back, and what they are told if there is no match." %}</p>
+      </div>
+      <div class="side-card side-card--warn">
+        <h2>Never send with an enquiry</h2>
+        <ul class="tick-list tick-list--no">
+          <li>OTPs or portal passwords</li>
+          <li>PAN or Aadhaar scans</li>
+          <li>Bank statements</li>
+          <li>Tax filings or notices</li>
+        </ul>
+        <p class="side-note">Anyone who asks you for an OTP or password at this stage is not acting for us.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="describe-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="describe-title">How to describe the work</h2>
+      <p>Saying what has happened, what is due and what you use today helps whoever reviews it. These examples are illustrative, not real enquiries.</p>
+    </header>
+    <div class="compare-cards">
+      <article class="compare-card">
+        <h3>Books</h3>
+        <p class="compare-card__weak"><span>Vague</span> "Need an accountant."</p>
+        <p class="compare-card__strong"><span>Clearer</span> "Clothing shop with two staff. Bills are in a folder and nothing is entered for this year. Want monthly bookkeeping in Tally."</p>
+      </article>
+      <article class="compare-card">
+        <h3>GST</h3>
+        <p class="compare-card__weak"><span>Vague</span> "GST work."</p>
+        <p class="compare-card__strong"><span>Clearer</span> "Registered trader, about 60 invoices a month. Purchases do not match what suppliers uploaded, and I need regular return help."</p>
+      </article>
+      <article class="compare-card">
+        <h3>A notice</h3>
+        <p class="compare-card__weak"><span>Vague</span> "Got a notice, urgent."</p>
+        <p class="compare-card__strong"><span>Clearer</span> "Income tax notice for one year, with a reply date next week. Have checked it is genuine. Need someone who can respond for me."</p>
+      </article>
+    </div>
+    <p class="section-foot">Received an income tax notice? You can first {% ext "https://eportal.incometax.gov.in/iec/foservices/#/pre-login/authenticate-notice-issued-by-itd", "check that it is genuine" %} on the department's portal.</p>
+  </div>
+</section>

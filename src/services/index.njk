@@ -1,0 +1,71 @@
+---
+layout: layouts/page.njk
+permalink: /services/
+title: Accounting and Tax Services in Delhi | AccountOrbit Guide
+description: Accounting and tax work sorted by who can do it, from routine books to reserved work. AccountOrbit explains each and takes enquiries; providers do the work.
+eyebrow: Services
+h1: Sort the work by who can legally do it
+lede: AccountOrbit does not provide these services. It explains them, and takes enquiries about professionals who may be able to help. Availability varies, so nothing here promises that someone is on hand.
+headTone: dark
+bands:
+  - title: Routine work
+    note: Open to skilled accountants and bookkeepers. Experience matters most.
+    items:
+      - { url: /services/accounting-bookkeeping/, name: Accounting and bookkeeping, what: Monthly books and the outputs you should expect }
+      - { url: /services/outsourced-accounting/, name: Outsourced accounting, what: Handing work to an outside provider without losing control }
+      - { url: /services/payroll-services/, name: Payroll, what: The monthly cycle from attendance to payslips }
+      - { url: /services/tally-zoho-accounting/, name: Tally and Zoho accounting, what: Working in your accounting software }
+  - title: Compliance work
+    note: Often handled by accountants, practitioners or CAs. You stay responsible for what is filed.
+    items:
+      - { url: /services/gst-registration/, name: GST registration, what: Whether you need it and what the process asks for }
+      - { url: /services/gst-return-filing/, name: GST return filing, what: What a good filing routine checks }
+      - { url: /services/income-tax-return-filing/, name: Income tax returns, what: Preparing for a return during the new Act's transition }
+      - { url: /services/tds-return-filing/, name: TDS returns, what: Old and new forms, and why credit goes missing }
+      - { url: /services/msme-udyam-registration/, name: Udyam registration, what: Free on the official portal; when help is worth it }
+  - title: Work that may need a particular professional
+    note: Certification, representation and audit may be limited by law. Check who is eligible first.
+    items:
+      - { url: /services/company-llp-registration/, name: Company and LLP registration, what: Choosing an entity and who is involved }
+      - { url: /services/roc-mca-compliance/, name: ROC and MCA compliance, what: Recurring filings and certification }
+      - { url: /services/audit-support/, name: Audit support, what: Preparing records, which is different from an audit }
+      - { url: /services/gst-notice-litigation/, name: GST notices and disputes, what: Who can reply and represent you }
+      - { url: /services/income-tax-notice-handling/, name: Income tax notices, what: Checking a notice and who can respond }
+  - title: Decision support
+    note: Experience varies widely, so ask for examples of the reporting you would receive.
+    items:
+      - { url: /services/virtual-cfo/, name: Virtual CFO, what: Management reporting and planning, with limits }
+---
+<section class="section">
+  <div class="wrap service-bands">
+    {%- for band in bands %}
+    {%- set live = [] %}
+    {%- for item in band.items %}{% if item.url | built %}{% set live = (live.push(item), live) %}{% endif %}{% endfor %}
+    {%- if live.length %}
+    <section class="service-band" aria-labelledby="band-{{ loop.index }}">
+      <div>
+        <h2 id="band-{{ loop.index }}">{{ band.title }}</h2>
+        <p>{{ band.note }}</p>
+      </div>
+      <ul class="guide-list guide-list--single">
+        {%- for item in live %}
+        <li><a href="{{ item.url }}"><span class="guide-list__q">{{ item.name }}</span><span class="guide-list__a">{{ item.what }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+</section>
+<section class="section section--tint">
+  <div class="wrap two-col">
+    <div>
+      <h2>Not sure which you need?</h2>
+      <p>Start with {% routeLink "/guides/accountant-vs-chartered-accountant/", "accountant vs Chartered Accountant" %}, or read the task table on the <a href="/#who">homepage</a>. If it is reserved for CAs, you can search {% ext "https://caconnect.icai.org/search-your-ca", "ICAI's CA Connect" %} directly.</p>
+    </div>
+    <div>
+      <h2>Prefer to ask?</h2>
+      <p>You can <a href="/request-an-accountant/">describe the work</a> and choose "Not sure yet". An introduction depends on a suitable professional being available.</p>
+    </div>
+  </div>
+</section>

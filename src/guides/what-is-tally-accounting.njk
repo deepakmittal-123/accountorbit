@@ -1,0 +1,82 @@
+---
+layout: layouts/page.njk
+permalink: /guides/what-is-tally-accounting/
+title: What Is Tally Accounting? A Plain Guide to How It Works
+description: What Tally accounting means, how a voucher becomes a report, the terms you will hear such as ledger and group, and what it can and cannot do for your books.
+eyebrow: Guide
+h1: What is Tally accounting?
+schemaType: Article
+reviewed: 2026-11-05
+reviewedLabel: November 2026
+---
+<section class="section section--tight">
+  <div class="wrap layout-side">
+    <div class="prose">
+      <p class="answer"><strong>The short answer:</strong> "Tally accounting" means keeping a business's books in Tally software, currently sold as TallyPrime. It is not a separate kind of accounting. The accounting rules are the same. Tally is where they are recorded, and where reports are produced from those records.</p>
+      <p>People also use the word in two other ways. A "Tally accountant" is someone who works in the software, and a "Tally course" teaches it. Neither tells you how well someone understands accounts or tax.</p>
+
+      <h2 id="flow">How a bill becomes a report</h2>
+      <ol class="flow">
+        <li><strong>Company.</strong> You create a company in Tally with its financial year and tax settings.</li>
+        <li><strong>Ledgers and groups.</strong> Each party and head, such as "Sharma Traders" or "Office Rent", is a ledger. Groups such as Sundry Debtors organise them.</li>
+        <li><strong>Vouchers.</strong> Each transaction is entered as a voucher, such as a sales or payment voucher.</li>
+        <li><strong>Reports.</strong> Tally builds the day book, trial balance, profit and loss and balance sheet from those vouchers.</li>
+      </ol>
+      <p>So when a report looks wrong, the answer is nearly always in a voucher or in how a ledger was grouped.</p>
+
+      <h2 id="example">A small example</h2>
+      <p>This is an illustration with invented figures. A shop sells goods for ₹1,000 on credit to Sharma Traders, leaving tax out to keep it simple.</p>
+      <section class="data-table-wrap" tabindex="0" aria-label="Example entries, scrolls sideways on small screens">
+        <table class="data-table table-narrow">
+          <thead><tr><th scope="col">Event</th><th scope="col">Voucher</th><th scope="col">Result</th></tr></thead>
+          <tbody>
+            <tr><td>Sale made</td><td>Sales</td><td>Sharma Traders owes ₹1,000; sales up by ₹1,000</td></tr>
+            <tr><td>Payment received in bank</td><td>Receipt</td><td>Bank up by ₹1,000; Sharma Traders owes nothing</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <h2 id="terms">Terms you will hear</h2>
+      <dl class="fit-list">
+        <div><dt>Ledger</dt><dd>An account for one party or type of income or expense.</dd></div>
+        <div><dt>Group</dt><dd>A category of ledgers. Wrong grouping can distort reports even when entries are right.</dd></div>
+        <div><dt>Voucher</dt><dd>The entry form for a transaction, such as sales, purchase, payment, receipt, contra or journal.</dd></div>
+        <div><dt>Contra</dt><dd>Moving money between your own cash and bank accounts.</dd></div>
+        <div><dt>Trial balance</dt><dd>A list of all ledger balances, used to check that the books are in order.</dd></div>
+        <div><dt>Bank reconciliation</dt><dd>Matching the books with the bank statement.</dd></div>
+        <div><dt>Stock item</dt><dd>A product tracked for quantity and value, if you use inventory.</dd></div>
+      </dl>
+
+      <h2 id="can">What it does and does not do for you</h2>
+      <section class="data-table-wrap" tabindex="0" aria-label="What Tally does and does not do, scrolls sideways on small screens">
+        <table class="data-table table-narrow">
+          <thead><tr><th scope="col">It can</th><th scope="col">It cannot</th></tr></thead>
+          <tbody>
+            <tr><td>Produce reports instantly from entries</td><td>Tell whether an entry was honest or complete</td></tr>
+            <tr><td>Help with GST data, according to Tally's product pages</td><td>Take over your legal responsibility for what is filed</td></tr>
+            <tr><td>Track stock and parties</td><td>Replace counting your actual stock</td></tr>
+            <tr><td>Balance debits and credits</td><td>Catch a whole bill that nobody entered</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <h2 id="should">Should you use it?</h2>
+      <p>Tally is widely used, which makes it easier to find people who know it. It is not the only option, and it may not suit everyone. Test it against your own billing and stock using the trial on {% ext "https://tallysolutions.com/tally-prime/", "Tally's site" %}. If you would like a comparison with a cloud alternative, see {% routeLink "/services/tally-zoho-accounting/", "Tally and Zoho accounting" %}.</p>
+      <p>AccountOrbit is not a Tally partner and does not sell the software. Use a licensed copy, because an unlicensed one carries risk for your data and your business.</p>
+
+      <h2 id="learn">Learning it yourself</h2>
+      <p>{% ext "https://help.tallysolutions.com/tally-prime/", "Tally's own help site" %} is a good free starting point. Try entering a month of your own bills in a test company. If you want to understand what your books should show, read the {% routeLink "/guides/accounting-for-small-businesses-guide/", "small business accounting guide" %}.</p>
+    </div>
+    <aside class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ul>
+        <li><a href="#flow">From bill to report</a></li>
+        <li><a href="#example">A small example</a></li>
+        <li><a href="#terms">Terms you will hear</a></li>
+        <li><a href="#can">What it can and cannot do</a></li>
+        <li><a href="#should">Should you use it?</a></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+{% related ["/services/tally-zoho-accounting/|Tally and Zoho accounting", "/guides/accounting-for-small-businesses-guide/|Accounting for small businesses guide", "/services/accounting-bookkeeping/|Accounting and bookkeeping"] %}

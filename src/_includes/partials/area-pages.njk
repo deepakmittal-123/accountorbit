@@ -1,0 +1,16 @@
+{%- set kids = page.url | builtChildren -%}
+{%- if kids.length %}
+<section class="section" aria-labelledby="area-pages-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="area-pages-title">Pages for individual areas</h2>
+      <p>We have a separate page only where an area's trade changes what your books need. Each describes the trade, and does not mean a professional is based there.</p>
+    </header>
+    <ul class="guide-list guide-list--single hub-links">
+      {%- for k in kids %}
+      <li><a href="{{ k.url }}"><span class="guide-list__q">{{ k.name }}</span></a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{%- endif %}

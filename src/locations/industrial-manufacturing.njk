@@ -1,0 +1,86 @@
+---
+layout: layouts/page.njk
+permalink: /locations/industrial-manufacturing/
+title: "Accounting for Delhi's Industrial Estates | A Practical Map"
+description: "Delhi's official industrial areas by zone, reported activity in each, and the accounting points that change for metal, printing, garment and equipment units."
+eyebrow: Delhi
+h1: "Accounting for units in Delhi's industrial areas"
+lede: The estate you are in matters less than what you make, but activity does tend to cluster. Here is what official lists and reports say, and what follows for your books. Being named here does not mean a professional is based in that area.
+reviewed: 2026-11-05
+reviewedLabel: November 2026
+needsReview: true
+---
+<section class="section section--tight" aria-labelledby="zones-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="zones-title">Official industrial areas, by zone</h2>
+      <p>From Delhi's Department of Industries zone pages, updated 7 October 2026 as shown there (date format ambiguous). Spelling follows those pages.</p>
+    </header>
+    <section class="data-table-wrap" tabindex="0" aria-label="Industrial areas by zone, scrolls sideways on small screens">
+      <table class="data-table">
+        <thead><tr><th scope="col">Zone</th><th scope="col">Areas listed</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">{% ext "https://industries.delhi.gov.in/industries/south-zone", "South" %}</th><td>Okhla Industrial Area Ph-I and Ph-II; Okhla Industrial Estate; Flatted Factory Complex Okhla; Mohan Cooperative Industrial Estate; Flatted Factory Complex, Jhandewalan; Shahzeda Bagh Industrial Area</td></tr>
+          <tr><th scope="row">{% ext "https://industries.delhi.gov.in/industries/west-zone", "West" %}</th><td>Naraina Industrial Area Ph-I and Ph-II; Mayapuri Industrial Area Ph-I and Ph-II; Tilak Nagar Industrial Area; Kirti Nagar Industrial Area; D.F.L. Industrial Area, Moti Nagar; Najafgarh Road Industrial Area</td></tr>
+          <tr><th scope="row">{% ext "https://industries.delhi.gov.in/industries/north-zone", "North" %}</th><td>G.T. Karnal Road; Rajasthani Udyog Nagar; S.M.A.; S.S.I.; Wazirpur; Lawrance Road; Udyog Nagar; D.S.I.D.C. Sheds Nagloi; Mangol Puri (DDA and DSIDC); Badli; Narela; Bawana; Rani Jhansi Road</td></tr>
+          <tr><th scope="row">{% ext "https://industries.delhi.gov.in/industries/east-zone", "East" %}</th><td>Jhilmil Industrial Area; Friends Colony Industrial Area, Shahdara; Patpar Ganj Industrial Area; Shahdara Industrial Area</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="act-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="act-title">Reported activity, and what it means for your accounts</h2>
+      <p>These reports describe some units and not all of them. The accounting points are our general analysis. Check the treatment of your own goods and processes.</p>
+    </header>
+    <section class="data-table-wrap" tabindex="0" aria-label="Reported activity and accounting points, scrolls sideways on small screens">
+      <table class="data-table">
+        <thead><tr><th scope="col">Area</th><th scope="col">Reported activity</th><th scope="col">Accounting points to raise</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Okhla</th><td>Garment and printing units are mentioned, along with flatted factories</td><td>Job work and export paperwork for garments. Paper stock and work-in-progress by order for printers</td></tr>
+          <tr><th scope="row">Wazirpur</th><td>Metal-related units, with pickling mentioned in an environmental survey</td><td>Material yield and scrap, process charges, and any compliance costs</td></tr>
+          <tr><th scope="row">Mayapuri</th><td>Described as a small-industry area and a metal and scrap market</td><td>Scrap purchases from unregistered sellers, weight-based stock, and ask about the GST treatment of scrap</td></tr>
+          <tr><th scope="row">Naraina</th><td>Heavy kitchen and hotel equipment mentioned in one report</td><td>Made-to-order projects, customer advances and installation</td></tr>
+          <tr><th scope="row">Bawana and Narela</th><td>Plots and flatted units under government schemes. Reported auctions in 2024 and freehold policy talk in 2025</td><td>Lease, allotment and premium records, and whether costs are capital or revenue</td></tr>
+          <tr><th scope="row">Patparganj, Mangolpuri</th><td>Listed officially, and we found few details on their activity</td><td>Follow your own product's workflow</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="common-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="common-title">What most units share</h2>
+      <ul class="tick-list plain-list">
+        <li>Raw material, work in progress and finished goods records</li>
+        <li>Job work challans, and returns on time</li>
+        <li>Wages, overtime, and PF and ESI where applicable</li>
+        <li>A fixed asset register for machines</li>
+        <li>TDS on contractors and rent, where applicable</li>
+      </ul>
+      <p class="para">The full workflow is on {% routeLink "/industries/accounting-for-manufacturers/", "accounting for manufacturers" %}.</p>
+    </div>
+    <div>
+      <h2>Choosing someone</h2>
+      <p>Ask whether they have handled a process like yours, and if they will visit to see how material moves and to observe a stock count. Those two things are hard to do from a distance, and are where location can genuinely matter.</p>
+    </div>
+  </div>
+</section>
+
+{% include "partials/area-pages.njk" %}
+
+<section class="section section--tint">
+  <div class="wrap source-list">
+    <h2>Other sources checked, November 2026</h2>
+    <ul>
+      <li>{% ext "https://theprint.in/ground-reports/delhis-industries-are-gasping-pollution-crackdowns-fight-for-nala-sadak-pani/2896796", "ThePrint ground report on Delhi's industries" %}, {% ext "https://www.downtoearth.org.in/news/delhis-industrial-areas-are-toxic-hot-spots-finds-survey-45835", "Down To Earth survey" %}, {% ext "https://www.theweek.in/wire-updates/business/2025/05/18/dcm32-dl-cti-sirsa.html", "The Week on Bawana and Narela" %} (press; some older)</li>
+    </ul>
+  </div>
+</section>
+{% set ctaTitle = "Running a unit in Delhi?" %}{% set ctaText = "Tell us what you make, where you are, and your staff count. We will need to check if someone suitable is available." %}
+{% include "partials/cta.njk" %}
