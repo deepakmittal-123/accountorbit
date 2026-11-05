@@ -189,11 +189,12 @@ for (const [slug, [big, floats]] of Object.entries(SCENES)) {
 writeFileSync(`${OUT}/band-enquiry.svg`, bandScene('speech', 'checklist', 'callout'));
 writeFileSync(`${OUT}/band-about.svg`, bandScene('shield', 'team', 'ledger'));
 writeFileSync(`${OUT}/band-start.svg`, bandScene('callout', 'noted', 'lock'));
-writeFileSync(`${OUT}/intro-who.svg`, scene({ big: 'link', floats: ['team', 'ledger', 'shield', 'speech'], who: W(7), tone: 1 }));
+// A monogram, not a person, so nothing here could be mistaken for a photograph of the owner. Replace with the approved portrait when supplied.
+writeFileSync(`${OUT}/owner-monogram.svg`, svg(480, 560, rr(0, 0, 480, 560, 0, C.mint2) + circ(420, 70, 120, C.teal, 'opacity=".22"') + circ(50, 520, 110, C.white, 'opacity=".5"') + circ(240, 280, 150, C.deep) + circ(240, 280, 150, 'none', `stroke="${C.gold}" stroke-width="6" stroke-dasharray="2 14" stroke-linecap="round" transform="scale(1.1) translate(-21.8 -25.5)"`) + p('M150 215H193C232 215 256 241 256 280S232 345 193 345H150ZM174 237V323H192C217 323 231 306 231 280S217 237 192 237Z', C.white, 'fill-rule="evenodd"') + p('M268 345V215H292L320 282L348 215H372V345H349V259L328 310H312L291 259V345Z', C.gold)));
 for (const n of ['ledger', 'invoice', 'calculator', 'coin', 'pie', 'chart', 'building', 'speech', 'magnifier', 'callout', 'stethoscope', 'cross', 'scales', 'briefcase', 'shop', 'boxes', 'cart', 'plate', 'factory', 'rocket', 'checklist', 'map', 'shield', 'team', 'book', 'lock', 'signed', 'folder', 'laptop', 'bulb']) writeFileSync(`${OUT}/icon-${n}.svg`, icon(n));
 
 // Stop if a built route has no illustration, unless it is meant to be plain.
-const PLAIN = new Set(['privacy-policy', 'terms-and-conditions', 'disclaimer']);
+const PLAIN = new Set(['privacy-policy', 'terms-and-conditions', 'disclaimer', 'about-me']);
 const built = JSON.parse(readFileSync('src/_data/routes.json', 'utf8')).filter((r) => r.built);
 const slugOf = (u) => (u === '/' ? 'home' : u.replace(/\/$/, '').split('/').pop());
 const missing = built.map((r) => slugOf(r.url)).filter((s) => !SCENES[s] && !PLAIN.has(s));

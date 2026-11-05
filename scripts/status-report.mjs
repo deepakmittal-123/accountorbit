@@ -16,7 +16,7 @@ writeFileSync('src/_data/routes.json', JSON.stringify(routes, null, 1) + '\n');
 const by = (s) => routes.filter((r) => r.status === s);
 const counts = ['QA_PASSED', 'DEVELOPMENT_COMPLETE', 'NEEDS_TECHNICAL_FIX', 'EXTERNAL_DEPENDENCY', 'MERGED_WITH_HUB', 'NOT_JUSTIFIED_AS_SEPARATE_PAGE'].map((s) => [s, by(s).length]);
 const total = counts.reduce((n, [, c]) => n + c, 0);
-if (total !== 76) throw new Error(`Status counts do not reconcile to 76: ${total} ${JSON.stringify(counts)}`);
+if (total !== 77) throw new Error(`Status counts do not reconcile to 77: ${total} ${JSON.stringify(counts)}`);
 const eligible = routes.filter((r) => r.publication === 'PUBLICATION_ELIGIBLE').length;
 const lastQa = existsSync('qa/reports/site-last.txt') ? readFileSync('qa/reports/site-last.txt', 'utf8').trim().split('\n').slice(-1)[0] : 'Not yet run';
 const list = (s) => by(s).map((r) => `- \`${r.url}\`${r.score ? ` (${r.score}/100)` : ''}`).join('\n') || '- None';
@@ -28,12 +28,12 @@ Compact checkpoint for resuming work. \`ACCOUNTORBIT_SINGLE_SOURCE_OF_TRUTH.md\`
 | | |
 |---|---|
 | **Last updated** | ${new Date().toISOString().slice(0, 10)} |
-| **Authorization** | Owner approved all 76 routes (master prompt V6.0, field \`ownerApproved\`). No routine approvals are pending. Approval does not decide eligibility. Deployment needs separate authorization |
+| **Authorization** | Owner approved all 77 routes (master prompt V6.0, field \`ownerApproved\`). No routine approvals are pending. Approval does not decide eligibility. Deployment needs separate authorization |
 | **Active page** | None. Locality development under V6.0 is complete |
 | **Next required action** | External dependencies in the ledger, section 10A |
 | **Last sitewide QA** | ${lastQa} |
 
-## Development status (reconciles to 76)
+## Development status (reconciles to 77)
 
 | Status | Count |
 |---|---:|
@@ -45,7 +45,7 @@ ${counts.map(([s, c]) => `| ${s} | ${c} |`).join('\n')}
 | Status | Count |
 |---|---:|
 | PUBLICATION_ELIGIBLE | ${eligible} |
-| NOT_PUBLICATION_ELIGIBLE | ${76 - eligible} |
+| NOT_PUBLICATION_ELIGIBLE | ${77 - eligible} |
 
 ${routes.filter((r) => r.indexable).length} URLs are in \`_site/sitemap.xml\`. Eligible does not mean published: nothing has been deployed, and the production build stays blocked while held pages have open facts.
 

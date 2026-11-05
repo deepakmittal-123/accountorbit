@@ -17,9 +17,9 @@ const urls = new Set(built.map((r) => r.url));
 const SITE = 'https://accountorbit.in';
 
 // Route registry.
-check('76 routes, each once', routes.length === 76 && new Set(routes.map((r) => r.url)).size === 76);
+check('77 routes, each once', routes.length === 77 && new Set(routes.map((r) => r.url)).size === 77);
 const eligible = routes.filter((r) => r.indexable);
-check('Owner approval recorded on all 76 routes', routes.every((r) => r.ownerApproved === true));
+check('Owner approval recorded on all 77 routes', routes.every((r) => r.ownerApproved === true));
 check('Owner approval has not made an unbuilt route indexable', routes.filter((r) => !r.built).every((r) => r.ownerApproved && !r.indexable && r.publication === 'NOT_PUBLICATION_ELIGIBLE'));
 check('Every unbuilt route records why', routes.filter((r) => !r.built).every((r) => r.decision && ['MERGED_WITH_HUB', 'NOT_JUSTIFIED_AS_SEPARATE_PAGE', 'EXTERNAL_DEPENDENCY'].includes(r.status)));
 check('Every held built page records its blockers', routes.filter((r) => r.built && !r.indexable).every((r) => r.blockers?.length));
@@ -76,6 +76,14 @@ for (const r of built) {
   const crumbs = ld['@graph'].find((n) => n['@type'] === 'BreadcrumbList');
   check(`${r.url} structured data`, r.url === '/' || (crumbs && crumbs.itemListElement.every((c, i) => c.position === i + 1 && urls.has(c.item.replace(SITE, '')))));
 }
+// About Me: only confirmed facts in structured data.
+const me = read('about-me/index.html');
+const meLd = JSON.parse(me.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+const person = meLd.find((n) => n['@type'] === 'Person');
+check('About Me has one H1', (me.match(/<h1/g) || []).length === 1 && me.includes('>Meet Deepak Mittal</h1>'));
+check('About Me Person data holds confirmed facts only', person && person.name === 'Deepak Mittal' && person.jobTitle === 'Owner' && Object.keys(person).sort().join() === '@id,@type,jobTitle,name,url,worksFor', Object.keys(person || {}).join());
+check('Organization data does not use personal profiles', !JSON.stringify(meLd.find((n) => n['@type'] === 'Organization')).includes('facebook'));
+check('About Me is linked from About Us and the homepage', read('about-us/index.html').includes('href="/about-me/"') && read('index.html').includes('href="/about-me/"'));
 const nf = read('404.html');
 check('404 is noindex with no canonical', nf.includes('noindex') && !nf.includes('rel="canonical"'));
 check('404 links home', nf.includes('href="/"'));

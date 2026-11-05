@@ -123,17 +123,15 @@ a:hover { color: var(--amber); }
 .hero .btn--ghost:hover { background: rgba(255, 255, 255, 0.55); border-color: var(--deep); color: var(--deep); }
 .hero__art { width: 100%; max-width: 38rem; justify-self: center; animation: settle 0.6s ease-out both; }
 
-/* Strip of ways into the site */
-.explore-strip { background: var(--white); border-bottom: 1px solid var(--rule); padding-block: 1.25rem; }
-.explore-strip__row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 2rem; }
-.explore-strip__label { font-size: 1.02rem; font-weight: 700; flex: 1 1 15rem; max-width: 24rem; }
-.explore-strip__list { display: flex; flex-wrap: wrap; gap: 0.5rem; flex: 3 1 24rem; justify-content: flex-end; }
-.explore-strip__list a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.3rem 1.05rem; border: 1.5px solid var(--rule-strong); border-radius: var(--pill); font-weight: 600; text-decoration: none; color: var(--deep); transition: background-color 0.15s, border-color 0.15s; }
+/* Lower hero: who does what, and ways into the site */
+.hero__lower { position: relative; z-index: 1; display: grid; gap: var(--gap); align-items: stretch; margin-top: clamp(1.75rem, 4vw, 3rem); }
+.explore-strip { display: flex; flex-direction: column; justify-content: center; gap: 0.9rem; background: rgba(255, 255, 255, 0.72); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: var(--pad); }
+.explore-strip__label { font-size: 1.08rem; font-weight: 700; }
+.explore-strip__list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.explore-strip__list a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.3rem 1.05rem; background: var(--white); border: 1.5px solid var(--rule-strong); border-radius: var(--pill); font-weight: 600; text-decoration: none; color: var(--deep); transition: background-color 0.15s, border-color 0.15s; }
 .explore-strip__list a:hover { background: var(--mint); border-color: var(--deep); color: var(--deep); }
 
 /* Who does what: the signature element */
-.intro-who__grid { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
-.intro-who__art { width: 100%; max-width: 32rem; justify-self: center; }
 .taccount { margin: 0; background: var(--white); color: var(--ink); padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--rule); border-radius: var(--radius-lg); box-shadow: var(--shadow-up); }
 .taccount figcaption { font-size: clamp(1.25rem, 2.4vw, 1.55rem); font-weight: 800; letter-spacing: -0.02em; text-align: center; line-height: 1.25; padding-bottom: 0.9rem; border-bottom: 2px solid var(--deep); }
 .taccount__cols { display: grid; grid-template-columns: 1fr 1fr; }
@@ -272,6 +270,38 @@ a:hover { color: var(--amber); }
 .guide-card p { color: var(--muted); font-size: 0.97rem; }
 .guide-card__more { margin-top: auto; padding-top: 0.25rem; font-weight: 700; }
 .section-actions { margin-top: clamp(1.5rem, 3vw, 2.25rem); text-align: center; }
+
+/* Five questions */
+.five-grid { counter-reset: five; display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.five-grid li { counter-increment: five; position: relative; padding: var(--pad); padding-top: 4rem; background: var(--white); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow); font-weight: 600; line-height: 1.4; }
+.five-grid li::before { content: counter(five); position: absolute; left: var(--pad); top: 1.15rem; display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--deep); color: var(--white); font-weight: 800; }
+
+/* Owner */
+.eyebrow--caps { text-transform: uppercase; letter-spacing: 0.08em; }
+.owner-feature__grid { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.owner-portrait { margin: 0; width: 100%; max-width: 15rem; justify-self: center; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--rule); box-shadow: var(--shadow-up); outline: 4px solid var(--gold); outline-offset: 6px; }
+.owner-portrait img { display: block; width: 100%; aspect-ratio: 6 / 7; object-fit: cover; }
+.owner-role { margin-top: 0.35rem; font-size: 1.12rem; font-weight: 700; color: var(--deep); }
+.owner-intro { margin-top: 0.9rem; max-width: 46rem; color: var(--muted); }
+.info-cards { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+.info-cards--compact { margin-top: 1.4rem; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr)); }
+.info-card { padding: 1.1rem 1.15rem; background: var(--mint-soft); border: 1px solid var(--rule); border-radius: var(--radius); }
+.info-card .card-icon { width: 2.75rem; height: 2.75rem; margin-bottom: 0.6rem; }
+.info-card h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+.info-card p { font-size: 0.96rem; color: var(--muted); }
+.info-card p + p { margin-top: 0.3rem; }
+.owner-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.4rem; }
+.page-head__grid--owner .owner-portrait { max-width: 14rem; background: var(--white); }
+
+/* Homepage sections */
+.faq-wrap { max-width: 56rem; }
+.delhi-list--cards, #delhi .delhi-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: var(--gap); }
+#delhi .delhi-list li { background: var(--white); border: 1px solid var(--rule); border-left: 4px solid var(--teal); box-shadow: var(--shadow); }
+#delhi .about__sub { font-size: clamp(1.8rem, 3.8vw, 2.7rem); margin-bottom: 0.8rem; }
+#delhi .delhi-intro { max-width: 46rem; }
+.useful-guides { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.useful-guides__title { font-size: clamp(1.4rem, 2.6vw, 1.85rem); font-weight: 800; }
+.useful-guides__intro { margin: 0.5rem 0 clamp(1.25rem, 3vw, 2rem); color: var(--muted); }
 
 /* Final call to action */
 .start { padding-block: var(--section); }
@@ -551,7 +581,6 @@ a:hover { color: var(--amber); }
   .who-table__row { padding: 0.85rem 1rem 0.95rem; }
   .who-table__row > * + * { margin-top: 0.3rem; }
   .about .about__cta { width: 100%; }
-  .explore-strip__list { justify-content: flex-start; }
   .start__box { margin-inline: calc(var(--gutter) * -0.5); }
   .start-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
   .site-footer { padding-block: 2.5rem 1.25rem; }
@@ -576,9 +605,13 @@ a:hover { color: var(--amber); }
   .site-menu { display: none; }
   .desktop-nav { display: flex; gap: 1.35rem; margin-right: auto; }
   .wordmark { margin-right: 0.85rem; }
-  .intro-who__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .hero__lower { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .owner-feature__grid { grid-template-columns: minmax(15rem, 21rem) minmax(0, 1fr); }
+  .owner-portrait { max-width: none; }
   .page-head__grid { grid-template-columns: minmax(0, 1fr) minmax(16rem, 21rem); }
   .page-head__art { max-width: none; }
+  .page-head__grid.page-head__grid--owner { grid-template-columns: minmax(13rem, 16rem) minmax(0, 1fr); }
+  .page-head__grid--owner .owner-portrait { order: -1; max-width: 16rem; }
   .notfound__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 
   .who-table__row { display: grid; grid-template-columns: 1.05fr 0.85fr 1.6fr; gap: 2rem; align-items: start; }

@@ -1,4 +1,4 @@
-// Route-by-route audit of all 76 approved routes against the source tree and the built output.
+// Route-by-route audit of all 77 approved routes against the source tree and the built output.
 // Serves _site locally and requests every route. Writes qa/reports/route-audit.json and prints a summary.
 // Usage: node qa/route-audit.mjs
 import { createServer } from 'node:http';

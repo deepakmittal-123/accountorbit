@@ -39,7 +39,7 @@ const htmlFiles = (await walk('_site')).filter((f) => f.endsWith('.html'));
 const builtSet = new Set(builtUrls);
 const onDisk = htmlFiles.filter((f) => !f.endsWith('404.html')).map((f) => '/' + f.replace(/\\/g, '/').replace(/^_site\//, '').replace(/index\.html$/, ''));
 check('Generated pages match routes marked built', onDisk.length === builtSet.size && onDisk.every((u) => builtSet.has(u)), `${onDisk.length} vs ${builtSet.size}: ${onDisk.filter((u) => !builtSet.has(u))} ${[...builtSet].filter((u) => !onDisk.includes(u))}`);
-check('All 76 routes preserved, none duplicated', routes.length === 76 && new Set(routes.map((r) => r.url)).size === 76);
+check('All 77 routes preserved, none duplicated', routes.length === 77 && new Set(routes.map((r) => r.url)).size === 77);
 check('Nothing marked indexable without eligibility', routes.every((r) => !r.indexable || (r.publication === 'PUBLICATION_ELIGIBLE' && r.built && r.status === 'QA_PASSED')));
 check('404 page exists and is noindex', /noindex/.test(await readFile('_site/404.html', 'utf8')));
 const robotsTxt = await readFile('_site/robots.txt', 'utf8');

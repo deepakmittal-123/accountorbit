@@ -16,7 +16,7 @@ const PREFIX = '/accountorbit/';
 const axeSource = readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.min.js'), 'utf8');
 const routes = JSON.parse(readFileSync('src/_data/routes.json', 'utf8'));
 const built = routes.filter((r) => r.built);
-const REP = ['/', '/services/', '/services/accounting-bookkeeping/', '/services/gst-return-filing/', '/industries/', '/guides/', '/locations/', '/locations/accounting-services-in-nehru-place/', '/how-it-works/', '/about-us/', '/contact-us/', '/request-an-accountant/', '/privacy-policy/'];
+const REP = ['/', '/services/', '/services/accounting-bookkeeping/', '/services/gst-return-filing/', '/industries/', '/guides/', '/locations/', '/locations/accounting-services-in-nehru-place/', '/how-it-works/', '/about-us/', '/about-me/', '/contact-us/', '/request-an-accountant/', '/privacy-policy/'];
 const WIDTHS = [[320, 640], [360, 780], [375, 812], [390, 844], [768, 1024], [1024, 768], [1440, 900], [1920, 1080]];
 
 const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain' };

@@ -30,6 +30,7 @@ export default {
   footerPlatform: [
     { label: 'How it works', url: '/how-it-works/', fallback: '/#how' },
     { label: 'About AccountOrbit', url: '/about-us/', fallback: '/#about' },
+    { label: 'About Deepak Mittal', url: '/about-me/' },
     { label: 'Contact', url: '/contact-us/' },
     { label: 'For accounting professionals', url: '/for-accounting-professionals/' },
   ],

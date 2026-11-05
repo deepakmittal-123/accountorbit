@@ -11,10 +11,19 @@ layout: layouts/base.njk
       "@type": "{{ schemaType or 'WebPage' }}",
       "@id": "{{ site.url }}{{ page.url }}#main",
       {% if schemaType == 'Article' %}"headline": {{ h1 | dump | safe }},{% if reviewed %} "dateModified": "{{ reviewed }}",{% endif %} "author": { "@id": "{{ site.url }}/#organization" }, "publisher": { "@id": "{{ site.url }}/#organization" },{% else %}"name": {{ title | dump | safe }},{% endif %}
+      {% if schemaPerson %}"mainEntity": { "@id": "{{ site.url }}{{ page.url }}#person" },{% endif %}
       "description": {{ description | dump | safe }},
       "url": "{{ site.url }}{{ page.url }}",
       "inLanguage": "en-IN"
     },
+    {% if schemaPerson %}{
+      "@type": "Person",
+      "@id": "{{ site.url }}{{ page.url }}#person",
+      "name": {{ site.owner.name | dump | safe }},
+      "jobTitle": "Owner",
+      "worksFor": { "@id": "{{ site.url }}/#organization" },
+      "url": "{{ site.url }}{{ page.url }}"
+    },{% endif %}
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -36,14 +45,16 @@ layout: layouts/base.njk
         {%- endfor %}
       </ol>
     </nav>
-    <div class="page-head__grid">
+    <div class="page-head__grid{% if heroPortrait %} page-head__grid--owner{% endif %}">
       <div>
     {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
     <h1>{{ h1 }}</h1>
     {% if lede %}<p class="page-lede">{{ lede | safe }}</p>{% endif %}
     {% if reviewed %}<p class="page-meta">Sources checked {{ reviewedLabel or reviewed }}.{% if needsReview %} Not yet reviewed by a qualified professional.{% endif %}</p>{% endif %}
       </div>
-      {%- if art %}
+      {%- if heroPortrait %}
+      {% include "partials/owner-portrait.njk" %}
+      {%- elif art %}
       <img class="page-head__art" src="{{ art }}" alt="" width="640" height="480">
       {%- endif %}
     </div>

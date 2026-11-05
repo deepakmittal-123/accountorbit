@@ -49,7 +49,7 @@ The development preview shows a banner on every page, and highlights facts that 
 | Locations | `/locations/`, area-type hubs and individual area pages |
 | Legal | `/privacy-policy/`, `/terms-and-conditions/`, `/disclaimer/` |
 
-The registry lists 76 approved routes. Not all of them have pages. A link to an unbuilt route renders as plain text, and a link to a URL outside the registry stops the build.
+The registry lists 77 approved routes. Not all of them have pages. A link to an unbuilt route renders as plain text, and a link to a URL outside the registry stops the build.
 
 ## Technical SEO files
 

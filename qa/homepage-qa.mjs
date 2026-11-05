@@ -78,6 +78,13 @@ check('External links open safely', ext.every((l) => l.rel.includes('noopener'))
 check('Phone link format', seo.links.filter((l) => l.href.startsWith('tel:')).every((l) => l.href === 'tel:+918290728453'), `${seo.links.filter((l) => l.href.startsWith('tel:')).length} links`);
 check('WhatsApp is not exposed', !/wa\.me|whatsapp/i.test(await page.content()));
 check('Private details are not exposed', !PRIVATE_TERMS.test(await page.content()));
+const APPROVED_ORDER = ['What do you need help with?', 'Your books depend on how you earn', 'Which professional does your work need?', 'Five questions to ask before you engage anyone', 'Four steps, and the last one is yours', 'A referral platform that shows its working', 'Meet Deepak Mittal', 'What you can hold us to', 'Questions people ask first', 'Delhi, by how businesses work', 'Useful without an enquiry', 'Ready to describe the work?'];
+const h2s = (await page.locator('main h2').allInnerTexts()).map((t) => t.replace(/\s+/g, ' ').trim());
+check('Homepage sections are in the approved order', JSON.stringify(h2s) === JSON.stringify(APPROVED_ORDER), h2s.join(' | '));
+check('Header, one H1 and footer are present', await page.locator('.site-header').count() === 1 && await page.locator('h1').count() === 1 && await page.locator('.site-footer').count() === 1);
+check('Owner section links to About Me and Contact', await page.locator('#owner a[href="/about-me/"]').count() === 1 && await page.locator('#owner a[href="/contact-us/"]').count() === 1);
+check('Owner section has three cards', await page.locator('#owner .info-card').count() === 3);
+check('Owner section shows no WhatsApp link or generated portrait', await page.locator('#owner a[href*="wa.me"]').count() === 0 && /owner-monogram\.svg|owner-photo/.test(await page.locator('#owner .owner-portrait img').getAttribute('src')));
 
 // Claims that must never appear as positive statements. Reviewed by hand when one is flagged.
 const banned = [/best accountant/i, /guarantee/i, /our chartered accountants/i, /our accountants/i, /our .*offices/i, /verified partners?/i, /happy (customers|clients)/i, /\b\d[\d,]*\+/, /\b\d(\.\d)?\s?\/\s?5\b/, /certified partner/i, /government[- ]approved/i, /we file/i, /instant match/i];
@@ -200,7 +207,7 @@ check('Social image present and declared', (await fetch(base + '/assets/og-image
 const noteCount = (html.match(/class="pending"/g) || []).length;
 check('Missing facts still visible on home (3 notes)', noteCount === 3, String(noteCount));
 const routeData = JSON.parse(await readFile('src/_data/routes.json', 'utf8'));
-check('All 76 routes preserved', routeData.length === 76 && new Set(routeData.map((r) => r.url)).size === 76);
+check('All 77 routes preserved', routeData.length === 77 && new Set(routeData.map((r) => r.url)).size === 77);
 check('Homepage is held while it has open facts', routeData.find((r) => r.url === '/').indexable !== true);
 check('Only built routes are indexable', routeData.every((r) => !r.indexable || r.built));
 

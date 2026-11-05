@@ -117,7 +117,7 @@ export default function (config) {
   // Each page's own illustration. Legal pages stay plain, so nothing interrupts reading.
   config.addFilter('artFor', (url) => {
     const slug = url === '/' ? 'home' : url.replace(/\/$/, '').split('/').pop();
-    return ['privacy-policy', 'terms-and-conditions', 'disclaimer'].includes(slug) ? '' : `/assets/illustrations/${slug}.svg`;
+    return ['privacy-policy', 'terms-and-conditions', 'disclaimer', 'about-me'].includes(slug) ? '' : `/assets/illustrations/${slug}.svg`;
   });
   config.addFilter('pageData', (url, pages) => {
     const found = pages.find((p) => p.url === url);
