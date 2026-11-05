@@ -7,12 +7,15 @@
   "scripts": {
     "build": "eleventy",
     "build:production": "node scripts/build-production.mjs",
+    "build:pages": "node scripts/build-pages-preview.mjs",
     "serve": "eleventy --serve",
     "qa": "node qa/site-qa.mjs",
     "qa:home": "node qa/homepage-qa.mjs",
     "qa:deep": "node qa/deep-qa.mjs",
     "qa:content": "node qa/content-audit.mjs",
     "qa:files": "node qa/seo-files-qa.mjs",
+    "qa:pages": "node qa/pages-preview-check.mjs",
+    "qa:pages:browser": "node qa/pages-browser-qa.mjs",
     "icons": "node scripts/make-icons.mjs",
     "status": "node scripts/status-report.mjs"
   },

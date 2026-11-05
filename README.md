@@ -2,7 +2,7 @@
 
 Source code for the AccountOrbit website: an independent accounting and tax professional referral platform for Delhi. AccountOrbit is not a Chartered Accountant firm, accounting firm, law firm, audit practice, tax authority or government service.
 
-This repository holds the website source only. **The site has not been launched, and pushing to this repository does not deploy it.**
+**AccountOrbit has not launched.** Each push to `main` updates a temporary public preview at https://deepakmittal-123.github.io/accountorbit/. The preview is kept out of search indexing, and its online enquiry form is closed. It is not the production website.
 
 ## Technology
 
@@ -87,9 +87,25 @@ node qa/external-links.mjs  # external link check
 
 To also test that specific private details never appear on the site, add them to `qa/private-terms.local.json`, which is git-ignored, as `{"terms": ["..."]}`.
 
-## Deployment requirements
+## GitHub Pages preview
 
-Nothing here deploys automatically. Before any deployment:
+`.github/workflows/deploy-pages.yml` builds and publishes the preview using GitHub Actions. The Pages source must be set to GitHub Actions, not a branch, because a branch source runs Jekyll on the raw repository and cannot read these templates.
+
+```bash
+npm run build:pages       # builds the preview into _site_preview/
+npm run qa:pages          # checks that output, and needs no browser
+npm run qa:pages:browser  # tests it in Chrome under /accountorbit/
+```
+
+To test the live preview, run `node qa/pages-browser-qa.mjs https://deepakmittal-123.github.io/accountorbit/`.
+
+`DEPLOY_TARGET=github-pages` is the only switch. It sets the `/accountorbit/` path prefix, marks every page `noindex, nofollow`, and removes canonical tags, structured data, the sitemap and `_headers`. Every other build stays at the domain root.
+
+GitHub Pages cannot set custom response headers, so the policies in `_headers` do not apply there. A `robots.txt` under a project path is not read by crawlers either, so the `noindex` tag on each page is what keeps the preview out of search.
+
+## Production deployment requirements
+
+The preview does not count as a launch. Before a production deployment:
 
 - The production build must pass: `npm run build:production`. It stops while any page still has a highlighted open fact, and this safeguard should stay on.
 - The enquiry form needs a real, reviewed endpoint, set through `ENQUIRY_ENDPOINT`. Without one, the form stays disabled and says so.

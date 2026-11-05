@@ -2,6 +2,7 @@
 node_modules/
 _site/
 _site_generator_test/
+_site_preview/
 qa/reports/
 coverage/
 playwright-report/

@@ -3,7 +3,7 @@ layout: layouts/base.njk
 title: Find an Accountant in Delhi | AccountOrbit Referral Platform
 description: AccountOrbit is an independent referral platform for Delhi businesses. See which professional fits your accounting work, then enquire about an introduction.
 ---
-<script type="application/ld+json">
+{% if not env.isPreview %}<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -12,7 +12,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
     { "@type": "WebPage", "@id": "{{ site.url }}/#webpage", "url": "{{ site.url }}/", "name": "{{ title }}", "description": "{{ description }}", "isPartOf": { "@id": "{{ site.url }}/#website" }, "about": { "@id": "{{ site.url }}/#organization" }, "inLanguage": "en-IN" }
   ]
 }
-</script>
+</script>{% endif %}
 
 <section class="hero">
   <div class="wrap hero__grid">

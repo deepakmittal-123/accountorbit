@@ -10,17 +10,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
-  <meta name="robots" content="{{ 'index, follow' if route.indexable else 'noindex, follow' }}">
-  {%- if route %}
+  <meta name="robots" content="{{ 'noindex, nofollow' if env.isPreview else ('index, follow' if route.indexable else 'noindex, follow') }}">
+  {%- if route and not env.isPreview %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   {%- endif %}
   <meta property="og:type" content="{{ 'article' if schemaType == 'Article' else 'website' }}">
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:url" content="{{ env.publicOrigin }}{{ page.url }}">
   <meta property="og:locale" content="en_IN">
-  <meta property="og:image" content="{{ site.url }}/assets/og-image.png">
+  <meta property="og:image" content="{{ env.publicOrigin }}/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AccountOrbit: find accounting help in Delhi, and know who is doing what. Independent referral platform, not a CA firm.">
@@ -37,7 +37,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   {% if not env.isProduction %}
-  <aside class="draft-bar" aria-label="Draft notice"><strong>Development preview.</strong> Not publicly launched.{% if not route.indexable %} This page is noindex. Highlighted notes mark facts that are not available yet.{% endif %}</aside>
+  {% if env.isPreview %}<aside class="draft-bar" aria-label="Preview notice"><strong>Public preview.</strong> AccountOrbit has not launched. Online enquiries are closed, and highlighted notes mark facts that are not available yet.</aside>{% else %}<aside class="draft-bar" aria-label="Draft notice"><strong>Development preview.</strong> Not publicly launched.{% if not route.indexable %} This page is noindex. Highlighted notes mark facts that are not available yet.{% endif %}</aside>{% endif %}
   {% endif %}
   <header class="site-header">
     <div class="wrap site-header__row">

@@ -1,10 +1,18 @@
 import { readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
+import { HtmlBasePlugin } from '@11ty/eleventy';
 
 const routes = JSON.parse(readFileSync('src/_data/routes.json', 'utf8'));
 const byUrl = new Map(routes.map((r) => [r.url, r]));
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 const SITE = 'https://accountorbit.in';
+
+// One switch for the temporary public preview on GitHub Pages, which lives under a project subpath.
+// The default build, and any future custom-domain deployment, stays at the domain root.
+const isPreview = process.env.DEPLOY_TARGET === 'github-pages';
+if (isPreview && isProduction) throw new Error('A GitHub Pages preview cannot be a production build');
+const PATH_PREFIX = isPreview ? '/accountorbit/' : '/';
+const PUBLIC_ORIGIN = isPreview ? 'https://deepakmittal-123.github.io/accountorbit' : SITE;
 
 // QA only: pretends one route is eligible so the sitemap generator can be tested. See qa/seo-files-qa.mjs.
 if (process.env.QA_SIMULATE_ELIGIBLE) {
@@ -39,8 +47,8 @@ const llmsText = (pages) => {
   const core = ['/', '/how-it-works/', '/about-us/', '/contact-us/', '/request-an-accountant/'];
   const listed = routes.filter((r) => r.built && (r.indexable || core.includes(r.url)));
   const desc = new Map(pages.map((p) => [p.url, p.data.description]));
-  const line = (r) => `- [${r.name}](${SITE}${r.url}): ${desc.get(r.url)}`;
-  const notice = isProduction ? '' : '\nThis site is a development preview and has not been publicly launched.\n';
+  const line = (r) => `- [${r.name}](${PUBLIC_ORIGIN}${r.url}): ${desc.get(r.url)}`;
+  const notice = isProduction ? '' : isPreview ? '\nThis is a temporary public preview. AccountOrbit has not launched, and these pages are not intended for search indexing.\n' : '\nThis site is a development preview and has not been publicly launched.\n';
   const rest = listed.filter((r) => !LLMS_GROUPS.some(([, match]) => match(r.url)));
   const sections = [['About and enquiries', rest], ...LLMS_GROUPS.map(([name, match]) => [name, listed.filter((r) => match(r.url))])]
     .filter(([, items]) => items.length)
@@ -66,6 +74,8 @@ const crumbsFor = (url) => {
 };
 
 export default function (config) {
+  // Adds the path prefix to root-relative URLs in generated HTML. With the default prefix, it changes nothing.
+  config.addPlugin(HtmlBasePlugin);
   config.addPassthroughCopy({ 'src/assets': 'assets' });
   config.addPassthroughCopy({ 'src/root': '/' });
   config.addFilter('llmsText', llmsText);
@@ -103,7 +113,7 @@ export default function (config) {
   // External link with the new-tab announcement built in.
   config.addShortcode('ext', (url, label) => `<a href="${url}" rel="noopener" target="_blank">${label}<span class="visually-hidden"> (opens in a new tab)</span></a>`);
 
-  config.addGlobalData('env', { isProduction, site: SITE });
+  config.addGlobalData('env', { isProduction, isPreview, site: SITE, publicOrigin: PUBLIC_ORIGIN });
   config.addFilter('routeOf', (url) => byUrl.get(url));
   config.addFilter('built', (url) => Boolean(byUrl.get(url)?.built));
   // Only ancestors that exist are linked; the current page always comes last.
@@ -116,7 +126,8 @@ export default function (config) {
 
   // The sitemap, robots file and headers come only from eligible routes, so unapproved pages cannot leak in.
   config.on('eleventy.after', ({ directories }) => {
-    const approved = routes.filter((r) => r.indexable && isEligible(r));
+    // A preview never offers a sitemap, so unfinished pages are not put forward for indexing.
+    const approved = isPreview ? [] : routes.filter((r) => r.indexable && isEligible(r));
     const sitemapPath = join(directories.output, 'sitemap.xml');
     rmSync(sitemapPath, { force: true });
     let robots = 'User-agent: *\nAllow: /\n';
@@ -126,6 +137,9 @@ export default function (config) {
       robots += `\nSitemap: ${SITE}/sitemap.xml\n`;
     }
     writeFileSync(join(directories.output, 'robots.txt'), robots);
+
+    // GitHub Pages ignores this file and would serve it publicly, so a preview leaves it out.
+    if (isPreview) return;
 
     // Netlify and Cloudflare Pages read this file. On any other host, apply the same values in its own config.
     const endpoint = process.env.ENQUIRY_ENDPOINT ? new URL(process.env.ENQUIRY_ENDPOINT).origin : '';
@@ -153,5 +167,5 @@ export default function (config) {
     ].join('\n'));
   });
 
-  return { dir: { input: 'src', includes: '_includes', data: '_data', output: '_site' }, templateFormats: ['njk'] };
+  return { dir: { input: 'src', includes: '_includes', data: '_data', output: '_site' }, templateFormats: ['njk'], pathPrefix: PATH_PREFIX };
 }

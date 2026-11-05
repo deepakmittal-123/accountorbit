@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 ---
 {%- set trail = page.url | crumbs -%}
-<script type="application/ld+json">
+{% if not env.isPreview %}<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -25,7 +25,7 @@ layout: layouts/base.njk
     }
   ]
 }
-</script>
+</script>{% endif %}
 <div class="page-head{% if headTone %} page-head--{{ headTone }}{% endif %}">
   <div class="wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">

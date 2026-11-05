@@ -36,13 +36,13 @@ writeFileSync('src/root/site.webmanifest', JSON.stringify({
   name: 'AccountOrbit',
   short_name: 'AccountOrbit',
   description: 'Independent referral platform for accounting and tax help in Delhi.',
-  start_url: '/',
+  start_url: './',
   display: 'browser',
   background_color: '#f8f4ea',
   theme_color: '#16392c',
   icons: [
-    { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-    { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
+    { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
   ],
 }, null, 2) + '\n');
 console.log('icons written');
