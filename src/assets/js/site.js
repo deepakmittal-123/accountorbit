@@ -14,3 +14,12 @@ if (menu) {
     }
   });
 }
+
+// Mark tables that overflow, so CSS can show a visible swipe hint.
+(function () {
+  var wraps = document.querySelectorAll('.data-table-wrap');
+  if (!wraps.length) return;
+  var mark = function () { wraps.forEach(function (w) { var t = w.querySelector('table'); w.classList.toggle('can-scroll', Boolean(t) && t.offsetWidth > w.clientWidth + 1); }); };
+  mark();
+  window.addEventListener('resize', mark);
+})();

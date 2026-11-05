@@ -151,7 +151,7 @@ for (const u of REP) {
 
 // Technical files.
 const api = await browser.newContext();
-for (const [p, re] of [['robots.txt', /User-agent/], ['llms.txt', /AccountOrbit/], ['favicon.ico', null], ['site.webmanifest', /AccountOrbit/], ['assets/css/site.css', /font-face/], ['assets/js/site.js', null], ['assets/fonts/newsreader.woff2', null], ['assets/og-image.png', null]]) {
+for (const [p, re] of [['robots.txt', /User-agent/], ['llms.txt', /AccountOrbit/], ['favicon.ico', null], ['site.webmanifest', /AccountOrbit/], ['assets/css/site.css', /font-face/], ['assets/js/site.js', null], ['assets/fonts/newsreader-italic.woff2', null], ['assets/og-image.png', null]]) {
   const r = await api.request.get(`${base}/${p}`);
   check(`${p} returns 200`, r.status() === 200 && (!re || re.test(await r.text())), r.status());
 }

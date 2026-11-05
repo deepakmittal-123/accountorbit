@@ -80,7 +80,6 @@ export default function (config) {
   config.addPassthroughCopy({ 'src/root': '/' });
   config.addFilter('llmsText', llmsText);
   config.addPassthroughCopy({
-    'node_modules/@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2': 'assets/fonts/newsreader.woff2',
     'node_modules/@fontsource-variable/newsreader/files/newsreader-latin-wght-italic.woff2': 'assets/fonts/newsreader-italic.woff2',
     'node_modules/@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2': 'assets/fonts/hanken-grotesk.woff2',
   });
@@ -115,6 +114,16 @@ export default function (config) {
 
   config.addGlobalData('env', { isProduction, isPreview, site: SITE, publicOrigin: PUBLIC_ORIGIN });
   config.addFilter('routeOf', (url) => byUrl.get(url));
+  // Each page's own illustration. Legal pages stay plain, so nothing interrupts reading.
+  config.addFilter('artFor', (url) => {
+    const slug = url === '/' ? 'home' : url.replace(/\/$/, '').split('/').pop();
+    return ['privacy-policy', 'terms-and-conditions', 'disclaimer'].includes(slug) ? '' : `/assets/illustrations/${slug}.svg`;
+  });
+  config.addFilter('pageData', (url, pages) => {
+    const found = pages.find((p) => p.url === url);
+    if (!found) throw new Error(`pageData: no page at ${url}`);
+    return found;
+  });
   config.addFilter('built', (url) => Boolean(byUrl.get(url)?.built));
   // Only ancestors that exist are linked; the current page always comes last.
   config.addFilter('crumbs', (url) => crumbsFor(url).filter((r) => r.built || r.url === url));

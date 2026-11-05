@@ -25,7 +25,25 @@ description: AccountOrbit is an independent referral platform for Delhi business
         <a class="btn btn--ghost" href="#who">Which professional do I need?</a>
       </div>
     </div>
+    <img class="hero__art" src="/assets/illustrations/home.svg" alt="" width="640" height="480">
+  </div>
+</section>
 
+<section class="explore-strip" aria-label="Ways into this site">
+  <div class="wrap explore-strip__row">
+    <p class="explore-strip__label">Start with your work, your trade or your area.</p>
+    <ul class="explore-strip__list">
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/industries/">Industries</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/locations/">Locations</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="taccount-title">
+  <div class="wrap intro-who__grid">
+    <img class="intro-who__art" src="/assets/illustrations/intro-who.svg" alt="" width="640" height="480" loading="lazy">
     <figure class="taccount" aria-labelledby="taccount-title">
       <figcaption id="taccount-title">Who does what, in one account</figcaption>
       <div class="taccount__cols">
@@ -51,15 +69,16 @@ description: AccountOrbit is an independent referral platform for Delhi business
   </div>
 </section>
 
-<section class="section" id="work" aria-labelledby="work-title">
+<section class="section section--tint" id="work" aria-labelledby="work-title">
   <div class="wrap">
-    <header class="section-head">
+    <header class="section-head section-head--center">
       <p class="eyebrow">Start with the work</p>
       <h2 id="work-title">What do you need help with?</h2>
       <p>Most searches for an accountant begin with a specific job: a pending return, untidy books, a notice in the post. Mention yours when you enquire.</p>
     </header>
     <div class="work-grid">
       <div class="work-group">
+        <img class="card-icon" src="/assets/illustrations/icon-ledger.svg" alt="" width="96" height="96" loading="lazy">
         <h3>Everyday accounts</h3>
         <ul>
           <li>{% routeLink "/services/accounting-bookkeeping/", "Accounting and bookkeeping" %}</li>
@@ -69,6 +88,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
         </ul>
       </div>
       <div class="work-group">
+        <img class="card-icon" src="/assets/illustrations/icon-invoice.svg" alt="" width="96" height="96" loading="lazy">
         <h3>GST</h3>
         <ul>
           <li>{% routeLink "/services/gst-registration/", "GST registration" %}</li>
@@ -77,6 +97,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
         </ul>
       </div>
       <div class="work-group">
+        <img class="card-icon" src="/assets/illustrations/icon-calculator.svg" alt="" width="96" height="96" loading="lazy">
         <h3>Income tax and TDS</h3>
         <ul>
           <li>{% routeLink "/services/income-tax-return-filing/", "Income tax returns" %}</li>
@@ -85,6 +106,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
         </ul>
       </div>
       <div class="work-group">
+        <img class="card-icon" src="/assets/illustrations/icon-building.svg" alt="" width="96" height="96" loading="lazy">
         <h3>Company and growth</h3>
         <ul>
           <li>{% routeLink "/services/company-llp-registration/", "Company and LLP registration" %}</li>
@@ -95,29 +117,97 @@ description: AccountOrbit is an independent referral platform for Delhi business
         </ul>
       </div>
     </div>
-
-    <div class="trades">
-      <h3>Your books depend on how you earn</h3>
-      <p class="trades__intro">A clinic and a wholesaler both need accounts, but not the same records. Raise these details from the start.</p>
-      <dl class="trade-list">
-        <div><dt>{% routeLink "/industries/accounting-for-doctors/", "Doctors" %}</dt><dd>Consultation receipts and TDS credits</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-clinics/", "Clinics" %}</dt><dd>Patient billing, staff and equipment</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-lawyers/", "Lawyers" %}</dt><dd>Professional fees and office costs</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-consultants/", "Consultants" %}</dt><dd>Project receipts and TDS matching</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-retail-shops/", "Retail shops" %}</dt><dd>Daily cash and UPI against bills</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-traders/", "Traders" %}</dt><dd>Party ledgers and credit periods</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-ecommerce-sellers/", "E-commerce sellers" %}</dt><dd>Marketplace settlements and returns</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-restaurants/", "Restaurants" %}</dt><dd>POS sales and delivery settlements</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-manufacturers/", "Manufacturers" %}</dt><dd>Raw material, stock and payroll</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-real-estate-businesses/", "Real estate" %}</dt><dd>Brokerage, commissions and TDS</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-startups/", "Startups" %}</dt><dd>Founder expenses and clean records</dd></div>
-        <div><dt>{% routeLink "/industries/accounting-for-small-businesses/", "Small businesses" %}</dt><dd>First set-up and a monthly routine</dd></div>
-      </dl>
-    </div>
   </div>
 </section>
 
-<section class="section section--tint" id="who" aria-labelledby="who-title">
+<section class="section section--band" aria-labelledby="hold-title">
+  <div class="wrap">
+    <h2 class="about__sub" id="hold-title">What you can hold us to</h2>
+    <ul class="trust-grid">
+      <li class="trust-card">
+        <h3>An introduction, not a firm</h3>
+        <p>We take enquiries and make introductions. We are not a CA firm, law firm, audit practice, tax authority or government service.</p>
+      </li>
+      <li class="trust-card">
+        <h3>The professional does the work</h3>
+        <p>Advice, filings and professional responsibility sit with the person you engage. We do not set their fees, so ask for yours in writing.</p>
+      </li>
+      <li class="trust-card">
+        <h3>Evidence, not claims</h3>
+        <p>We show no client counts, ratings, awards or testimonials, because we have none verified to show. Check any professional's credentials at the source.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">How an enquiry moves</p>
+      <h2 id="how-title">Four steps, and the last one is yours</h2>
+      <p>AccountOrbit makes the introduction. It does not become a party to the work.</p>
+    </header>
+    <ol class="steps">
+      <li>
+        <h3>You describe the work</h3>
+        <p>Tell us what you need done and a little about your business.</p>
+      </li>
+      <li>
+        <h3>We review the requirement</h3>
+        <p>We look at what kind of professional the work calls for, including whether it is reserved for a particular qualification.</p>
+      </li>
+      <li>
+        <h3>An introduction, where possible</h3>
+        <p>If a suitable professional is available and you have agreed to your details being shared, we introduce you. If not, no introduction is made.</p>
+      </li>
+      <li>
+        <h3>You decide, and deal directly</h3>
+        <p>Check their credentials, and engage them only if you are satisfied. The engagement is between you and them.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--tint trades" aria-labelledby="trades-title">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="trades-title">Your books depend on how you earn</h2>
+      <p class="trades__intro">A clinic and a wholesaler both need accounts, but not the same records. Raise these details from the start.</p>
+    </header>
+    <dl class="trade-list">
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-stethoscope.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-doctors/", "Doctors" %}</dt><dd>Consultation receipts and TDS credits</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-cross.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-clinics/", "Clinics" %}</dt><dd>Patient billing, staff and equipment</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-scales.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-lawyers/", "Lawyers" %}</dt><dd>Professional fees and office costs</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-briefcase.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-consultants/", "Consultants" %}</dt><dd>Project receipts and TDS matching</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-shop.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-retail-shops/", "Retail shops" %}</dt><dd>Daily cash and UPI against bills</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-boxes.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-traders/", "Traders" %}</dt><dd>Party ledgers and credit periods</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-cart.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-ecommerce-sellers/", "E-commerce sellers" %}</dt><dd>Marketplace settlements and returns</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-plate.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-restaurants/", "Restaurants" %}</dt><dd>POS sales and delivery settlements</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-factory.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-manufacturers/", "Manufacturers" %}</dt><dd>Raw material, stock and payroll</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-building.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-real-estate-businesses/", "Real estate" %}</dt><dd>Brokerage, commissions and TDS</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-rocket.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-startups/", "Startups" %}</dt><dd>Founder expenses and clean records</dd></div>
+        <div><dt><img class="card-icon" src="/assets/illustrations/icon-checklist.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-small-businesses/", "Small businesses" %}</dt><dd>First set-up and a monthly routine</dd></div>
+      </dl>
+  </div>
+</section>
+
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="wrap about__intro">
+    <div>
+      <p class="eyebrow eyebrow--gold">About AccountOrbit</p>
+      <h2 id="about-title">A referral platform that shows its working</h2>
+      <div class="about__text">
+        <p>Looking for an accountant in Delhi usually means sorting through firms, directories and online filing services. It is rarely clear who will do the work, what they are qualified to do, or what happens to your phone number after you submit it.</p>
+        <p>AccountOrbit, owned by {{ site.owner.name }}, helps individuals and businesses in Delhi work out what kind of help they need and enquire about a suitable professional. The work, and the responsibility for it, stays with the professional you choose.</p>
+        <a class="btn btn--gold about__cta" href="/request-an-accountant/">Find an Accountant</a>
+        <p class="about__more">More on <a href="/about-us/">who runs AccountOrbit</a> and <a href="/how-it-works/">how it works</a>.</p>
+      </div>
+    </div>
+    <img class="about__art" src="/assets/illustrations/band-about.svg" alt="" width="420" height="300" loading="lazy">
+  </div>
+</section>
+
+<section class="section" id="who" aria-labelledby="who-title">
   <div class="wrap">
     <header class="section-head">
       <p class="eyebrow">Before you hire anyone</p>
@@ -188,68 +278,47 @@ description: AccountOrbit is an independent referral platform for Delhi business
   </div>
 </section>
 
-<section class="section" id="how" aria-labelledby="how-title">
-  <div class="wrap how">
-    <header class="section-head section-head--side">
-      <p class="eyebrow">How an enquiry moves</p>
-      <h2 id="how-title">Four steps, and the last one is yours</h2>
-      <p>AccountOrbit makes the introduction. It does not become a party to the work.</p>
+<section class="section section--tint" aria-labelledby="learn-title">
+  <div class="wrap">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">Guides</p>
+      <h2 id="learn-title">Read before you decide</h2>
+      <p>Plain explanations you can use with or without an enquiry.</p>
     </header>
-    <ol class="steps">
-      <li>
-        <h3>You describe the work</h3>
-        <p>Tell us what you need done and a little about your business.</p>
-      </li>
-      <li>
-        <h3>We review the requirement</h3>
-        <p>We look at what kind of professional the work calls for, including whether it is reserved for a particular qualification.</p>
-      </li>
-      <li>
-        <h3>An introduction, where possible</h3>
-        <p>If a suitable professional is available and you have agreed to your details being shared, we introduce you. If not, no introduction is made.</p>
-      </li>
-      <li>
-        <h3>You decide, and deal directly</h3>
-        <p>Check their credentials, and engage them only if you are satisfied. The engagement is between you and them.</p>
-      </li>
-    </ol>
+    <div class="guide-cards">
+        <article class="guide-card">
+          <img class="guide-card__art" src="/assets/illustrations/how-to-hire-an-accountant-in-delhi.svg" alt="" width="640" height="480" loading="lazy">
+          <div class="guide-card__body">
+            {%- set g = "/guides/how-to-hire-an-accountant-in-delhi/" | pageData(collections.all) %}
+            <h3><a href="/guides/how-to-hire-an-accountant-in-delhi/">{{ g.data.h1 }}</a></h3>
+            <p>{{ g.data.description }}</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <img class="guide-card__art" src="/assets/illustrations/accountant-vs-chartered-accountant.svg" alt="" width="640" height="480" loading="lazy">
+          <div class="guide-card__body">
+            {%- set g = "/guides/accountant-vs-chartered-accountant/" | pageData(collections.all) %}
+            <h3><a href="/guides/accountant-vs-chartered-accountant/">{{ g.data.h1 }}</a></h3>
+            <p>{{ g.data.description }}</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <img class="guide-card__art" src="/assets/illustrations/monthly-accounting-documents-checklist.svg" alt="" width="640" height="480" loading="lazy">
+          <div class="guide-card__body">
+            {%- set g = "/guides/monthly-accounting-documents-checklist/" | pageData(collections.all) %}
+            <h3><a href="/guides/monthly-accounting-documents-checklist/">{{ g.data.h1 }}</a></h3>
+            <p>{{ g.data.description }}</p>
+          </div>
+        </article>
+    </div>
+    <p class="section-actions"><a class="btn" href="/guides/">See all guides</a></p>
   </div>
 </section>
 
-<section class="about" id="about" aria-labelledby="about-title">
-  <div class="wrap">
-    <div class="about__intro">
-      <div>
-        <p class="eyebrow eyebrow--gold">About AccountOrbit</p>
-        <h2 id="about-title">A referral platform that shows its working</h2>
-      </div>
-      <div class="about__text">
-        <p>Looking for an accountant in Delhi usually means sorting through firms, directories and online filing services. It is rarely clear who will do the work, what they are qualified to do, or what happens to your phone number after you submit it.</p>
-        <p>AccountOrbit, owned by {{ site.owner.name }}, helps individuals and businesses in Delhi work out what kind of help they need and enquire about a suitable professional. The work, and the responsibility for it, stays with the professional you choose.</p>
-        <a class="btn btn--gold about__cta" href="/request-an-accountant/">Find an Accountant</a>
-        <p class="about__more">More on <a href="/about-us/">who runs AccountOrbit</a> and <a href="/how-it-works/">how it works</a>.</p>
-      </div>
-    </div>
-
-    <h3 class="about__sub">What you can hold us to</h3>
-    <ul class="trust-grid">
-      <li class="trust-card">
-        <h4>An introduction, not a firm</h4>
-        <p>We take enquiries and make introductions. We are not a CA firm, law firm, audit practice, tax authority or government service.</p>
-      </li>
-      <li class="trust-card">
-        <h4>The professional does the work</h4>
-        <p>Advice, filings and professional responsibility sit with the person you engage. We do not set their fees, so ask for yours in writing.</p>
-      </li>
-      <li class="trust-card">
-        <h4>Evidence, not claims</h4>
-        <p>We show no client counts, ratings, awards or testimonials, because we have none verified to show. Check any professional's credentials at the source.</p>
-      </li>
-    </ul>
-
-    <div class="about__columns">
-      <div id="questions" class="questions">
-        <h3 class="about__sub">Questions people ask first</h3>
+<section class="section" aria-label="Questions and Delhi areas">
+  <div class="wrap about__columns">
+    <div id="questions" class="questions">
+        <h2 class="about__sub">Questions people ask first</h2>
         <details>
           <summary>Is AccountOrbit a CA firm? Will you file my returns?</summary>
           <p>No to both. AccountOrbit is an independent referral platform. It does not employ accountants or perform accounting, audit, tax or legal work. Any filing is done by the professional you engage, and your responsibilities as the taxpayer continue.</p>
@@ -280,33 +349,37 @@ description: AccountOrbit is an independent referral platform for Delhi business
         </details>
       </div>
 
-      <section id="delhi" aria-labelledby="delhi-title">
-        <h3 class="about__sub" id="delhi-title">Delhi, by how businesses work</h3>
+    <section id="delhi" aria-labelledby="delhi-title">
+        <h2 class="about__sub" id="delhi-title">Delhi, by how businesses work</h2>
         <p class="delhi-intro">We accept enquiries from across Delhi. These groups show how local accounting needs differ. They are not a list of offices or a promise that a professional is available in a given area.</p>
         <ul class="delhi-list">
           <li>
-            <h4>{% routeLink "/locations/commercial-professional/", "Offices and professional practices" %}</h4>
+            <h3>{% routeLink "/locations/commercial-professional/", "Offices and professional practices" %}</h3>
             <p class="delhi-places">Such as Connaught Place and Nehru Place</p>
             <p>Often fee-based work, where receipts, TDS credits and office expenses need to reconcile.</p>
           </li>
           <li>
-            <h4>{% routeLink "/locations/wholesale-trading/", "Wholesale and trading markets" %}</h4>
+            <h3>{% routeLink "/locations/wholesale-trading/", "Wholesale and trading markets" %}</h3>
             <p class="delhi-places">Such as Sadar Bazaar, Khari Baoli and Gandhi Nagar</p>
             <p>High purchase and sales volumes, supplier credit, party ledgers and matching GST records.</p>
           </li>
           <li>
-            <h4>{% routeLink "/locations/industrial-manufacturing/", "Industrial estates" %}</h4>
+            <h3>{% routeLink "/locations/industrial-manufacturing/", "Industrial estates" %}</h3>
             <p class="delhi-places">Such as Okhla, Wazirpur, Mangolpuri, Narela and Bawana</p>
             <p>Raw material and stock records, vendor bills and payroll for factory staff.</p>
           </li>
         </ul>
       </section>
-    </div>
+  </div>
+</section>
 
-    <section class="resources" id="resources" aria-labelledby="resources-title">
-      <h3 class="about__sub" id="resources-title">Useful without an enquiry</h3>
+<section class="section section--tint resources" id="resources" aria-labelledby="resources-title">
+  <div class="wrap">
+    <header class="section-head section-head--center">
+      <h2 id="resources-title">Useful without an enquiry</h2>
       <p class="resources__intro">Official services you can use today, without going through AccountOrbit.</p>
-      <ul class="resource-grid">
+    </header>
+    <ul class="resource-grid">
         <li>
           <a class="resource" href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/authenticate-notice-issued-by-itd" rel="noopener" target="_blank">
             <span class="resource__title">Got an income tax notice?</span>
@@ -336,14 +409,15 @@ description: AccountOrbit is an independent referral platform for Delhi business
           </a>
         </li>
       </ul>
-    </section>
   </div>
 </section>
 
 <section class="start" id="start" aria-labelledby="start-title">
-  <div class="wrap start__grid">
-    <div>
-      <p class="eyebrow">Find an accountant</p>
+  <div class="wrap">
+    <div class="start__box">
+      <div class="start__grid">
+        <div>
+          <p class="eyebrow eyebrow--gold">Find an accountant</p>
       <h2 id="start-title">Ready to describe the work?</h2>
       <p class="start__lede">A clear enquiry is easier to review. Have these four things ready when you call.</p>
       <ol class="start-list">
@@ -353,11 +427,13 @@ description: AccountOrbit is an independent referral platform for Delhi business
         <li>One-time or recurring</li>
       </ol>
     </div>
-    <div class="start__panel">
+        <div class="start__panel">
       <p class="start__label">Call to enquire</p>
       <a class="btn btn--large" href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>
       <p class="start__note">The <a href="/request-an-accountant/">online enquiry form</a> is not open yet. Until it is, the phone line is the way to start.</p>
       <p class="start__warn"><strong>Never share an OTP or portal password</strong>, with us or with anyone who calls you about an enquiry. Bank statements, tax filings and PAN or Aadhaar scans are not needed at this stage either.</p>
+    </div>
+      </div>
     </div>
   </div>
 </section>

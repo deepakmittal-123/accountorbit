@@ -15,6 +15,7 @@ await new Promise((x) => s.listen(0, x));
 const b = await chromium.launch({ channel: 'chrome' });
 const p = await b.newPage({ viewport: { width, height: 800 }, reducedMotion: 'reduce' });
 await p.goto(`http://localhost:${s.address().port}${url}`, { waitUntil: 'networkidle' });
+await p.evaluate(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 40)); } window.scrollTo(0, 0); });
 await p.waitForTimeout(400);
 const total = await p.evaluate(() => document.documentElement.scrollHeight);
 const png = (await p.screenshot({ type: 'png', fullPage: true })).toString('base64');

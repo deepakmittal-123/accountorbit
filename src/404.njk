@@ -7,9 +7,14 @@ description: This page does not exist or is not published yet. Find what you nee
 ---
 <section class="section notfound">
   <div class="wrap">
-    <p class="eyebrow">Page not found</p>
-    <h1>This page does not balance.</h1>
-    <p class="page-lede">The address may be mistyped, or the page may not be published yet.</p>
-    <p class="notfound__links"><a class="btn" href="/">Go to the homepage</a> <a class="btn btn--plain" href="{{ site.phoneHref }}">Call {{ site.phoneDisplay }}</a></p>
+    <div class="notfound__grid">
+      <div>
+        <p class="eyebrow">Page not found</p>
+        <h1>This page does not balance.</h1>
+        <p class="page-lede">The address may be mistyped, or the page may not be published yet.</p>
+        <p class="notfound__links"><a class="btn" href="/">Go to the homepage</a> <a class="btn btn--plain" href="{{ site.phoneHref }}">Call {{ site.phoneDisplay }}</a> <a class="btn btn--plain" href="/services/">See services</a> <a class="btn btn--plain" href="/contact-us/">Contact</a></p>
+      </div>
+      <img class="notfound__art" src="/assets/illustrations/not-found.svg" alt="" width="640" height="480">
+    </div>
   </div>
 </section>

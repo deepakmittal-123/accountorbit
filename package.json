@@ -17,6 +17,7 @@
     "qa:pages": "node qa/pages-preview-check.mjs",
     "qa:pages:browser": "node qa/pages-browser-qa.mjs",
     "icons": "node scripts/make-icons.mjs",
+    "illustrations": "node scripts/make-illustrations.mjs",
     "status": "node scripts/status-report.mjs"
   },
   "devDependencies": {

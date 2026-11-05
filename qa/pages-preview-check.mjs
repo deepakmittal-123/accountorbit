@@ -18,7 +18,7 @@ const files = walk(OUT).map((f) => f.replace(/\\/g, '/').slice(OUT.length + 1));
 const routes = JSON.parse(readFileSync('src/_data/routes.json', 'utf8'));
 const built = routes.filter((r) => r.built);
 
-for (const f of ['index.html', '404.html', 'robots.txt', 'llms.txt', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'site.webmanifest', 'assets/css/site.css', 'assets/js/site.js', 'assets/js/enquiry-form.js', 'assets/favicon.svg', 'assets/og-image.png', 'assets/fonts/newsreader.woff2', 'assets/fonts/newsreader-italic.woff2', 'assets/fonts/hanken-grotesk.woff2']) check(`Required file: ${f}`, has(f));
+for (const f of ['index.html', '404.html', 'robots.txt', 'llms.txt', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'site.webmanifest', 'assets/css/site.css', 'assets/js/site.js', 'assets/js/enquiry-form.js', 'assets/favicon.svg', 'assets/og-image.png', 'assets/fonts/newsreader-italic.woff2', 'assets/fonts/hanken-grotesk.woff2']) check(`Required file: ${f}`, has(f));
 check('Every built route has a page', built.every((r) => has(join(r.url, 'index.html'))), built.filter((r) => !has(join(r.url, 'index.html'))).map((r) => r.url).join(' '));
 check('No unbuilt route has a page', routes.filter((r) => !r.built).every((r) => !has(join(r.url, 'index.html'))));
 check('Page count matches built routes', files.filter((f) => f.endsWith('index.html')).length === built.length);

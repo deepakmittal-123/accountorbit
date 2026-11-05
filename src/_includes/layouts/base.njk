@@ -1,6 +1,7 @@
 {%- set route = page.url | routeOf -%}
 {%- set primaryNav = site.nav | navItems -%}
 {%- set legalNav = site.footerLegal | navItems -%}
+{%- set exploreNav = site.footerExplore | navItems -%}
 {%- set platformNav = site.footerPlatform | navItems -%}
 {%- set ctaHref = '/request-an-accountant/' if ('/request-an-accountant/' | built) else '/#start' -%}
 <!doctype html>
@@ -30,7 +31,6 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
 </head>
@@ -73,6 +73,14 @@
         <p class="footer-title">Contact</p>
         <p><a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a></p>
         <p class="footer-owner">Owner: {{ site.owner.name }}</p>
+      </div>
+      <div>
+        <p class="footer-title">Explore</p>
+        <ul class="footer-list">
+          {%- for item in exploreNav %}
+          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+          {%- endfor %}
+        </ul>
       </div>
       <div>
         <p class="footer-title">Platform</p>

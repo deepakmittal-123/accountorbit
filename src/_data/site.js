@@ -15,17 +15,23 @@ export default {
   nav: [
     { label: 'Services', url: '/services/', fallback: '/#work' },
     { label: 'Industries', url: '/industries/' },
+    { label: 'Locations', url: '/locations/' },
     { label: 'Guides', url: '/guides/' },
     { label: 'How it works', url: '/how-it-works/', fallback: '/#how' },
     { label: 'About', url: '/about-us/', fallback: '/#about' },
     { label: 'Contact', url: '/contact-us/', fallback: '/#start' },
+  ],
+  footerExplore: [
+    { label: 'Services', url: '/services/' },
+    { label: 'Industries', url: '/industries/' },
+    { label: 'Locations', url: '/locations/' },
+    { label: 'Guides', url: '/guides/' },
   ],
   footerPlatform: [
     { label: 'How it works', url: '/how-it-works/', fallback: '/#how' },
     { label: 'About AccountOrbit', url: '/about-us/', fallback: '/#about' },
     { label: 'Contact', url: '/contact-us/' },
     { label: 'For accounting professionals', url: '/for-accounting-professionals/' },
-    { label: 'Guides', url: '/guides/' },
   ],
   footerLegal: [
     { label: 'Privacy policy', url: '/privacy-policy/' },
