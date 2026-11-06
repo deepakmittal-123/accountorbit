@@ -6,6 +6,7 @@ import { extname, join, normalize } from 'node:path';
 import { createRequire } from 'node:module';
 import { chromium } from 'playwright-core';
 import { PRIVATE_TERMS } from './private-terms.mjs';
+import site from '../src/_data/site.js';
 
 const require = createRequire(import.meta.url);
 const axePath = require.resolve('axe-core/axe.min.js');
@@ -56,8 +57,9 @@ check('Description length 120-160', seo.desc.length >= 120 && seo.desc.length <=
 check('Exactly one H1', seo.h1 === 1);
 check('No skipped heading levels', seo.jump === -1, seo.jump === -1 ? '' : `at heading #${seo.jump}`);
 check('Language is en-IN', seo.lang === 'en-IN');
-check('Canonical is the homepage', seo.canonical === 'https://accountorbit.in/');
-check('HOLD page is noindex', seo.robots.includes('noindex'), seo.robots);
+const homeRoute = JSON.parse(await readFile('src/_data/routes.json', 'utf8')).find((r) => r.url === '/');
+check('Canonical is the homepage on the primary origin', seo.canonical === `${site.url}/`, seo.canonical);
+check('Homepage robots match its eligibility', seo.robots === (homeRoute.indexable ? 'index, follow' : 'noindex, follow'), seo.robots);
 
 const schema = JSON.parse(seo.jsonld[0]);
 const types = schema['@graph'].map((n) => n['@type']);
@@ -102,7 +104,7 @@ check('No failed network requests', failed.length === 0, failed.join(' | '));
 const robots = await (await fetch(base + '/robots.txt')).text();
 check('robots.txt allows crawling so noindex is seen', robots.includes('Allow: /'));
 const sitemapText = await (await fetch(base + '/sitemap.xml')).text();
-check('Homepage is absent from the sitemap while held', !sitemapText.includes('<loc>https://accountorbit.in/</loc>') && robots.includes('Sitemap:'));
+check('Homepage is in the sitemap exactly when it is eligible', sitemapText.includes(`<loc>${site.url}/</loc>`) === Boolean(homeRoute.indexable) && robots.includes(`Sitemap: ${site.url}/sitemap.xml`));
 
 // --- Responsive, accessibility and screenshots
 for (const [width, height] of VIEWPORTS) {
@@ -209,10 +211,11 @@ check('Owner profiles are not in Organization schema', !/sameAs|deepak/i.test(JS
 check('Owner title not upgraded', !/(founder|managing director|chartered accountant) deepak|deepak mittal,? (ca|founder|fca|aca)/i.test(html));
 check('Social image present and declared', (await fetch(base + '/assets/og-image.png')).ok && /og:image"/.test(html));
 const noteCount = (html.match(/<!-- open fact:/g) || []).length;
-check('Open facts on home still tracked (3), hidden from visitors', noteCount === 3 && !/Not yet available:/.test(html), String(noteCount));
+const gapCount = (html.match(/<!-- tracked gap:/g) || []).length;
+check('Home has no blocking open fact; its 3 operational gaps stay tracked and hidden from visitors', noteCount === 0 && gapCount === 3 && !/Not yet available:/.test(html), `${noteCount} open, ${gapCount} tracked`);
 const routeData = JSON.parse(await readFile('src/_data/routes.json', 'utf8'));
 check('All 77 routes preserved', routeData.length === 77 && new Set(routeData.map((r) => r.url)).size === 77);
-check('Homepage is held while it has open facts', routeData.find((r) => r.url === '/').indexable !== true);
+check('Homepage is indexable only while it has no blocking open fact', routeData.find((r) => r.url === '/').indexable === (noteCount === 0));
 check('Only built routes are indexable', routeData.every((r) => !r.indexable || r.built));
 
 const nojs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 360, height: 780 } });

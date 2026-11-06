@@ -1,16 +1,27 @@
 import { readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { HtmlBasePlugin } from '@11ty/eleventy';
+import site from './src/_data/site.js';
 
 const routes = JSON.parse(readFileSync('src/_data/routes.json', 'utf8'));
 const byUrl = new Map(routes.map((r) => [r.url, r]));
 const isProduction = process.env.ELEVENTY_ENV === 'production';
-const SITE = 'https://accountorbit.in';
+// The primary indexable origin. It is defined once, in src/_data/site.js.
+const SITE = site.url;
 
 // One switch for the temporary public preview on GitHub Pages, which lives under a project subpath.
 // The default build, and any future custom-domain deployment, stays at the domain root.
 const isPreview = process.env.DEPLOY_TARGET === 'github-pages';
 if (isPreview && isProduction) throw new Error('A GitHub Pages preview cannot be a production build');
+
+// Cloudflare Pages sets CF_PAGES=1 and CF_PAGES_BRANCH in its build. The production branch (main) is the public site;
+// any other branch is a Cloudflare preview deployment, which must never be indexed or offer a sitemap.
+const isCloudflare = process.env.CF_PAGES === '1';
+const isBranchPreview = isCloudflare && Boolean(process.env.CF_PAGES_BRANCH) && process.env.CF_PAGES_BRANCH !== 'main';
+// The public site build: no development bar. A local `npm run build` is otherwise identical, so QA tests what ships.
+const isLiveSite = isCloudflare && !isBranchPreview;
+// Hosts whose every page is noindex: the GitHub Pages copy (a duplicate of the live site) and Cloudflare branch previews.
+const noindexAll = isPreview || isBranchPreview;
 const PATH_PREFIX = isPreview ? '/accountorbit/' : '/';
 const PUBLIC_ORIGIN = isPreview ? 'https://deepakmittal-123.github.io/accountorbit' : SITE;
 
@@ -48,7 +59,9 @@ const llmsText = (pages) => {
   const listed = routes.filter((r) => r.built && (r.indexable || core.includes(r.url)));
   const desc = new Map(pages.map((p) => [p.url, p.data.description]));
   const line = (r) => `- [${r.name}](${PUBLIC_ORIGIN}${r.url}): ${desc.get(r.url)}`;
-  const notice = isProduction ? '' : isPreview ? '\nThis is a temporary public preview. AccountOrbit has not launched, and these pages are not intended for search indexing.\n' : '\nThis site is a development preview and has not been publicly launched.\n';
+  const notice = isProduction ? ''
+    : noindexAll ? `\nThis is a temporary public preview copy and is not intended for search indexing. The public site is ${SITE}/\n`
+    : `\nThe public site is ${SITE}/ . The planned domain ${site.plannedDomain}/ is not yet in use. Some operational details (for example how AccountOrbit is paid, response times and the operating entity) are not yet published; the pages say so where it matters.\n`;
   const rest = listed.filter((r) => !LLMS_GROUPS.some(([, match]) => match(r.url)));
   const sections = [['About and enquiries', rest], ...LLMS_GROUPS.map(([name, match]) => [name, listed.filter((r) => match(r.url))])]
     .filter(([, items]) => items.length)
@@ -118,6 +131,14 @@ export default function (config) {
     if (byUrl.get(this.page.url)?.indexable) throw new Error(`${this.page.url} is marked indexable but has an open fact: ${text}`);
     return `<!-- open fact: ${String(text).replace(/--/g, '\u2014')} -->`;
   });
+  // A tracked gap is an operational fact still missing where the visible text is already accurate without it, because
+  // the page does not state or imply the missing detail (for example "ask about AccountOrbit's own terms on the call").
+  // It does not hold the page from indexing, but it still blocks the production launch build, like `pending`.
+  // Use `pending` instead whenever the page's purpose or wording depends on the fact.
+  config.addShortcode('gap', function (text) {
+    if (isProduction) throw new Error(`Production build blocked by missing operational fact: ${text}`);
+    return `<!-- tracked gap: ${String(text).replace(/--/g, '\u2014')} -->`;
+  });
 
   // Related reading: lists only pages that exist, so it fills in automatically as routes are built.
   config.addShortcode('related', (items, heading = 'Related reading') => {
@@ -132,7 +153,7 @@ export default function (config) {
   // External link with the new-tab announcement built in.
   config.addShortcode('ext', (url, label) => `<a href="${url}" rel="noopener" target="_blank">${label}<span class="visually-hidden"> (opens in a new tab)</span></a>`);
 
-  config.addGlobalData('env', { isProduction, isPreview, site: SITE, publicOrigin: PUBLIC_ORIGIN });
+  config.addGlobalData('env', { isProduction, isPreview, isLiveSite, isBranchPreview, noindexAll, site: SITE, publicOrigin: PUBLIC_ORIGIN });
   config.addFilter('routeOf', (url) => byUrl.get(url));
   // Each page's own illustration. Legal pages stay plain, so nothing interrupts reading.
   config.addFilter('artFor', (url) => {
@@ -156,7 +177,7 @@ export default function (config) {
   // The sitemap, robots file and headers come only from eligible routes, so unapproved pages cannot leak in.
   config.on('eleventy.after', ({ directories }) => {
     // A preview never offers a sitemap, so unfinished pages are not put forward for indexing.
-    const approved = isPreview ? [] : routes.filter((r) => r.indexable && isEligible(r));
+    const approved = noindexAll ? [] : routes.filter((r) => r.indexable && isEligible(r));
     const sitemapPath = join(directories.output, 'sitemap.xml');
     rmSync(sitemapPath, { force: true });
     let robots = 'User-agent: *\nAllow: /\n';

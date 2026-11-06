@@ -6,6 +6,7 @@ import { extname, join, normalize } from 'node:path';
 import { createRequire } from 'node:module';
 import { chromium } from 'playwright-core';
 import { PRIVATE_TERMS } from './private-terms.mjs';
+import site from '../src/_data/site.js';
 import { mkdirSync as ensureDir } from 'node:fs';
 ensureDir('qa/reports', { recursive: true });
 
@@ -70,7 +71,7 @@ for (const url of targets) {
   check(`${url} description length 110-165`, s.desc.length >= 110 && s.desc.length <= 165, String(s.desc.length));
   check(`${url} one H1`, s.h1 === 1, String(s.h1));
   check(`${url} heading order`, s.jump === -1, String(s.jump));
-  check(`${url} canonical`, s.canonical === `https://accountorbit.in${url}`, s.canonical);
+  check(`${url} canonical`, s.canonical === `${site.url}${url}`, s.canonical);
   check(`${url} robots match status`, r.indexable ? s.robots.startsWith('index') : s.robots.includes('noindex'), s.robots);
   check(`${url} breadcrumb`, url === '/' || s.crumb);
   check(`${url} images have alt`, s.imgs === 0, String(s.imgs));

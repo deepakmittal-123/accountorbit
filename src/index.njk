@@ -9,7 +9,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
   "@graph": [
     { "@type": "Organization", "@id": "{{ site.url }}/#organization", "name": "{{ site.name }}", "url": "{{ site.url }}/", "telephone": "+918290728453", "description": "Independent referral platform that helps people in Delhi enquire about accounting and tax professionals." },
     { "@type": "WebSite", "@id": "{{ site.url }}/#website", "name": "{{ site.name }}", "url": "{{ site.url }}/", "inLanguage": "en-IN", "publisher": { "@id": "{{ site.url }}/#organization" } },
-    { "@type": "WebPage", "@id": "{{ site.url }}/#webpage", "url": "{{ site.url }}/", "name": "{{ title }}", "description": "{{ description }}", "isPartOf": { "@id": "{{ site.url }}/#website" }, "about": { "@id": "{{ site.url }}/#organization" }, "inLanguage": "en-IN" }
+    { "@type": "WebPage", "@id": "{{ site.url }}/#webpage", "url": "{{ site.url }}/", "name": "{{ title }}", "description": "{{ description }}", "isPartOf": { "@id": "{{ site.url }}/#website" }, "about": { "@id": "{{ site.url }}/#organization" }, "publisher": { "@id": "{{ site.url }}/#organization" }, "inLanguage": "en-IN" }
   ]
 }
 </script>{% endif %}
@@ -322,7 +322,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
         </details>
         <details>
           <summary>What does this cost?</summary>
-          <p>Fees for professional work are agreed between you and the professional, and AccountOrbit does not set them. Ask the professional for their fee and scope in writing before you engage them. Questions about AccountOrbit itself can be asked on the call. {% pending "whether enquiries are free, and how AccountOrbit earns money." %}</p>
+          <p>Fees for professional work are agreed between you and the professional, and AccountOrbit does not set them. Ask the professional for their fee and scope in writing before you engage them. Questions about AccountOrbit itself can be asked on the call. {% gap "whether enquiries are free, and how AccountOrbit earns money." %}</p>
         </details>
         <details>
           <summary>Who will see my details?</summary>
@@ -330,7 +330,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
         </details>
         <details>
           <summary>Will I definitely be matched?</summary>
-          <p>An introduction is made only where a suitable professional is available for your work and your area. We will not describe someone as suitable just to close an enquiry. {% pending "how and when visitors are told when no introduction can be made." %}</p>
+          <p>An introduction is made only where a suitable professional is available for your work and your area. We will not describe someone as suitable just to close an enquiry. {% gap "how and when visitors are told when no introduction can be made." %}</p>
         </details>
         <details>
           <summary>Do you have an office in my area?</summary>
@@ -338,7 +338,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
         </details>
         <details>
           <summary>Who runs AccountOrbit?</summary>
-          <p>AccountOrbit is owned by {{ site.owner.name }}. You can find {{ site.owner.name }} on <a href="{{ site.owner.facebook }}" rel="noopener" target="_blank">Facebook<span class="visually-hidden"> (personal profile, opens in a new tab)</span></a> and <a href="{{ site.owner.instagram }}" rel="noopener" target="_blank">Instagram<span class="visually-hidden"> (personal profile, opens in a new tab)</span></a>. These are personal profiles, not AccountOrbit company pages. Read more <a href="/about-me/">about {{ site.owner.name }}</a>. {% pending "the operating entity behind AccountOrbit." %}</p>
+          <p>AccountOrbit is owned by {{ site.owner.name }}. You can find {{ site.owner.name }} on <a href="{{ site.owner.facebook }}" rel="noopener" target="_blank">Facebook<span class="visually-hidden"> (personal profile, opens in a new tab)</span></a> and <a href="{{ site.owner.instagram }}" rel="noopener" target="_blank">Instagram<span class="visually-hidden"> (personal profile, opens in a new tab)</span></a>. These are personal profiles, not AccountOrbit company pages. Read more <a href="/about-me/">about {{ site.owner.name }}</a>. {% gap "the operating entity behind AccountOrbit." %}</p>
         </details>
         <details>
           <summary>Do you list accounting jobs?</summary>

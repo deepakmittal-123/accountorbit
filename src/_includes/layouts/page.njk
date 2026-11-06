@@ -10,7 +10,7 @@ layout: layouts/base.njk
     {
       "@type": "{{ schemaType or 'WebPage' }}",
       "@id": "{{ site.url }}{{ page.url }}#main",
-      {% if schemaType == 'Article' %}"headline": {{ h1 | dump | safe }},{% if reviewed %} "dateModified": "{{ reviewed }}",{% endif %} "author": { "@id": "{{ site.url }}/#organization" }, "publisher": { "@id": "{{ site.url }}/#organization" },{% else %}"name": {{ title | dump | safe }},{% endif %}
+      {% if schemaType == 'Article' %}"headline": {{ h1 | dump | safe }},{% if reviewed %} "dateModified": "{{ reviewed }}",{% endif %} "author": { "@id": "{{ site.url }}/#organization" }, "publisher": { "@id": "{{ site.url }}/#organization" },{% else %}"name": {{ title | dump | safe }}, "publisher": { "@id": "{{ site.url }}/#organization" },{% endif %}
       {% if schemaPerson %}"mainEntity": { "@id": "{{ site.url }}{{ page.url }}#person" },{% endif %}
       "description": {{ description | dump | safe }},
       "url": "{{ site.url }}{{ page.url }}",

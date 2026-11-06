@@ -11,9 +11,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
-  <meta name="robots" content="{{ 'noindex, nofollow' if env.isPreview else ('index, follow' if route.indexable else 'noindex, follow') }}">
-  {%- if route and not env.isPreview %}
+  {#- Robots: duplicate hosts (GitHub Pages copy, Cloudflare branch previews) are noindex, nofollow throughout. On the
+      public site a page is indexed only when routes.json marks it eligible (scripts/set-eligibility.mjs decides). #}
+  <meta name="robots" content="{{ 'noindex, nofollow' if env.noindexAll else ('index, follow' if route.indexable else 'noindex, follow') }}">
+  {%- if route and not env.noindexAll %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {%- endif %}
+  {#- Author is the organisation unless a page names a person who wrote it (front matter `author`). Never a reviewer. #}
+  <meta name="author" content="{{ author or site.publisher }}">
+  <meta name="publisher" content="{{ site.publisher }}">
+  {%- set kw = seoKeywords[page.url] %}
+  {%- if kw %}
+  {#- Optional, page-specific. Google ignores this tag for ranking; it is here for audit tools and our own keyword record. #}
+  <meta name="keywords" content="{{ kw.content }}">
   {%- endif %}
   <meta property="og:type" content="{{ 'article' if schemaType == 'Article' else 'website' }}">
   <meta property="og:site_name" content="{{ site.name }}">
@@ -36,7 +46,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  {% if not env.isProduction and not env.isPreview %}<aside class="draft-bar" aria-label="Development notice"><strong>Local development build.</strong>{% if not route.indexable %} This page is noindex.{% endif %}</aside>{% endif %}
+  {% if not env.isProduction and not env.isPreview and not env.isLiveSite %}<aside class="draft-bar" aria-label="Development notice"><strong>Local development build.</strong>{% if not route.indexable %} This page is noindex.{% endif %}</aside>{% endif %}
   <header class="site-header">
     <div class="wrap site-header__row">
       <a class="site-logo" href="/"><img src="/assets/images/brand/accountorbit-logo-header.webp" alt="{{ site.name }}" width="540" height="120" fetchpriority="high"></a>

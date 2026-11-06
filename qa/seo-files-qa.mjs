@@ -7,6 +7,8 @@ import { extname, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { chromium } from 'playwright-core';
 import { PRIVATE_TERMS } from './private-terms.mjs';
+import site from '../src/_data/site.js';
+import seoKeywords from '../src/_data/seoKeywords.js';
 
 let pass = 0; const fails = [];
 const check = (n, ok, d = '') => { if (ok) pass++; else { fails.push(n); console.log(`FAIL  ${n}  [${d}]`); } };
@@ -14,7 +16,11 @@ const read = (p) => readFileSync(join('_site', p), 'utf8');
 const routes = JSON.parse(readFileSync('src/_data/routes.json', 'utf8'));
 const built = routes.filter((r) => r.built);
 const urls = new Set(built.map((r) => r.url));
-const SITE = 'https://accountorbit.in';
+// The primary origin comes from src/_data/site.js, the one place it is defined.
+const SITE = site.url;
+const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+check('Primary origin is HTTPS with no trailing slash', /^https:\/\/[^/]+$/.test(SITE), SITE);
+check('Primary origin is not the unregistered planned domain unless set on purpose', SITE !== site.plannedDomain || Boolean(process.env.SITE_ORIGIN), SITE);
 
 // Route registry.
 check('77 routes, each once', routes.length === 77 && new Set(routes.map((r) => r.url)).size === 77);
@@ -44,11 +50,13 @@ const llms = read('llms.txt');
 check('llms.txt follows the format', /^# AccountOrbit\n\n> /.test(llms) && /\n## /.test(llms));
 check('llms.txt states the referral role', /independent referral platform/i.test(llms) && /not a Chartered Accountant firm/i.test(llms));
 check('llms.txt states what is not available', /no published list of partners/i.test(llms));
-const llmsLinks = [...llms.matchAll(/\]\((https:\/\/accountorbit\.in[^)]*)\)/g)].map((m) => m[1].replace(SITE, ''));
+const llmsLinks = [...llms.matchAll(new RegExp(`\\]\\((${esc(SITE)}[^)]*)\\)`, 'g'))].map((m) => m[1].replace(SITE, ''));
 check('llms.txt links only to built routes', llmsLinks.length > 0 && llmsLinks.every((u) => urls.has(u)), llmsLinks.filter((u) => !urls.has(u)).join(' '));
 const llmsWanted = [...eligible.map((r) => r.url), '/', '/how-it-works/', '/about-us/', '/contact-us/', '/request-an-accountant/'];
 check('llms.txt lists every eligible page and the core pages, once each', llmsWanted.every((u) => llmsLinks.includes(u)) && new Set(llmsLinks).size === llmsLinks.length && llmsLinks.length === new Set(llmsWanted).size, String(llmsLinks.length));
-check('llms.txt does not list held legal or partner pages', !['/privacy-policy/', '/terms-and-conditions/', '/disclaimer/', '/for-accounting-professionals/'].some((u) => llmsLinks.includes(u)));
+const llmsCore = ['/', '/how-it-works/', '/about-us/', '/contact-us/', '/request-an-accountant/'];
+check('llms.txt does not list held pages other than the core ones', built.filter((r) => !r.indexable && !llmsCore.includes(r.url)).every((r) => !llmsLinks.includes(r.url)));
+check('llms.txt names the real public site and is not a preview notice', llms.includes(`The public site is ${SITE}/`) && !/not intended for search indexing|has not been publicly launched/.test(llms));
 check('llms.txt makes no banned claims', ![/\bbest\b/i, /verified partners?/i, /government[- ]approved/i, /certified/i, /\bour accountants/i, /guaranteed/i, PRIVATE_TERMS].some((r) => r.test(llms)));
 check('llms.txt shows the correct phone number', llms.includes('+91 82907 28453'));
 
@@ -76,6 +84,33 @@ for (const r of built) {
   const crumbs = ld['@graph'].find((n) => n['@type'] === 'BreadcrumbList');
   check(`${r.url} structured data`, r.url === '/' || (crumbs && crumbs.itemListElement.every((c, i) => c.position === i + 1 && urls.has(c.item.replace(SITE, '')))));
 }
+// One of each head tag, accurate author and publisher, page-specific keywords, unique titles and descriptions.
+const seen = { title: new Map(), description: new Map(), keywords: new Map() };
+const dupes = []; const wrong = [];
+for (const r of built) {
+  const h = read(join(r.url, 'index.html'));
+  const head = h.slice(0, h.indexOf('</head>'));
+  const count = (re) => (head.match(re) || []).length;
+  for (const [k, re] of [['title', /<title>/g], ['description', /<meta name="description"/g], ['robots', /<meta name="robots"/g], ['canonical', /rel="canonical"/g], ['author', /<meta name="author"/g], ['publisher', /<meta name="publisher"/g], ['keywords', /<meta name="keywords"/g]]) if (count(re) !== 1) dupes.push(`${r.url} ${k}=${count(re)}`);
+  const meta = (n) => head.match(new RegExp(`<meta name="${n}" content="([^"]*)"`))?.[1];
+  const expectAuthor = r.url === '/about-me/' ? site.owner.name : site.publisher;
+  if (meta('author') !== expectAuthor) wrong.push(`${r.url} author=${meta('author')}`);
+  if (meta('publisher') !== 'AccountOrbit') wrong.push(`${r.url} publisher`);
+  if (meta('keywords') !== seoKeywords[r.url]?.content.replace(/&/g, '&amp;')) wrong.push(`${r.url} keywords`);
+  const robotsWant = r.indexable ? 'index, follow' : 'noindex, follow';
+  if (meta('robots') !== robotsWant) wrong.push(`${r.url} robots=${meta('robots')}`);
+  for (const k of ['title', 'description', 'keywords']) {
+    const v = k === 'title' ? head.match(/<title>([^<]*)/)[1] : meta(k);
+    if (seen[k].has(v)) dupes.push(`${k} shared by ${seen[k].get(v)} and ${r.url}`); else seen[k].set(v, r.url);
+  }
+}
+check('Every built page has exactly one title, description, robots, canonical, author, publisher and keywords tag, and none is shared', dupes.length === 0, dupes.slice(0, 6).join('; '));
+check('Author, publisher, keywords and robots are correct on every built page', wrong.length === 0, wrong.slice(0, 6).join('; '));
+check('Keyword strategy covers exactly the built routes', Object.keys(seoKeywords).sort().join() === built.map((r) => r.url).sort().join(), Object.keys(seoKeywords).filter((u) => !urls.has(u)).join(' '));
+check('Every keyword set has a primary term, at least three secondary terms and an intent', Object.values(seoKeywords).every((k) => k.primary && k.secondary.length >= 3 && ['I', 'C', 'T', 'N'].includes(k.intent)));
+check('No built page canonicalises to the unregistered domain or the GitHub copy', built.every((r) => !/rel="canonical" href="https:\/\/(accountorbit\.in|deepakmittal-123\.github\.io)/.test(read(join(r.url, 'index.html')))));
+check('Tracked gaps are recorded and stay invisible to visitors', built.filter((r) => r.gaps).every((r) => { const t = read(join(r.url, 'index.html')).replace(/<!--[\s\S]*?-->/g, ''); return r.gaps.every((g) => !t.includes(g)); }));
+check('Only indexable pages carry tracked gaps, and they have no blockers', built.filter((r) => r.gaps).every((r) => r.indexable && !r.blockers));
 // About Me: only confirmed facts in structured data.
 const me = read('about-me/index.html');
 const meLd = JSON.parse(me.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
@@ -158,8 +193,27 @@ const merged = routes.find((r) => r.status === 'MERGED_WITH_HUB');
 const refused = buildWith({ QA_SIMULATE_ELIGIBLE: merged.url });
 check('Owner approval cannot make an unbuilt route eligible: the build refuses', refused.status !== 0 && /without meeting the rules/.test(refused.stderr + refused.stdout));
 rmSync(out, { recursive: true, force: true });
-const open = buildWith({ QA_SIMULATE_ELIGIBLE: '/' });
+const heldWithFact = routes.find((r) => r.built && !r.indexable && r.url !== '/disclaimer/');
+const open = buildWith({ QA_SIMULATE_ELIGIBLE: heldWithFact.url });
 check('A page with an open fact cannot be made eligible: the build refuses', open.status !== 0 && /has an open fact/.test(open.stderr + open.stdout));
+rmSync(out, { recursive: true, force: true });
+// Cloudflare Pages: the main branch is the public site; any other branch is a preview that must never be indexed.
+const cfMain = buildWith({ CF_PAGES: '1', CF_PAGES_BRANCH: 'main' });
+check('Cloudflare main build runs', cfMain.status === 0, (cfMain.stderr || '').slice(0, 200));
+if (cfMain.status === 0) {
+  const home = readFileSync(join(out, 'index.html'), 'utf8');
+  check('Cloudflare main build has no development bar', !/draft-bar|Local development build/.test(home));
+  check('Cloudflare main build indexes eligible pages with the primary canonical', home.includes('<meta name="robots" content="index, follow">') && home.includes(`<link rel="canonical" href="${SITE}/">`));
+  check('Cloudflare main build offers the sitemap and no X-Robots-Tag', existsSync(join(out, 'sitemap.xml')) && !readFileSync(join(out, '_headers'), 'utf8').includes('X-Robots-Tag'));
+}
+rmSync(out, { recursive: true, force: true });
+const cfBranch = buildWith({ CF_PAGES: '1', CF_PAGES_BRANCH: 'feature-test' });
+check('Cloudflare branch preview build runs', cfBranch.status === 0, (cfBranch.stderr || '').slice(0, 200));
+if (cfBranch.status === 0) {
+  const pages = built.map((r) => readFileSync(join(out, r.url, 'index.html'), 'utf8'));
+  check('Cloudflare branch preview: every page noindex, nofollow with no canonical', pages.every((h) => h.includes('<meta name="robots" content="noindex, nofollow">') && !h.includes('rel="canonical"')));
+  check('Cloudflare branch preview: no sitemap, and the noindex header is sent', !existsSync(join(out, 'sitemap.xml')) && readFileSync(join(out, '_headers'), 'utf8').includes('X-Robots-Tag: noindex, nofollow'));
+}
 rmSync(out, { recursive: true, force: true });
 check('Real build is unchanged by the tests', existsSync('_site/sitemap.xml') && !existsSync(out));
 

@@ -5,12 +5,12 @@
   "type": "Homepage / platform explainer",
   "status": "QA_PASSED",
   "built": true,
-  "indexable": false,
+  "indexable": true,
   "parent": null,
   "score": 86,
-  "publication": "NOT_PUBLICATION_ELIGIBLE",
+  "publication": "PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "blockers": [
+  "gaps": [
    "whether enquiries are free, and how AccountOrbit earns money.",
    "how and when visitors are told when no introduction can be made.",
    "the operating entity behind AccountOrbit."
@@ -843,12 +843,12 @@
   "type": "Trust page",
   "status": "QA_PASSED",
   "built": true,
-  "indexable": false,
+  "indexable": true,
   "parent": "/",
   "score": 80,
-  "publication": "NOT_PUBLICATION_ELIGIBLE",
+  "publication": "PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "blockers": [
+  "gaps": [
    "the operating entity."
   ]
  },
@@ -870,12 +870,12 @@
   "type": "Contact page",
   "status": "QA_PASSED",
   "built": true,
-  "indexable": false,
+  "indexable": true,
   "parent": "/",
   "score": 76,
-  "publication": "NOT_PUBLICATION_ELIGIBLE",
+  "publication": "PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "blockers": [
+  "gaps": [
    "the hours this number is answered, and an email address.",
    "a named complaints route and response time.",
    "a complete, verified address and a decision on whether to show one. The supplied address stays unpublished until then."
@@ -903,12 +903,12 @@
   "type": "Partner page",
   "status": "QA_PASSED",
   "built": true,
-  "indexable": false,
+  "indexable": true,
   "parent": "/",
   "score": 70,
-  "publication": "NOT_PUBLICATION_ELIGIBLE",
+  "publication": "PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "blockers": [
+  "gaps": [
    "any partner terms."
   ]
  },
