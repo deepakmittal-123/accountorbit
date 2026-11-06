@@ -87,6 +87,7 @@ npm run qa:content  # content metrics report
 node qa/content-inventory.mjs compare  # checks content against a saved baseline
 node qa/route-audit.mjs     # status of every route over a local server
 node qa/external-links.mjs  # external link check
+node qa/mega-menu-qa.mjs     # mega menus and mobile accordions (add a base URL to test a deployed site)
 ```
 
 To also test that specific private details never appear on the site, add them to `qa/private-terms.local.json`, which is git-ignored, as `{"terms": ["..."]}`.

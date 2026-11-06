@@ -42,7 +42,12 @@
       <a class="site-logo" href="/"><img src="/assets/images/brand/accountorbit-logo-header.webp" alt="{{ site.name }}" width="540" height="120" fetchpriority="high"></a>
       <nav class="desktop-nav" aria-label="Main">
         {%- for item in primaryNav %}
+        {%- set menuDef = megaMenus[item.label | lower] %}
+        {%- if menuDef %}{% set m = menuDef | megaMenu %}
+        {% include "partials/mega-desktop.njk" %}
+        {%- else %}
         <a href="{{ item.href }}"{% if item.href == page.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {%- endif %}
         {%- endfor %}
       </nav>
       <a class="header-phone" href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>
@@ -51,7 +56,12 @@
         <summary>Menu</summary>
         <nav aria-label="Main, mobile">
           {%- for item in primaryNav %}
+          {%- set menuDef = megaMenus[item.label | lower] %}
+          {%- if menuDef %}{% set m = menuDef | megaMenu %}
+          {% include "partials/mega-mobile.njk" %}
+          {%- else %}
           <a href="{{ item.href }}"{% if item.href == page.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          {%- endif %}
           {%- endfor %}
           <a href="{{ site.phoneHref }}">Call {{ site.phoneDisplay }}</a>
         </nav>

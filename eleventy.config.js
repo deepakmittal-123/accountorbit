@@ -84,6 +84,25 @@ export default function (config) {
     'node_modules/@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2': 'assets/fonts/hanken-grotesk.woff2',
   });
 
+  // Resolves a mega menu from src/_data/megaMenus.js. Unknown URLs stop the build; unbuilt routes are left out.
+  // A location group lists the built children of its category hub, and also names the unbuilt ones it covers.
+  const areaName = (r) => r.name.replace(/^Accounting (?:Services )?in /, '');
+  const known = (url, where) => { const r = byUrl.get(url); if (!r) throw new Error(`megaMenu: "${url}" (${where}) is not in the approved route inventory`); return r; };
+  config.addFilter('megaMenu', (menu) => {
+    known(menu.hub, menu.label);
+    const groups = menu.groups.map((g) => {
+      if (g.hub) {
+        const hub = known(g.hub, g.title);
+        const kids = routes.filter((r) => r.parent === g.hub && r.url.startsWith('/locations/accounting-services-in-'));
+        return { title: g.title, hub: hub.built ? { url: g.hub, label: g.hubLabel } : null,
+          items: kids.filter((r) => r.built).map((r) => ({ url: r.url, label: areaName(r) })).sort((a, b) => a.label.localeCompare(b.label)),
+          covered: kids.filter((r) => !r.built).map(areaName).sort() };
+      }
+      return { title: g.title, items: g.items.filter(([u]) => known(u, g.title).built).map(([url, label]) => ({ url, label })), covered: [] };
+    }).filter((g) => g.items.length || g.hub);
+    return { ...menu, id: menu.label.toLowerCase(), groups, count: groups.reduce((n, g) => n + g.items.length + (g.hub ? 1 : 0), 0) };
+  });
+
   // A link to an unbuilt route renders as plain text, so a page can never ship a broken internal link.
   // Unknown URLs stop the build, because every route must exist in the approved inventory.
   config.addShortcode('routeLink', (url, label) => {

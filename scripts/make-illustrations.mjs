@@ -179,6 +179,9 @@ const SCENES = {
   'accounting-services-in-wazirpur-industrial-area': ['coil', ['factory', 'pie', 'truck', 'gear']],
   'accounting-services-in-mayapuri-industrial-area': ['wheel', ['coil', 'boxes', 'magnifier', 'coin']],
   'accounting-services-in-bawana-industrial-area': ['map', ['factory', 'key', 'signed', 'calendar']],
+  'accounting-services-in-laxmi-nagar': ['book', ['calendar', 'invoice', 'team', 'coin']],
+  'accounting-services-in-connaught-place': ['plate', ['building', 'invoice', 'scales', 'shop']],
+  'accounting-services-in-narela-industrial-area': ['factory', ['boxes', 'calculator', 'shield', 'invoice']],
 };
 
 let i = 0;

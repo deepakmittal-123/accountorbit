@@ -15,7 +15,10 @@ for (const r of routes) {
   if (!r.built) { r.indexable = false; r.publication = 'NOT_PUBLICATION_ELIGIBLE'; continue; }
   const html = readFileSync(join('_site', r.url, 'index.html'), 'utf8');
   const main = (html.match(/<main[\s\S]*<\/main>/) || [''])[0];
-  const notes = [...main.matchAll(/<mark class="pending"><strong>[^<]*<\/strong>\s*([\s\S]*?)<\/mark>/g)].map((m) => m[1].replace(/<[^>]+>/g, '').trim());
+  // Open facts render as HTML comments (see the `pending` shortcode in eleventy.config.js).
+  // If that format changes, this must change with it, or held pages would be marked eligible.
+  const notes = [...main.matchAll(/<!-- open fact: ([\s\S]*?) -->/g)].map((m) => m[1].trim());
+  if (!notes.length && /class="pending"|Not yet available:/.test(main)) throw new Error(`${r.url}: open-fact markup not recognised`);
   const blockers = [...notes, ...(OTHER_BLOCKERS[r.url] || [])];
   if (blockers.length) r.blockers = blockers;
   r.indexable = blockers.length === 0;

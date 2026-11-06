@@ -446,19 +446,19 @@
   "parent": "/locations/commercial-professional/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Mainly residential with mixed commerce. No trade pattern was found that differs from the commercial and professional hub."
+  "decision": "Mainly residential with sector markets. Rechecked November 2026: no reputable source shows a trade cluster with distinct accounting needs."
  },
  {
   "url": "/locations/accounting-services-in-laxmi-nagar/",
-  "name": "Accounting Services in Laxmi Nagar",
+  "name": "Accounting in Laxmi Nagar",
   "type": "Location page",
-  "status": "MERGED_WITH_HUB",
-  "built": false,
-  "indexable": false,
+  "status": "QA_PASSED",
+  "built": true,
+  "indexable": true,
   "parent": "/locations/commercial-professional/",
-  "publication": "NOT_PUBLICATION_ELIGIBLE",
+  "publication": "PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Coaching and electronics are reported, but only by vendor and property sites. The offices and shops here follow patterns already covered elsewhere."
+  "score": 75
  },
  {
   "url": "/locations/accounting-services-in-janakpuri/",
@@ -470,7 +470,7 @@
   "parent": "/locations/commercial-professional/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "District-centre offices and residential commerce. Nothing distinct from the commercial and professional hub."
+  "decision": "District-centre offices, retail and a weekly market. Rechecked November 2026: nothing distinct from the commercial and professional hub and the retail and consultants industry pages."
  },
  {
   "url": "/locations/accounting-services-in-netaji-subhash-place/",
@@ -482,19 +482,19 @@
   "parent": "/locations/commercial-professional/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "A district centre of offices. Its accounts would match the commercial and professional hub, so a page would only swap the name."
+  "decision": "Office towers and co-working space by the metro interchange. Rechecked November 2026: no source names a dominant trade or an accounting need beyond the commercial and professional hub."
  },
  {
   "url": "/locations/accounting-services-in-connaught-place/",
-  "name": "Accounting Services in Connaught Place",
+  "name": "Accounting in Connaught Place",
   "type": "Location page",
-  "status": "MERGED_WITH_HUB",
-  "built": false,
-  "indexable": false,
+  "status": "QA_PASSED",
+  "built": true,
+  "indexable": true,
   "parent": "/locations/commercial-professional/",
-  "publication": "NOT_PUBLICATION_ELIGIBLE",
+  "publication": "PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Offices and professional practices. Accounts follow the kind of practice, which the industry pages cover."
+  "score": 75
  },
  {
   "url": "/locations/accounting-services-in-rajendra-place/",
@@ -506,7 +506,7 @@
   "parent": "/locations/commercial-professional/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "A district centre of offices. Its accounts would match the commercial and professional hub, so a page would only swap the name."
+  "decision": "An office complex with restaurants and some insurance branch offices. Rechecked November 2026: no characteristic trade, so its accounts match the commercial and professional hub."
  },
  {
   "url": "/locations/accounting-services-in-saket/",
@@ -518,7 +518,7 @@
   "parent": "/locations/commercial-professional/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Mainly residential and retail, with no accounting need tied to the area."
+  "decision": "Malls, offices and housing. Mall-tenant accounting is not specific to Saket and is not well sourced. Rechecked November 2026: no separate page."
  },
  {
   "url": "/locations/accounting-services-in-pitampura/",
@@ -530,7 +530,7 @@
   "parent": "/locations/commercial-professional/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Mainly residential, with no accounting need tied to the area."
+  "decision": "Mainly residential; its commercial side is the Netaji Subhash Place offices, which follow the commercial hub. Rechecked November 2026: no distinct accounting need."
  },
  {
   "url": "/locations/accounting-services-in-karol-bagh/",
@@ -626,7 +626,7 @@
   "parent": "/locations/wholesale-trading/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Central Market is retail, and shop accounts do not change by address. The retail shops page covers this."
+  "decision": "Central Market is garment and fabric retail, documented only by shopping guides. Shop accounts do not change by address, and the retail shops page covers them. Rechecked November 2026."
  },
  {
   "url": "/locations/accounting-services-in-okhla-industrial-area/",
@@ -650,7 +650,7 @@
   "parent": "/locations/industrial-manufacturing/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "One report mentions kitchen and hotel equipment. That is too thin for a separate page, and made-to-order work is on the manufacturers page."
+  "decision": "Kitchen equipment appears only in directories, and an old official printing cluster is recorded as inactive. Printing is on the Okhla page and made-to-order work on the manufacturers page. Rechecked November 2026."
  },
  {
   "url": "/locations/accounting-services-in-wazirpur-industrial-area/",
@@ -690,15 +690,15 @@
  },
  {
   "url": "/locations/accounting-services-in-narela-industrial-area/",
-  "name": "Accounting Services in Narela Industrial Area",
+  "name": "Accounting in Narela Industrial Area",
   "type": "Location page",
-  "status": "MERGED_WITH_HUB",
-  "built": false,
-  "indexable": false,
+  "status": "QA_PASSED",
+  "built": true,
+  "indexable": true,
   "parent": "/locations/industrial-manufacturing/",
-  "publication": "NOT_PUBLICATION_ELIGIBLE",
+  "publication": "PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Shares the relocation-scheme plot questions covered on the Bawana page. Evidence of its own trades is limited to a single regulatory report."
+  "score": 75
  },
  {
   "url": "/locations/accounting-services-in-mangolpuri-industrial-area/",
@@ -710,7 +710,7 @@
   "parent": "/locations/industrial-manufacturing/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Listed officially, but no reliable account of its activity was found. A page would have nothing distinct to say."
+  "decision": "Press reports name a shoe factory, a circuit-breaker unit and a rubber unit, so no single trade is shown. Footwear units are covered on the Narela page. Rechecked November 2026."
  },
  {
   "url": "/locations/accounting-services-in-patparganj-industrial-area/",
@@ -722,7 +722,7 @@
   "parent": "/locations/industrial-manufacturing/",
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
-  "decision": "Only one dated trade report on garment units was found. Garment job work is covered by the Okhla page."
+  "decision": "Reports point to offset printing (2022) and shrinking garment units. Both are covered on the Okhla page, so there is nothing distinct to say. Rechecked November 2026."
  },
  {
   "url": "/guides/how-to-hire-an-accountant-in-delhi/",

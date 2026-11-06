@@ -1,0 +1,28 @@
+{#- Mobile accordion for one top-level item, inside the existing Menu. Expects `m` and `page`.
+    Rendered expanded so every link is reachable without JavaScript; site.js collapses it and reveals the toggle. -#}
+<div class="macc" data-macc>
+  <div class="macc__row">
+    <a class="macc__link" href="{{ m.hub }}"{% if page.url == m.hub %} aria-current="page"{% endif %}>{{ m.label }}</a>
+    <button class="macc__toggle" type="button" aria-expanded="true" aria-controls="macc-{{ m.id }}" hidden>
+      <span class="visually-hidden">{{ m.label }} pages</span>
+      <svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true" focusable="false"><path d="M1.5 1.75 6 6.25l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+  <div class="macc__panel" id="macc-{{ m.id }}">
+    {%- for g in m.groups %}
+    <p class="macc__title" id="macc-{{ m.id }}-{{ loop.index }}">{{ g.title }}</p>
+    <ul class="macc__list" aria-labelledby="macc-{{ m.id }}-{{ loop.index }}">
+      {%- if g.hub %}
+      <li class="macc__hub"><a href="{{ g.hub.url }}"{% if page.url == g.hub.url %} aria-current="page"{% endif %}>{{ g.hub.label }}</a></li>
+      {%- endif %}
+      {%- for i in g.items %}
+      <li><a href="{{ i.url }}"{% if page.url == i.url %} aria-current="page"{% endif %}>{{ i.label }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- if g.covered.length %}
+    <p class="macc__covered">Also covered on that page: {{ g.covered | join(", ") }}</p>
+    {%- endif %}
+    {%- endfor %}
+    <a class="macc__all" href="{{ m.hub }}">{{ m.all }}</a>
+  </div>
+</div>
