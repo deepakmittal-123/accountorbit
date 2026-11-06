@@ -114,8 +114,23 @@
       </div>
     </div>
     <div class="wrap site-footer__base">
-      <p>Guides are written from official sources, including the {% ext "https://www.gst.gov.in/", "GST" %}, {% ext "https://www.incometax.gov.in/", "Income Tax" %} and {% ext "https://udyamregistration.gov.in/", "Udyam" %} portals. Advice on your own situation comes from the qualified professional you engage. <a href="/disclaimer/">Disclaimer</a>.</p>
-      <p>&copy; {{ site.name }}</p>
+      <div class="footer-sources">
+        <div class="footer-sources__main">
+        <p class="footer-sources__lead"><span class="footer-sources__label">Official sources</span> Guides are written from official sources, including:</p>
+        <ul class="footer-sources__list">
+          <li>{% ext "https://www.gst.gov.in/", "GST portal" %}</li>
+          <li>{% ext "https://www.incometax.gov.in/", "Income Tax portal" %}</li>
+          <li>{% ext "https://udyamregistration.gov.in/", "Udyam portal" %}</li>
+        </ul>
+        </div>
+        <p class="footer-sources__note">Advice on your own situation comes from the qualified professional you engage.</p>
+      </div>
+      <div class="footer-bar">
+        <p class="footer-bar__copy">&copy; {{ buildYear }} {{ site.name }}. All Rights Reserved.</p>
+        <ul class="footer-bar__links">
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
   <script src="/assets/js/site.js" defer></script>

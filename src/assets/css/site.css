@@ -395,7 +395,30 @@ a:hover { color: var(--amber); }
 .footer-title { color: var(--gold); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.55rem; }
 .footer-list li { padding-block: 0.2rem; }
 .footer-owner { margin-top: 0.4rem; }
-.site-footer__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.16); font-size: 0.9rem; }
+/* Footer base: a sources strip, then the copyright bar. Text stays at #c7d6db or white on navy (over 11:1). */
+.site-footer__base { margin-top: 2.5rem; border-top: 1px solid rgba(255, 255, 255, 0.16); font-size: 0.9rem; }
+.footer-sources { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem 1.1rem; padding-block: 1.35rem; }
+.footer-sources__main { display: grid; gap: 0.7rem; }
+.footer-sources__lead { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+.footer-sources__label { display: inline-block; padding: 0.22rem 0.7rem; border: 1px solid rgba(255, 194, 71, 0.5); border-radius: var(--pill); color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.4; }
+.footer-sources__list { display: flex; flex-wrap: wrap; align-items: center; row-gap: 0.4rem; }
+.footer-sources__list li { display: flex; align-items: center; white-space: nowrap; }
+.footer-sources__list li + li::before { content: ""; width: 1px; height: 0.95em; margin-inline: 0.85rem; background: rgba(255, 255, 255, 0.28); }
+.footer-sources__list a { font-weight: 600; text-underline-offset: 0.2em; }
+.footer-sources__note { flex-basis: 100%; color: #c7d6db; }
+.footer-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 2rem; padding-top: 1.15rem; border-top: 1px solid rgba(255, 255, 255, 0.09); }
+.footer-bar__copy { color: var(--on-dark); font-weight: 500; letter-spacing: 0.01em; }
+.footer-bar__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.footer-bar__links a { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; text-underline-offset: 0.2em; }
+@media (max-width: 23.99rem) { /* the three links wrap here, so spacing replaces the dividers to avoid a stray rule */
+  .footer-sources__list { column-gap: 1.25rem; }
+  .footer-sources__list li + li::before { display: none; }
+}
+@media (min-width: 60rem) {
+  .footer-sources { flex-wrap: nowrap; justify-content: space-between; gap: 1.5rem 2.5rem; }
+  .footer-sources__note { flex-basis: auto; max-width: 25rem; text-align: right; }
+  .footer-bar { padding-top: 0.75rem; }
+}
 
 /* ---------- Inner pages ---------- */
 .page-head { position: relative; overflow: hidden; background: linear-gradient(115deg, var(--mint) 0%, #d3f1ec 60%, var(--mint-strong) 100%); padding-block: 1.25rem clamp(1.75rem, 4vw, 3rem); }
