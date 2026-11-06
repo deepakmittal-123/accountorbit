@@ -11,8 +11,8 @@ headTone: dark
 <section class="section" aria-labelledby="stages-title">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="stages-title">Who holds what, at each stage</h2>
-      <p>Most sites describe a process. The questions that matter are who you speak to, who has your details, and who is responsible for each part of the work.</p>
+      <h2 id="stages-title">The five stages, and who holds what</h2>
+      <p>Each stage shows what you do, what happens, who has your details and who is responsible for the work. Nothing is agreed until the scope, the fee and who signs each part are in writing.</p>
     </header>
     <section class="data-table-wrap" tabindex="0" aria-label="Enquiry stages table, scrolls sideways on small screens">
       <table class="data-table stage-table">
@@ -20,9 +20,9 @@ headTone: dark
           <tr><th scope="col">Stage</th><th scope="col">What happens</th><th scope="col">Who has your details</th><th scope="col">Who is responsible for the work</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">1. Call</th><td>You call and describe the work. The {% routeLink "/request-an-accountant/", "requirements page" %} shows what to have ready.</td><td>AccountOrbit ({{ site.owner.name }})</td><td>No one yet. Nothing has been agreed.</td></tr>
-          <tr><th scope="row">2. Discussion</th><td>Deepak discusses the requirement with you directly, including any dates you are working to.</td><td>AccountOrbit</td><td>No one yet.</td></tr>
-          <tr><th scope="row">3. Scope</th><td>The task, the records involved, the timing, and any part the law reserves for a qualified professional are clarified.</td><td>AccountOrbit</td><td>No one yet. You can stop here.</td></tr>
+          <tr><th scope="row">1. Call</th><td>You call and say what you need done, your type of business and any date you are working to. The {% routeLink "/request-an-accountant/", "requirements page" %} shows what to have ready.</td><td>AccountOrbit ({{ site.owner.name }})</td><td>No one yet. Nothing has been agreed.</td></tr>
+          <tr><th scope="row">2. Discussion</th><td>Deepak discusses the requirement with you directly: what has happened so far, the records you keep and how, and whether it is one-time or recurring work.</td><td>AccountOrbit</td><td>No one yet.</td></tr>
+          <tr><th scope="row">3. Scope</th><td>Together you pin down the task, the records involved and the timing, and identify any part the law reserves for a qualified professional.</td><td>AccountOrbit</td><td>No one yet. You can stop here.</td></tr>
           <tr><th scope="row">4. Next steps</th><td>Deepak coordinates the next steps. If another professional is needed for part of the work, your details are shared with them only if you agree.</td><td>AccountOrbit, and any professional you agree to</td><td>Before work starts, get in writing who does and signs each part, and the fee.</td></tr>
           <tr><th scope="row">5. The work</th><td>The work goes ahead as agreed in writing.</td><td>As agreed with you</td><td>Whoever is named in writing for each part. You remain responsible for your own filings and records.</td></tr>
         </tbody>
@@ -82,11 +82,11 @@ headTone: dark
   <div class="wrap cta-band__inner">
     <div>
       <h2>Ready to describe the work?</h2>
-      <p>Call {{ site.phoneDisplay }} to describe what you need. You speak with {{ site.owner.name }} directly, and he coordinates the next steps. Professionals can read <a href="/for-accounting-professionals/">our note for them</a>.</p>
+      <p>Call to describe what you need. You speak with {{ site.owner.name }} directly, and he coordinates the next steps. Professionals can read <a href="/for-accounting-professionals/">our note for them</a>.</p>
     </div>
     <div class="cta-band__actions">
-      <a class="btn btn--gold" href="{{ site.phoneHref }}">Speak with {{ site.owner.name }}</a>
-      <a class="btn btn--ghost" href="/request-an-accountant/">What to prepare</a>
+      {% include "partials/call-button.njk" %}
+      <a class="btn btn--ghost" href="/request-an-accountant/">View What to Prepare</a>
     </div>
   </div>
 </section>

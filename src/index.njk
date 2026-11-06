@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: Accounting and Tax Support in Delhi | AccountOrbit
+title: Accounting and Tax Services in Delhi | AccountOrbit
 description: Speak directly with Deepak Mittal, owner of AccountOrbit, about your accounting, GST and income tax requirements in Delhi, and get clear on who does what.
 ---
 {% if not env.isPreview %}<script type="application/ld+json">
@@ -18,11 +18,11 @@ description: Speak directly with Deepak Mittal, owner of AccountOrbit, about you
   <div class="wrap hero__grid">
     <div class="hero__copy">
       <p class="eyebrow eyebrow--gold">Owner-managed accounting and tax support &middot; Delhi</p>
-      <h1>Find accounting and tax support in Delhi, <em>and talk to the owner.</em></h1>
-      <p class="hero__lede">Speak directly with {{ site.owner.name }}, the owner of AccountOrbit, about your accounting and tax requirements. Deepak manages customer communication himself, helps clarify the work involved and coordinates the next steps.</p>
+      <h1>Accounting and tax services in Delhi, <em>with one number to call.</em></h1>
+      <p class="hero__lede">Need help with bookkeeping, GST returns, income tax, TDS, payroll or company compliance? Call AccountOrbit to discuss your requirement with {{ site.owner.name }} and agree the right next steps.</p>
       <div class="hero__actions">
-        <a class="btn btn--gold" href="{{ site.phoneHref }}">Speak with {{ site.owner.name }}</a>
-        <a class="btn btn--ghost" href="/services/">Explore accounting services</a>
+        {% include "partials/call-button.njk" %}
+        <a class="btn btn--ghost" href="/services/">View Accounting Services</a>
       </div>
     </div>
     <img class="hero__art" src="/assets/illustrations/home.svg" alt="" width="640" height="480">
@@ -32,7 +32,7 @@ description: Speak directly with Deepak Mittal, owner of AccountOrbit, about you
       <figcaption id="taccount-title">Who does what, in one account</figcaption>
       <div class="taccount__cols">
         <div class="taccount__col">
-          <p class="taccount__head">{{ site.owner.name }}, AccountOrbit</p>
+          <p class="taccount__head">{{ site.owner.name }}</p>
           <ul>
             <li>Speaks with you directly</li>
             <li>Clarifies what the work involves</li>
@@ -67,7 +67,7 @@ description: Speak directly with Deepak Mittal, owner of AccountOrbit, about you
     <header class="section-head section-head--center">
       <p class="eyebrow">Start with the work</p>
       <h2 id="work-title">What do you need help with?</h2>
-      <p>Most searches for an accountant begin with a specific job: a pending return, untidy books, a notice in the post. Mention yours when you enquire.</p>
+      <p>Most searches for an accountant begin with a specific job: a pending return, untidy books, a notice in the post. Mention yours when you call.</p>
     </header>
     <div class="work-grid">
       <div class="work-group">
@@ -110,6 +110,7 @@ description: Speak directly with Deepak Mittal, owner of AccountOrbit, about you
         </ul>
       </div>
     </div>
+    <p class="section-actions"><a class="btn btn--plain" href="/services/">View Accounting Services</a></p>
   </div>
 </section>
 
@@ -133,6 +134,7 @@ description: Speak directly with Deepak Mittal, owner of AccountOrbit, about you
         <div><dt><img class="card-icon" src="/assets/illustrations/icon-rocket.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-startups/", "Startups" %}</dt><dd>Founder expenses and clean records</dd></div>
         <div><dt><img class="card-icon" src="/assets/illustrations/icon-checklist.svg" alt="" width="96" height="96" loading="lazy">{% routeLink "/industries/accounting-for-small-businesses/", "Small businesses" %}</dt><dd>First set-up and a monthly routine</dd></div>
       </dl>
+    <p class="section-actions"><a class="btn btn--plain" href="/industries/">View Industries</a></p>
   </div>
 </section>
 
@@ -248,7 +250,7 @@ description: Speak directly with Deepak Mittal, owner of AccountOrbit, about you
       <div class="about__text">
         <p>Looking for an accountant in Delhi usually means sorting through firms, directories and online filing services. It is rarely clear who you will speak to, who will do the work, or what they are qualified to do.</p>
         <p>AccountOrbit is owned and managed by {{ site.owner.name }}. He speaks with customers directly, helps them work out what their accounting or tax work involves, and coordinates the next steps. Where the law reserves a task for a qualified professional, this site says so.</p>
-        <a class="btn btn--gold about__cta" href="{{ site.phoneHref }}">Speak with {{ site.owner.name }}</a>
+        <a class="btn btn--gold about__cta" href="/how-it-works/">View How AccountOrbit Works</a>
         <p class="about__more">More on <a href="/about-us/">who runs AccountOrbit</a> and <a href="/how-it-works/">how it works</a>.</p>
       </div>
     </div>
@@ -285,7 +287,7 @@ description: Speak directly with Deepak Mittal, owner of AccountOrbit, about you
         </article>
       </div>
       <div class="owner-actions">
-        <a class="btn btn--gold" href="/about-me/">Read More About Deepak Mittal</a>
+        <a class="btn btn--gold" href="/about-me/">View Deepak Mittal's Profile</a>
         <a class="btn btn--plain" href="/contact-us/">Contact AccountOrbit</a>
       </div>
     </div>
@@ -440,7 +442,7 @@ description: Speak directly with Deepak Mittal, owner of AccountOrbit, about you
           </div>
         </article>
     </div>
-    <p class="section-actions"><a class="btn" href="/guides/">See all guides</a></p>
+    <p class="section-actions"><a class="btn" href="/guides/">View Accounting Guides</a></p>
     </div>
   </div>
 </section>

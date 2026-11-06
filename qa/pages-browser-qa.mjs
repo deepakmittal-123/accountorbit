@@ -147,7 +147,7 @@ for (const u of REP) {
   const res = await page.goto(`${base}/no-such-page-here/`, { waitUntil: 'networkidle' });
   const f = await facts(page);
   check('Missing page returns 404', res.status() === 404, res.status());
-  check('Custom 404 page shows with styling', /does not balance/.test(await page.locator('h1').innerText()) && f.cssApplied && f.fontsLoaded > 0, f.title);
+  check('Custom 404 page shows with styling', /We can't find that page/.test(await page.locator('h1').innerText()) && f.cssApplied && f.fontsLoaded > 0, f.title);
   const home = await page.locator('.notfound__links a').first().getAttribute('href');
   check('404 links home inside the preview', home === PREFIX, home);
   await ctx.close();

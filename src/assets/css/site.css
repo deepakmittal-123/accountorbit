@@ -96,8 +96,17 @@ a:hover { color: var(--amber); }
 .site-logo:focus-visible { outline: 3px solid var(--deep); outline-offset: 4px; }
 .site-header .btn { background: var(--gold); border-color: var(--gold); color: var(--ink); }
 .site-header .btn:hover { background: var(--gold-hover); border-color: var(--gold-hover); }
-.header-phone { display: none; color: var(--deep); font-weight: 700; text-decoration: none; white-space: nowrap; font-variant-numeric: lining-nums; }
-.header-phone:hover { color: var(--amber); text-decoration: underline; }
+/* Header call button: "Call Deepak" everywhere, with the number added where the header has room */
+.header-call__num { display: none; margin-left: 0.55rem; padding-left: 0.55rem; border-left: 1.5px solid rgba(7, 93, 88, 0.35); font-variant-numeric: lining-nums; }
+
+/* Premium two-line direct-call button (partials/call-button.njk). One tel: link, no nested controls. */
+.btn-call { display: inline-flex; align-items: center; gap: 0.8rem; min-height: 3.6rem; padding: 0.55rem 1.4rem 0.55rem 0.6rem; background: var(--gold); color: var(--deep); border: 1.5px solid var(--gold); border-radius: 16px; text-decoration: none; text-align: left; box-shadow: 0 10px 22px -14px rgba(138, 90, 0, 0.7); transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s; }
+.btn-call:hover { background: var(--gold-hover); border-color: var(--gold-hover); color: var(--deep); transform: translateY(-1px); box-shadow: 0 14px 26px -14px rgba(138, 90, 0, 0.75); }
+.btn-call:focus-visible { outline: 3px solid var(--deep); outline-offset: 3px; }
+.btn-call__icon { display: inline-grid; place-items: center; flex: none; width: 2.5rem; height: 2.5rem; border-radius: 12px; background: var(--deep); color: var(--white); }
+.btn-call__text { display: flex; flex-direction: column; line-height: 1.2; }
+.btn-call__label { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.01em; }
+.btn-call__num { font-size: 1.18rem; font-weight: 800; letter-spacing: 0.01em; white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
 .desktop-nav { display: none; }
 .desktop-nav a { padding: 0.4rem 0; color: var(--ink); font-weight: 500; text-decoration: none; font-size: 0.98rem; white-space: nowrap; }
 .desktop-nav a:hover { color: var(--deep); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 0.4em; }
@@ -180,7 +189,7 @@ a:hover { color: var(--amber); }
 .hero h1 { font-size: clamp(2.35rem, 6.2vw, 4.4rem); font-weight: 800; line-height: 1.06; letter-spacing: -0.032em; color: var(--band-2); }
 .hero h1 em { font-family: var(--accent); font-weight: 500; font-size: 1.06em; letter-spacing: -0.015em; color: var(--amber); }
 .hero__lede { margin-top: 1.25rem; max-width: 36rem; font-size: clamp(1.06rem, 1.8vw, 1.2rem); color: var(--ink); }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.75rem; margin-top: 1.75rem; }
 .hero__actions .btn { flex: 0 1 auto; }
 .hero .btn--ghost { border-color: var(--deep); color: var(--deep); }
 .hero .btn--ghost:hover { background: rgba(255, 255, 255, 0.55); border-color: var(--deep); color: var(--deep); }
@@ -201,7 +210,7 @@ a:hover { color: var(--amber); }
 .taccount__col { padding: 0.9rem 0.9rem 1rem; min-width: 0; }
 .taccount__col:first-child { padding-left: 0; border-right: 2px solid var(--deep); }
 .taccount__col:last-child { padding-right: 0; }
-.taccount__head { font-size: clamp(0.72rem, 2.6vw, 0.82rem); font-weight: 800; letter-spacing: 0.04em; white-space: nowrap; text-transform: uppercase; color: var(--deep); margin-bottom: 0.7rem; }
+.taccount__head { font-size: clamp(0.72rem, 2.6vw, 0.82rem); font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--deep); margin-bottom: 0.7rem; }
 .taccount li { font-size: clamp(0.92rem, 1.5vw, 1rem); line-height: 1.35; padding-block: 0.5rem; border-top: 1px solid var(--rule); }
 .taccount__total { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-top: 0.8rem; border-top: 2px solid var(--deep); font-size: 0.98rem; }
 .taccount__total strong { font-family: var(--accent); font-size: 1.6rem; font-weight: 500; font-style: italic; color: var(--amber); padding-inline: 0.2rem; border-bottom: 3px solid var(--gold); }
@@ -278,8 +287,8 @@ a:hover { color: var(--amber); }
 .section--band > .wrap, .about > .wrap { position: relative; z-index: 1; }
 .section--band h2, .about h2 { color: var(--on-dark); }
 .section--band :focus-visible, .about :focus-visible, .cta-band :focus-visible, .site-footer :focus-visible { outline-color: var(--gold); }
-.about a:not(.btn) { color: var(--gold); }
-.about a:not(.btn):hover { color: var(--on-dark); }
+.about a:not(.btn):not(.btn-call) { color: var(--gold); }
+.about a:not(.btn):not(.btn-call):hover { color: var(--on-dark); }
 .about__intro { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
 .about__art { width: 100%; max-width: 26rem; justify-self: center; }
 .about__intro h2 { margin-bottom: 1rem; }
@@ -495,7 +504,7 @@ a:hover { color: var(--amber); }
 .cta-band__inner { position: relative; z-index: 1; display: grid; gap: 1.25rem 2.5rem; align-items: center; }
 .cta-band h2 { font-size: clamp(1.55rem, 3.2vw, 2.25rem); }
 .cta-band p { color: var(--on-dark-muted); margin-top: 0.5rem; max-width: 40rem; }
-.cta-band a:not(.btn) { color: var(--gold); }
+.cta-band a:not(.btn):not(.btn-call) { color: var(--gold); }
 .cta-band__actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
 .cta-band__art { display: none; }
 
@@ -639,7 +648,7 @@ a:hover { color: var(--amber); }
 .side-card h2 { font-size: 1.2rem; margin-bottom: 0.5rem; }
 .side-card--dark { background: linear-gradient(120deg, var(--band) 0%, var(--band-2) 100%); color: var(--on-dark); border-color: var(--band); }
 .side-card--dark p { margin-bottom: 0.75rem; color: var(--on-dark-muted); }
-.side-card--dark a:not(.btn) { color: var(--gold); }
+.side-card--dark a:not(.btn):not(.btn-call) { color: var(--gold); }
 .side-card--dark :focus-visible { outline-color: var(--gold); }
 .side-card--warn { background: var(--warn-bg); border-color: var(--warn-rule); }
 .side-note { margin-top: 0.7rem; font-size: 0.93rem; color: var(--muted); }
@@ -661,7 +670,8 @@ a:hover { color: var(--amber); }
   h2 { font-size: 1.7rem; }
   .section-head { margin-bottom: 1.4rem; }
   .section-head > p:last-child:not(.eyebrow), .about__text p, .start__lede { font-size: 1rem; }
-  .hero__actions .btn { flex: 1 1 100%; }
+  .hero__actions .btn, .hero__actions .btn-call { flex: 1 1 100%; }
+  .btn-call { justify-content: center; }
   .hero__art { max-width: 24rem; }
   .page-head { padding-block: 0.9rem 1.5rem; }
   .page-head__art { max-width: 13rem; }
@@ -740,7 +750,7 @@ a:hover { color: var(--amber); }
 
 @media (min-width: 82rem) {
   .site-header .wrap { max-width: 80rem; }
-  .header-phone { display: inline; }
+  .header-call__num { display: inline; }
 }
 
 @media (max-width: 26.5rem) {

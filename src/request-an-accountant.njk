@@ -129,7 +129,7 @@ extraJs: /assets/js/enquiry-form.js
         </fieldset>
 
         <div class="form-actions">
-          <button class="btn btn--large-text" type="submit"{% if not form.endpoint %} disabled aria-describedby="submit-note"{% endif %}>Send my enquiry</button>
+          <button class="btn btn--large-text" type="submit"{% if not form.endpoint %} disabled aria-describedby="submit-note"{% endif %}>Send My Enquiry</button>
           {% if not form.endpoint %}<p id="submit-note" class="field__hint">Online sending opens once the form is connected. To enquire now, call {{ site.phoneDisplay }}.</p>{% endif %}
         </div>
       </form>
@@ -138,7 +138,7 @@ extraJs: /assets/js/enquiry-form.js
     <aside class="enquiry__side" aria-label="Before you enquire">
       <div class="side-card side-card--dark">
         <h2>Speak with {{ site.owner.name }}</h2>
-        <p>Have the same details ready and call. You speak with Deepak directly. For anything else, see <a href="/contact-us/">contact</a>.</p>
+        <p>Have the same details ready and call. You speak with Deepak directly. For other questions, see <a href="/contact-us/">the contact page</a>.</p>
         <a class="btn btn--gold btn--wide" href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>
       </div>
       <div class="side-card">
@@ -169,7 +169,7 @@ extraJs: /assets/js/enquiry-form.js
   <div class="wrap">
     <header class="section-head">
       <h2 id="describe-title">How to describe the work</h2>
-      <p>Saying what has happened, what is due and what you use today helps whoever reviews it. These examples are illustrative, not real enquiries.</p>
+      <p>Say what has happened, what is due and how you keep records today. That lets Deepak understand the work on the first call. These examples are illustrations, not real enquiries.</p>
     </header>
     <div class="compare-cards">
       <article class="compare-card">

@@ -2,11 +2,11 @@
   <div class="wrap cta-band__inner">
     <div>
       <h2>{{ ctaTitle or 'Need help with this?' }}</h2>
-      <p>{{ ctaText or 'Describe the work to AccountOrbit.' }} You speak with {{ site.owner.name }} directly on {{ site.phoneDisplay }}, and he coordinates the next steps.</p>
+      <p>{{ ctaText or 'Describe the work to AccountOrbit.' }} You speak with {{ site.owner.name }} directly, and he coordinates the next steps.</p>
     </div>
     <div class="cta-band__actions">
-      <a class="btn btn--gold" href="{{ site.phoneHref }}">Speak with {{ site.owner.name }}</a>
-      <a class="btn btn--ghost" href="/request-an-accountant/">What to prepare</a>
+      {% include "partials/call-button.njk" %}
+      <a class="btn btn--ghost" href="/request-an-accountant/">View What to Prepare</a>
     </div>
     <img class="cta-band__art" src="/assets/illustrations/band-enquiry.svg" alt="" width="420" height="300" loading="lazy">
   </div>

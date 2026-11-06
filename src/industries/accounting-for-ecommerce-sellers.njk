@@ -73,7 +73,7 @@ needsReview: true
         <li><strong>Booking only net payouts,</strong> which hides sales and costs.</li>
         <li><strong>Ignoring returns in transit</strong> at month end.</li>
         <li><strong>Not collecting fee invoices,</strong> which leaves credit unclaimed.</li>
-        <li><strong>Treating each platform as one customer forever,</strong> without tracking settlements by period.</li>
+        <li><strong>Running one open balance for each platform,</strong> instead of tracking each settlement period, so unexplained differences pile up.</li>
         <li><strong>Pricing without true per-unit margin,</strong> after fees, returns and ads.</li>
       </ul>
 
@@ -108,6 +108,6 @@ needsReview: true
     </aside>
   </div>
 </section>
-{% set ctaTitle = "Selling online?" %}{% set ctaText = "Tell us which platforms you sell on, your monthly orders, and whether your settlements have ever been reconciled." %}
+{% set ctaTitle = "Marketplace payouts that do not match your sales?" %}{% set ctaText = "Tell us which platforms you sell on, your monthly orders, and whether your settlements have ever been reconciled." %}
 {% include "partials/cta.njk" %}
 {% related ["/services/gst-registration/|GST registration", "/services/gst-return-filing/|GST return filing", "/services/tally-zoho-accounting/|Tally and Zoho accounting"] %}

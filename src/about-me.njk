@@ -110,12 +110,12 @@ heroPortrait: true
       <article>
         <h3>By the work</h3>
         <p>Bookkeeping, GST, income tax, TDS, payroll and company compliance.</p>
-        <p class="para"><a href="/services/">See services</a></p>
+        <p class="para"><a href="/services/">View accounting services</a></p>
       </article>
       <article>
         <h3>By how you earn</h3>
         <p>Doctors, clinics, lawyers, consultants, retail shops, traders, e-commerce sellers, restaurants, manufacturers, real estate businesses, startups and small businesses.</p>
-        <p class="para"><a href="/industries/">See industries</a></p>
+        <p class="para"><a href="/industries/">View industries</a></p>
       </article>
       <article>
         <h3>By how your area works</h3>
@@ -186,9 +186,8 @@ heroPortrait: true
       <p>When you call, you speak with me. Not sure how to describe the work? Start with the task, the documents involved and any deadline, or ask about AccountOrbit itself.</p>
     </div>
     <div class="cta-band__actions">
-      <a class="btn btn--gold" href="{{ site.phoneHref }}">Call {{ site.phoneDisplay }}</a>
-      <a class="btn btn--ghost" href="/contact-us/">Contact page</a>
-      <a class="btn btn--ghost" href="/how-it-works/">How it works</a>
+      {% include "partials/call-button.njk" %}
+      <a class="btn btn--ghost" href="/how-it-works/">View How It Works</a>
     </div>
     <img class="cta-band__art" src="/assets/illustrations/band-start.svg" alt="" width="420" height="300" loading="lazy">
   </div>

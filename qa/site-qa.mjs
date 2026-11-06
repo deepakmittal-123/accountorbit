@@ -63,7 +63,7 @@ for (const url of targets) {
   const s = await p.evaluate(() => {
     const m = (q) => document.querySelector(q)?.getAttribute('content');
     const hs = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].map((h) => +h.tagName[1]);
-    return { title: document.title, desc: m('meta[name=description]'), robots: m('meta[name=robots]'), canonical: document.querySelector('link[rel=canonical]')?.href, h1: document.querySelectorAll('h1').length, jump: hs.findIndex((l, i) => i > 0 && l - hs[i - 1] > 1), jsonld: [...document.querySelectorAll('script[type="application/ld+json"]')].map((x) => x.textContent), links: [...document.querySelectorAll('a[href]')].map((a) => ({ href: a.getAttribute('href'), rel: a.rel, target: a.target })), ids: [...document.querySelectorAll('[id]')].map((e) => e.id), text: document.body.innerText, crumb: !!document.querySelector('.breadcrumb'), pend: document.querySelectorAll('mark.pending').length, imgs: [...document.images].filter((i) => !i.hasAttribute('alt')).length };
+    return { title: document.title, desc: m('meta[name=description]'), robots: m('meta[name=robots]'), canonical: document.querySelector('link[rel=canonical]')?.href, h1: document.querySelectorAll('h1').length, jump: hs.findIndex((l, i) => i > 0 && l - hs[i - 1] > 1), jsonld: [...document.querySelectorAll('script[type="application/ld+json"]')].map((x) => x.textContent), links: [...document.querySelectorAll('a[href]')].map((a) => ({ href: a.getAttribute('href'), rel: a.rel, target: a.target })), ids: [...document.querySelectorAll('[id]')].map((e) => e.id), text: document.body.innerText, crumb: !!document.querySelector('.breadcrumb'), pend: document.querySelectorAll('mark.pending').length, imgs: [...document.images].filter((i) => !i.hasAttribute('alt')).length, ctas: [...document.querySelectorAll('a.btn, a.btn-call')].map((a) => ({ t: a.textContent.replace(/s+/g, ' ').trim(), href: a.getAttribute('href') })), tels: [...document.querySelectorAll('a[href^="tel:"]')].map((a) => ({ t: a.textContent.replace(/s+/g, ' ').trim(), href: a.getAttribute('href') })) };
   });
   const r = routes.find((x) => x.url === url);
   pending += s.pend;
@@ -95,6 +95,12 @@ for (const url of targets) {
   check(`${url} phone links`, s.links.filter((l) => l.href.startsWith('tel:')).every((l) => l.href === 'tel:+918290728453'));
   const hits = banned.filter((b) => b.test(s.text)).map(String);
   check(`${url} no banned claims`, hits.length === 0, hits.join(' '));
+  const genericCta = s.ctas.filter((c) => /^(explore|discover|learn more|read more|get started|click here|know more|find out more|unlock|get connected|start your journey)/i.test(c.t));
+  check(`${url} no generic CTA labels`, genericCta.length === 0, genericCta.map((c) => c.t).join(' | '));
+  const badTel = s.tels.filter((c) => c.href !== 'tel:+918290728453' || /^view/i.test(c.t));
+  check(`${url} every phone link uses the verified number and a call label`, badTel.length === 0, badTel.map((c) => `${c.t} ${c.href}`).join(' | '));
+  const fakeCall = s.ctas.filter((c) => /^(call|talk)/i.test(c.t) && !c.href.startsWith('tel:'));
+  check(`${url} no Call/Talk label on a non-phone link`, fakeCall.length === 0, fakeCall.map((c) => `${c.t} -> ${c.href}`).join(' | '));
   check(`${url} owner-managed role and CA distinction visible`, /owned and managed by Deepak Mittal/i.test(s.text) && /not a firm of Chartered Accountants/i.test(s.text));
   check(`${url} no console or network errors`, errs.length === 0, errs.join(' | '));
   await p.close();
