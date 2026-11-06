@@ -10,7 +10,7 @@ ensureDir('qa/reports', { recursive: true });
 
 const routes = JSON.parse(readFileSync('src/_data/routes.json', 'utf8'));
 const SITE = 'https://accountorbit.in';
-const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.txt': 'text/plain', '.xml': 'application/xml' };
+const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.webp': 'image/webp', '.txt': 'text/plain', '.xml': 'application/xml' };
 const s = createServer(async (q, r) => {
   let p = new URL(q.url, 'http://x').pathname; if (p.endsWith('/')) p += 'index.html';
   try { const b = await readFile(join('_site', p)); r.writeHead(200, { 'content-type': T[extname(p)] || 'application/octet-stream' }); r.end(b); }

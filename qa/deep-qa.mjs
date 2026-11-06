@@ -10,7 +10,7 @@ import { mkdirSync as ensureDir } from 'node:fs';
 ensureDir('qa/reports', { recursive: true });
 
 const routes = JSON.parse(readFileSync('src/_data/routes.json', 'utf8')).filter((r) => r.built);
-const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png' };
+const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.webp': 'image/webp' };
 const s = createServer(async (q, r) => { let p = new URL(q.url, 'http://x').pathname; if (p.endsWith('/')) p += 'index.html'; try { const b = await readFile(join('_site', p)); r.writeHead(200, { 'content-type': T[extname(p)] || 'text/plain' }); r.end(b); } catch { r.writeHead(404); r.end('nf'); } });
 await new Promise((x) => s.listen(0, x));
 const base = `http://localhost:${s.address().port}`;

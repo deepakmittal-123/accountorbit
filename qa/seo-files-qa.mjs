@@ -97,7 +97,7 @@ for (const k of ['X-Content-Type-Options', 'Referrer-Policy', 'X-Frame-Options',
 check('_headers has no X-Robots-Tag that would conflict with eligible pages', !globals['X-Robots-Tag']);
 check('_headers caches fonts long, CSS and JS briefly, and leaves HTML to revalidate', /immutable/.test(scoped['/assets/fonts/*']?.['Cache-Control'] || '') && /max-age=3600/.test(scoped['/assets/css/*']?.['Cache-Control'] || '') && !globals['Cache-Control']);
 
-const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain' };
+const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.webp': 'image/webp', '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain' };
 const s = createServer(async (q, r) => { let p = new URL(q.url, 'http://x').pathname; if (p.endsWith('/')) p += 'index.html'; try { const b = await readFile(join('_site', p)); r.writeHead(200, { 'content-type': T[extname(p)] || 'application/octet-stream', 'content-security-policy': globals['Content-Security-Policy'] }); r.end(b); } catch { r.writeHead(404); r.end(); } });
 await new Promise((x) => s.listen(0, x));
 const browser = await chromium.launch({ channel: 'chrome' });

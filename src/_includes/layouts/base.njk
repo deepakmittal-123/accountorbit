@@ -39,7 +39,7 @@
   {% if not env.isProduction and not env.isPreview %}<aside class="draft-bar" aria-label="Development notice"><strong>Local development build.</strong>{% if not route.indexable %} This page is noindex.{% endif %}</aside>{% endif %}
   <header class="site-header">
     <div class="wrap site-header__row">
-      <a class="wordmark" href="/" aria-label="{{ site.name }} home">Account<span>Orbit</span></a>
+      <a class="site-logo" href="/"><img src="/assets/images/brand/accountorbit-logo-header.webp" alt="{{ site.name }}" width="540" height="120" fetchpriority="high"></a>
       <nav class="desktop-nav" aria-label="Main">
         {%- for item in primaryNav %}
         <a href="{{ item.href }}"{% if item.href == page.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
@@ -64,7 +64,7 @@
   <footer class="site-footer">
     <div class="wrap site-footer__grid">
       <div>
-        <p class="wordmark wordmark--light">Account<span>Orbit</span></p>
+        <p class="footer-logo"><img src="/assets/images/brand/accountorbit-logo-footer.webp" alt="" width="600" height="133" loading="lazy" decoding="async"></p>
         <p class="footer-disclosure">AccountOrbit is an independent referral platform. It is not a Chartered Accountant firm, law firm, audit practice, tax authority or government service, and it does not perform accounting, tax or legal work. Services, fees and terms are agreed directly with the professional you engage.</p>
       </div>
       <div>

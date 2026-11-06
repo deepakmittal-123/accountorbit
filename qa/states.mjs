@@ -7,7 +7,7 @@ import { chromium } from 'playwright-core';
 import { mkdirSync as ensureDir } from 'node:fs';
 ensureDir('qa/reports', { recursive: true });
 
-const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png' };
+const T = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.webp': 'image/webp' };
 const s = createServer(async (q, r) => { let p = new URL(q.url, 'http://x').pathname; if (p.endsWith('/')) p += 'index.html'; try { const b = await readFile(join('_site', p)); r.writeHead(200, { 'content-type': T[extname(p)] || 'text/plain' }); r.end(b); } catch { const b = await readFile('_site/404.html'); r.writeHead(404, { 'content-type': 'text/html' }); r.end(b); } });
 await new Promise((x) => s.listen(0, x));
 const base = `http://localhost:${s.address().port}`;

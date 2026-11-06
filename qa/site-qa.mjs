@@ -18,7 +18,7 @@ const builtUrls = routes.filter((r) => r.built).map((r) => r.url);
 const targets = args.filter((a) => a.startsWith('/')).length ? args.filter((a) => a.startsWith('/')) : builtUrls;
 const WIDTHS = quick ? [[320, 640], [390, 844], [1440, 900]] : [[320, 640], [360, 780], [375, 812], [390, 844], [768, 1024], [1024, 768], [1440, 900], [1920, 1080]];
 
-const TYPES = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.txt': 'text/plain', '.xml': 'application/xml', '.png': 'image/png' };
+const TYPES = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.txt': 'text/plain', '.xml': 'application/xml', '.png': 'image/png', '.webp': 'image/webp' };
 const server = createServer(async (req, res) => {
   const p = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^[/\\]+/, '');
   const file = join('_site', p.endsWith('/') || p.endsWith('\\') || p === '' || p === '.' ? join(p, 'index.html') : p);
