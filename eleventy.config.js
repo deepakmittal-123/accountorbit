@@ -94,7 +94,7 @@ export default function (config) {
       if (g.hub) {
         const hub = known(g.hub, g.title);
         const kids = routes.filter((r) => r.parent === g.hub && r.url.startsWith('/locations/accounting-services-in-'));
-        return { title: g.title, hub: hub.built ? { url: g.hub, label: g.hubLabel } : null,
+        return { title: g.title, hub: hub.built ? { url: g.hub } : null,
           items: kids.filter((r) => r.built).map((r) => ({ url: r.url, label: areaName(r) })).sort((a, b) => a.label.localeCompare(b.label)),
           covered: kids.filter((r) => !r.built).map(areaName).sort() };
       }

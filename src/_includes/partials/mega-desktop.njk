@@ -10,17 +10,16 @@
     <div class="mega__cols mega__cols--{{ m.groups.length }}">
       {%- for g in m.groups %}
       <div class="mega__col">
-        <p class="mega__title" id="mega-{{ m.id }}-{{ loop.index }}">{{ g.title }}</p>
+        <p class="mega__title" id="mega-{{ m.id }}-{{ loop.index }}">
+          {%- if g.hub %}<a href="{{ g.hub.url }}"{% if page.url == g.hub.url %} aria-current="page"{% endif %}>{{ g.title }}<span class="mega__go" aria-hidden="true">&rarr;</span></a>{% else %}{{ g.title }}{% endif -%}
+        </p>
         <ul class="mega__list" aria-labelledby="mega-{{ m.id }}-{{ loop.index }}">
-          {%- if g.hub %}
-          <li class="mega__hub"><a href="{{ g.hub.url }}"{% if page.url == g.hub.url %} aria-current="page"{% endif %}>{{ g.hub.label }}</a></li>
-          {%- endif %}
           {%- for i in g.items %}
           <li><a href="{{ i.url }}"{% if page.url == i.url %} aria-current="page"{% endif %}>{{ i.label }}</a></li>
           {%- endfor %}
         </ul>
         {%- if g.covered.length %}
-        <p class="mega__covered">Also covered on that page: {{ g.covered | join(", ") }}</p>
+        <p class="mega__covered">Also covered on the {{ g.title | lower }} page: {{ g.covered | join(", ") }}</p>
         {%- endif %}
       </div>
       {%- endfor %}

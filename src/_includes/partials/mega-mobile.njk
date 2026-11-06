@@ -10,17 +10,16 @@
   </div>
   <div class="macc__panel" id="macc-{{ m.id }}">
     {%- for g in m.groups %}
-    <p class="macc__title" id="macc-{{ m.id }}-{{ loop.index }}">{{ g.title }}</p>
+    <p class="macc__title" id="macc-{{ m.id }}-{{ loop.index }}">
+      {%- if g.hub %}<a href="{{ g.hub.url }}"{% if page.url == g.hub.url %} aria-current="page"{% endif %}>{{ g.title }}<span class="macc__go" aria-hidden="true">&rarr;</span></a>{% else %}{{ g.title }}{% endif -%}
+    </p>
     <ul class="macc__list" aria-labelledby="macc-{{ m.id }}-{{ loop.index }}">
-      {%- if g.hub %}
-      <li class="macc__hub"><a href="{{ g.hub.url }}"{% if page.url == g.hub.url %} aria-current="page"{% endif %}>{{ g.hub.label }}</a></li>
-      {%- endif %}
       {%- for i in g.items %}
       <li><a href="{{ i.url }}"{% if page.url == i.url %} aria-current="page"{% endif %}>{{ i.label }}</a></li>
       {%- endfor %}
     </ul>
     {%- if g.covered.length %}
-    <p class="macc__covered">Also covered on that page: {{ g.covered | join(", ") }}</p>
+    <p class="macc__covered">Also covered on the {{ g.title | lower }} page: {{ g.covered | join(", ") }}</p>
     {%- endif %}
     {%- endfor %}
     <a class="macc__all" href="{{ m.hub }}">{{ m.all }}</a>

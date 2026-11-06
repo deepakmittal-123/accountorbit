@@ -2,7 +2,8 @@
 // Desktop panels, mobile accordions and their QA all read this file through the `megaMenu` filter
 // in eleventy.config.js, which validates every URL against routes.json and drops unbuilt routes,
 // so a menu can never link to a page that does not exist.
-// Location columns are not listed by hand: each one shows the built children of its category hub.
+// Location columns are not listed by hand: each one shows the built children of its category hub,
+// and its title links to that hub (there is no separate "All ..." link).
 export default {
   services: {
     label: 'Services',
@@ -64,9 +65,9 @@ export default {
     hub: '/locations/',
     all: 'View all Delhi locations',
     groups: [
-      { title: 'Commercial and professional areas', hub: '/locations/commercial-professional/', hubLabel: 'All commercial and professional areas' },
-      { title: 'Wholesale and trading markets', hub: '/locations/wholesale-trading/', hubLabel: 'All wholesale and trading markets' },
-      { title: 'Industrial and manufacturing areas', hub: '/locations/industrial-manufacturing/', hubLabel: 'All industrial and manufacturing areas' },
+      { title: 'Commercial and professional areas', hub: '/locations/commercial-professional/' },
+      { title: 'Wholesale and trading markets', hub: '/locations/wholesale-trading/' },
+      { title: 'Industrial and manufacturing areas', hub: '/locations/industrial-manufacturing/' },
     ],
   },
 };

@@ -128,11 +128,16 @@ a:hover { color: var(--amber); }
 .mega__col + .mega__col { border-left: 1px solid var(--rule); padding-left: 2.25rem; margin-left: -0.01rem; }
 .mega__title { margin-bottom: 0.65rem; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep); }
 .mega__title::after { content: ""; display: block; width: 2rem; height: 3px; margin-top: 0.45rem; border-radius: 2px; background: var(--gold); }
+/* A category title that is also its hub link: same type, colour and gold rule, with a hover and focus state */
+.desktop-nav .mega__title a { display: inline-block; padding: 0.3rem 0; line-height: 1.45; font-size: inherit; font-weight: inherit; letter-spacing: inherit; white-space: normal; color: var(--deep); text-decoration: none; }
+.desktop-nav .mega__title a:hover { color: var(--deep); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 0.3em; }
+.desktop-nav .mega__title a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 0.3em; }
+.mega__go, .macc__go { display: inline-block; margin-left: 0.35rem; font-size: 1.05em; text-decoration: none; transition: transform 0.15s; }
+.mega__title a:hover .mega__go, .mega__title a:focus-visible .mega__go { transform: translateX(3px); }
 .mega__list li + li { margin-top: 0.1rem; }
 .desktop-nav .mega__list a { display: block; padding: 0.38rem 0.6rem; margin-inline: -0.6rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; white-space: normal; color: var(--ink); text-decoration: none; }
 .desktop-nav .mega__list a:hover { background: var(--mint); color: var(--deep); text-decoration: none; }
 .desktop-nav .mega__list a[aria-current="page"] { background: var(--mint); color: var(--deep); font-weight: 700; text-decoration: none; }
-.desktop-nav .mega__hub a { font-weight: 700; color: var(--deep); }
 .mega__covered { margin-top: 0.7rem; font-size: 0.82rem; line-height: 1.45; color: var(--muted); }
 .mega__foot { display: flex; justify-content: flex-end; margin-top: 1.25rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); }
 .desktop-nav .mega__all { padding: 0.45rem 1rem; border-radius: var(--pill); background: var(--mint); color: var(--deep); font-weight: 700; font-size: 0.93rem; text-decoration: none; }
@@ -161,8 +166,9 @@ a:hover { color: var(--amber); }
 .macc__panel { padding: 0.15rem 0 0.9rem 0.85rem; border-left: 3px solid var(--gold); margin: 0 0 0.6rem 0.2rem; }
 .macc__panel[hidden] { display: none; }
 .macc__title { margin: 0.8rem 0 0.2rem; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--deep); }
+.site-menu nav .macc__title a { display: inline-block; min-height: 2.75rem; padding: 0.8rem 0; line-height: 1.45; border-bottom: 0; font-weight: 800; color: var(--deep); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 0.3em; }
+.macc__title:has(a) { margin-bottom: 0; }
 .site-menu nav .macc__list a { padding: 0.62rem 0; min-height: 2.75rem; font-size: 0.97rem; border-bottom: 1px solid var(--mint); }
-.site-menu nav .macc__hub a { font-weight: 700; color: var(--deep); }
 .macc__covered { margin-top: 0.45rem; font-size: 0.85rem; color: var(--muted); }
 .site-menu nav .macc__all { margin-top: 0.6rem; border-bottom: 0; font-weight: 700; color: var(--deep); }
 

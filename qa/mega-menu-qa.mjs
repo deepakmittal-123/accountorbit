@@ -12,9 +12,10 @@ const axePath = require.resolve('axe-core/axe.min.js');
 const routes = JSON.parse(await readFile('src/_data/routes.json', 'utf8'));
 const built = new Set(routes.filter((r) => r.built).map((r) => r.url));
 const builtAreas = routes.filter((r) => r.built && r.url.startsWith('/locations/accounting-services-in-')).length;
-// Expected links per panel: Services and Industries are fixed by the owner's structure; Locations shows
-// the three category hubs plus every built area page.
-const EXPECT = { services: 15, industries: 12, locations: 3 + builtAreas };
+// Expected list links per panel: Services and Industries are fixed by the owner's structure; Locations lists
+// every built area page. The three Locations category titles are themselves the links to their hubs.
+const EXPECT = { services: 15, industries: 12, locations: builtAreas };
+const HUBS = ['/locations/commercial-professional/', '/locations/wholesale-trading/', '/locations/industrial-manufacturing/'];
 
 let server;
 let base = process.argv[2]?.replace(/\/$/, '');
@@ -62,6 +63,17 @@ for (const [w, h] of [[1152, 800], [1440, 900], [1920, 1080]]) {
     check(`${w}px ${id}: no duplicate links`, new Set(m.links).size === m.links.length);
     check(`${w}px ${id}: every link is a built route`, m.links.every((u) => built.has(strip(u))), m.links.filter((u) => !built.has(strip(u))).join(' '));
     check(`${w}px ${id}: columns (${id === 'services' ? 4 : 3})`, m.cols === (id === 'services' ? 4 : 3), m.cols);
+    if (id === 'locations') {
+      const t2 = await page.evaluate(() => [...document.querySelectorAll('#mega-locations .mega__title')].map((p) => {
+        const a = p.querySelector('a'); const first = p.nextElementSibling?.querySelector('a');
+        const ar = a?.getBoundingClientRect(); const fr = first?.getBoundingClientRect();
+        return { href: a?.getAttribute('href'), h: ar ? ar.height : 0, gap: ar && fr ? Math.round(fr.top - ar.bottom) : null };
+      }));
+      check(`${w}px locations: each category title links to its hub`, t2.length === 3 && t2.every((t, i) => strip(t.href || '') === HUBS[i]), t2.map((t) => t.href).join(' '));
+      check(`${w}px locations: no separate "All ..." links remain`, await page.evaluate(() => ![...document.querySelectorAll('#mega-locations a')].some((a) => /^All /.test(a.textContent.trim()))));
+      check(`${w}px locations: title links are at least 24px tall`, t2.every((t) => t.h >= 24), t2.map((t) => t.h).join(','));
+      check(`${w}px locations: first area sits directly under its title (gap under 28px)`, t2.every((t) => t.gap !== null && t.gap >= 0 && t.gap < 28), t2.map((t) => t.gap).join(','));
+    }
     check(`${w}px ${id}: panel inside viewport width`, m.left >= 0 && m.right <= m.vw, `${Math.round(m.left)}-${Math.round(m.right)}/${m.vw}`);
     check(`${w}px ${id}: panel fits the viewport height or scrolls`, m.bottom <= m.vh || m.scrollable, `${Math.round(m.bottom)}/${m.vh}`);
     check(`${w}px ${id}: "view all" goes to the hub`, strip(m.all || '') === `/${id}/`, m.all);
@@ -74,6 +86,19 @@ for (const [w, h] of [[1152, 800], [1440, 900], [1920, 1080]]) {
     }
     await page.keyboard.press('Escape');
     check(`${w}px ${id}: Escape closes and returns focus to the button`, await page.evaluate((id) => document.getElementById(`mega-${id}`).hidden && document.activeElement === document.querySelector(`[aria-controls="mega-${id}"]`), id));
+  }
+  if (w === 1440) {
+    for (const [i, hub] of HUBS.entries()) {
+      await page.goto(base + '/', { waitUntil: 'networkidle' });
+      await page.click('[aria-controls="mega-locations"]');
+      await Promise.all([page.waitForNavigation(), page.click(`#mega-locations .mega__col:nth-child(${i + 1}) .mega__title a`)]);
+      check(`${w}px clicking title ${i + 1} opens ${hub}`, strip(new URL(page.url()).pathname) === hub, page.url());
+    }
+    await page.goto(base + '/', { waitUntil: 'networkidle' });
+    await page.click('[aria-controls="mega-locations"]');
+    await page.keyboard.press('Tab');
+    check(`${w}px keyboard reaches the first title link with a visible focus ring`, await page.evaluate(() => { const a = document.activeElement; const st = getComputedStyle(a); return a.closest('.mega__title') !== null && st.outlineStyle !== 'none' && parseFloat(st.outlineWidth) >= 2; }));
+    await page.keyboard.press('Escape');
   }
   // One open at a time; outside click closes.
   await page.click('[aria-controls="mega-services"]');
@@ -130,6 +155,10 @@ for (const [w, h] of [[320, 640], [360, 780], [375, 812], [390, 844], [768, 1024
       return { shown: !p.hidden, count: links.length, visible: links.every((a) => a.getBoundingClientRect().height > 0), minTap: Math.min(...links.map((a) => a.getBoundingClientRect().height)), tog: [tog.width, tog.height], over: document.documentElement.scrollWidth - document.documentElement.clientWidth, nav: document.querySelector('.site-menu nav').scrollHeight > document.querySelector('.site-menu nav').clientHeight ? 'scrolls' : 'fits' };
     }, id);
     check(`${w}px ${id}: expands with all ${EXPECT[id]} links visible`, m.shown && m.count === EXPECT[id] && m.visible, m.count);
+    if (id === 'locations') {
+      const mt = await page.evaluate(() => [...document.querySelectorAll('#macc-locations .macc__title a')].map((a) => ({ href: a.getAttribute('href'), h: a.getBoundingClientRect().height })));
+      check(`${w}px locations: 3 category titles link to their hubs (44px targets), no "All ..." links`, mt.length === 3 && mt.every((t, i) => strip(t.href) === HUBS[i] && t.h >= 44) && !(await page.evaluate(() => [...document.querySelectorAll('#macc-locations a')].some((a) => /^All /.test(a.textContent.trim())))), JSON.stringify(mt.map((t) => t.h)));
+    }
     check(`${w}px ${id}: touch targets (toggle 44px, links 40px+)`, m.tog[0] >= 44 && m.tog[1] >= 44 && m.minTap >= 40, `${m.tog} ${m.minTap}`);
     check(`${w}px ${id}: no sideways overflow`, m.over <= 0, m.over);
     await page.click(t);
@@ -177,7 +206,7 @@ for (const [w, h] of [[320, 640], [360, 780], [375, 812], [390, 844], [768, 1024
   await page.close();
   let differ = 0;
   const ref = hrefs.length;
-  for (const u of built) { const html = await (await fetch(base + u)).text(); const n = new Set([...html.matchAll(/class="mega__list"[\s\S]*?<\/ul>/g)].flatMap((x) => [...x[0].matchAll(/href="([^"]+)"/g)].map((y) => y[1]))).size; if (n !== EXPECT.services + EXPECT.industries + EXPECT.locations) differ++; }
+  for (const u of built) { const html = await (await fetch(base + u)).text(); const n = new Set([...html.matchAll(/class="mega__(?:list|title)"[\s\S]*?<\/(?:ul|p)>/g)].flatMap((x) => [...x[0].matchAll(/href="([^"]+)"/g)].map((y) => y[1]))).size; if (n !== EXPECT.services + EXPECT.industries + EXPECT.locations + HUBS.length) differ++; }
   check(`Same complete menu on all ${built.size} built pages`, differ === 0, `${differ} differ (reference ${ref} nav targets)`);
 }
 
