@@ -48,8 +48,8 @@ for (const f of pages) {
   if (/rel="canonical"/.test(h)) note('canonical', f);
   if (/application\/ld\+json/.test(h)) note('structured data', f);
   if (/accountorbit\.in/.test(h)) note('future domain mentioned', f);
-  if (!h.includes('<strong>Public preview.</strong>')) note('preview banner', f);
-  if (/Development preview/.test(h)) note('development banner', f);
+  if (/class="draft-bar"|Public preview|has not launched/.test(h)) note('preview or development banner', f);
+  if (/Not yet available:|class="pending"/.test(h)) note('visible open-fact marker', f);
   if (PRIVATE_TERMS.test(h)) note('private details', f);
   if (SECRET.test(h)) note('secret', f);
   for (const m of h.matchAll(/<(?:a|link|script|img|source|form)\b[^>]*?\s(?:href|src|action)="([^"]+)"/g)) {
@@ -65,8 +65,8 @@ for (const f of pages) {
 for (const k of ['noindex', 'canonical', 'structured data', 'future domain mentioned', 'preview banner', 'development banner', 'private details', 'secret', 'link escapes the base path', 'link target missing', 'in-page anchor missing']) check(`All pages: ${k}`, !bad[k], (bad[k] || []).slice(0, 4).join(' | '));
 
 const form = readFileSync(join(OUT, 'request-an-accountant/index.html'), 'utf8');
-check('Enquiry form has no action and cannot be sent', !/<form[^>]*\saction=/.test(form) && /<button[^>]*type="submit"[^>]*disabled/.test(form) && /not open yet/i.test(form));
-for (const [p, re] of [['privacy-policy', /Draft\./], ['disclaimer', /Draft\./], ['terms-and-conditions', /draft/i]]) check(`${p} is marked as a draft`, re.test(readFileSync(join(OUT, p, 'index.html'), 'utf8')));
+check('Enquiry form has no action and cannot be sent', !/<form[^>]*\saction=/.test(form) && /<button[^>]*type="submit"[^>]*disabled/.test(form) && /nothing typed into it is sent/i.test(form) && /Online sending opens once the form is connected/.test(form));
+for (const p of ['privacy-policy', 'disclaimer', 'terms-and-conditions']) check(`${p} discloses its legal-review status`, /awaiting legal review/.test(readFileSync(join(OUT, p, 'index.html'), 'utf8')));
 const allText = pages.map((f) => readFileSync(join(OUT, f), 'utf8').replace(/<[^>]+>/g, ' ')).join(' ');
 for (const re of [/\bour accountants\b/i, /verified partners?/i, /government[- ]approved/i, /\bour offices?\b/i]) check(`No misleading claim: ${re.source}`, !re.test(allText));
 

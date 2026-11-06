@@ -2,7 +2,7 @@
 layout: layouts/page.njk
 permalink: /terms-and-conditions/
 title: Terms and Conditions | AccountOrbit Referral Platform
-description: The terms for using AccountOrbit, including what an introduction is and is not, who you contract with, and your responsibilities. Draft pending legal review.
+description: The terms for using AccountOrbit, including what an introduction is and is not, who you contract with, and your responsibilities.
 eyebrow: Legal
 h1: Terms and conditions
 lede: These terms set out what AccountOrbit does when you use this website or make an enquiry, and where its role ends.
@@ -13,10 +13,10 @@ needsReview: true
 <section class="section section--tight">
   <div class="wrap">
     <div class="prose">
-      <div class="note note--warn"><strong>Draft.</strong> These terms have not been reviewed by a lawyer and are not in force.</div>
+      <div class="note"><strong>Status:</strong> these terms are awaiting legal review and are not yet in force. Sections on liability and governing law will be added after that review. Questions: call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>.</div>
 
       <h2>1. Who these terms are with</h2>
-      <p>AccountOrbit is owned by {{ site.owner.name }}. {% pending "the operating entity and address that these terms are made with." %}</p>
+      <p>AccountOrbit is owned by {{ site.owner.name }}, and can be reached on <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>. {% pending "the operating entity and address that these terms are made with." %}</p>
 
       <h2>2. What AccountOrbit does</h2>
       <p>AccountOrbit is an independent referral platform. It receives enquiries from people looking for accounting or tax help, reviews them, and may introduce them to a professional where one suitable is available. It also publishes general information.</p>
@@ -28,14 +28,14 @@ needsReview: true
       <ul>
         <li>Making an enquiry does not guarantee an introduction, a response within any particular time, or that a professional will accept your work.</li>
         <li>An introduction is not a recommendation that a professional suits your needs, and it is not a statement about their qualifications or quality. Check these yourself before you engage anyone.</li>
-        <li>No checking procedure for professionals is in place at present.</li>
+        <li>AccountOrbit does not describe any professional as verified or screened. Check credentials at the source, such as {% ext "https://caconnect.icai.org/search-your-ca", "ICAI CA Connect" %}.</li>
       </ul>
 
       <h2>5. Your agreement with a professional</h2>
       <p>If you engage a professional, your contract is with them and not with AccountOrbit. They set the scope, fee and terms with you, and they are responsible for their work. Please get these in writing.</p>
 
       <h2>6. Fees</h2>
-      <p>AccountOrbit does not set professional fees. {% pending "whether AccountOrbit charges enquirers, and whether professionals pay it." %}</p>
+      <p>AccountOrbit does not set professional fees. Ask the professional for their fee in writing before you engage them. {% pending "whether AccountOrbit charges enquirers, and whether professionals pay it." %}</p>
 
       <h2>7. Your responsibilities</h2>
       <ul>
@@ -54,13 +54,9 @@ needsReview: true
       <h2>10. Website content</h2>
       <p>The text and design of this site belong to AccountOrbit unless stated otherwise. You may share links and quote short passages with credit.</p>
 
-      <h2>11. Limits of responsibility</h2>
-      <p>{% pending "a limitation of liability clause, which needs a lawyer." %}</p>
-
-      <h2>12. Governing law and disputes</h2>
-      <p>{% pending "governing law, jurisdiction and dispute handling, which need a lawyer." %}</p>
-
-      <h2>13. Changes</h2>
+      {% pending "a limitation of liability clause, which needs a lawyer." %}
+      {% pending "governing law, jurisdiction and dispute handling, which need a lawyer." %}
+      <h2>11. Changes</h2>
       <p>We may update these terms and will show the date of the latest version here. {% pending "the effective date." %}</p>
     </div>
   </div>

@@ -92,11 +92,12 @@ export default function (config) {
     return route.built ? `<a href="${url}">${label}</a>` : `<span class="route-text">${label}</span>`;
   });
 
-  // Facts only the owner or a qualified reviewer can supply. Visible in draft builds; a production build refuses to run.
+  // Facts only the owner or a qualified reviewer can supply. Kept out of visitors' view as an HTML comment, so the
+  // surrounding copy must read completely without it. A production build still refuses to run while any remain.
   config.addShortcode('pending', function (text) {
     if (isProduction) throw new Error(`Production build blocked by missing operational fact: ${text}`);
     if (byUrl.get(this.page.url)?.indexable) throw new Error(`${this.page.url} is marked indexable but has an open fact: ${text}`);
-    return `<mark class="pending"><strong>Not yet available:</strong> ${text}</mark>`;
+    return `<!-- open fact: ${String(text).replace(/--/g, '\u2014')} -->`;
   });
 
   // Related reading: lists only pages that exist, so it fills in automatically as routes are built.

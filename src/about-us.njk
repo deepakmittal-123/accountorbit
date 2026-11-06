@@ -2,9 +2,9 @@
 layout: layouts/page.njk
 permalink: /about-us/
 title: About AccountOrbit | Accounting Referral Platform, Delhi
-description: Who owns AccountOrbit, what it is for, and an honest account of what is in place today and what is not. No invented team, numbers or credentials.
+description: Who owns AccountOrbit, what the platform does, how enquiries work today and the standards its pages follow. No invented team, numbers or credentials.
 eyebrow: About
-h1: AccountOrbit is a young platform, and this page says so
+h1: An independent accounting referral platform for Delhi
 lede: AccountOrbit is an independent referral platform for people in Delhi looking for accounting and tax help. It is owned by Deepak Mittal.
 schemaType: AboutPage
 headTone: dark
@@ -14,15 +14,15 @@ headTone: dark
     <div>
       <h2 id="what-title">What it is for</h2>
       <p>Finding accounting help usually means choosing between firms, directories and online filing services without a clear view of who does the work or what they are qualified to do.</p>
-      <p class="para">AccountOrbit is meant to help with that first step: working out what kind of professional your work calls for, and enquiring about an introduction where one is possible. The work itself stays with the professional you choose.</p>
+      <p class="para">AccountOrbit helps with that first step: working out what kind of professional your work calls for, and enquiring about an introduction where one is possible. The work itself stays with the professional you choose.</p>
       <p class="para">It also publishes plain explanations, so that you can make a better decision with or without us.</p>
     </div>
     <div>
       <h2>Who is behind it</h2>
       <p>AccountOrbit is owned by {{ site.owner.name }}. Personal profiles: {% ext site.owner.facebook, "Facebook" %} and {% ext site.owner.instagram, "Instagram" %}. These are personal accounts, not AccountOrbit company pages.</p>
-      <p class="para">We state no qualifications, experience or professional memberships for the owner on this site, because none has been confirmed for publication. AccountOrbit does not present itself as a professional firm.</p>
+      <p class="para">AccountOrbit is a referral platform, not a professional firm, so the professional you engage does the work and holds any qualification it requires. We publish only facts about the owner that are confirmed for publication.</p>
       <p class="para">Read more <a href="/about-me/">about Deepak Mittal</a>.</p>
-      <p class="para">{% pending "the operating entity." %}</p>
+      {% pending "the operating entity." %}
     </div>
   </div>
 </section>
@@ -30,20 +30,20 @@ headTone: dark
 <section class="section section--tint" aria-labelledby="state-title">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="state-title">Where things stand</h2>
-      <p>A platform like this depends on arrangements you cannot see from a website. Here is the present position.</p>
+      <h2 id="state-title">How AccountOrbit works today</h2>
+      <p>A platform like this depends on arrangements you cannot see from a website, so here they are in plain terms.</p>
     </header>
     <section class="data-table-wrap" tabindex="0" aria-label="Current status, scrolls sideways on small screens">
       <table class="data-table">
         <thead><tr><th scope="col">Item</th><th scope="col">Today</th><th scope="col">What it means for you</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Phone enquiries</th><td>Number published</td><td>You can call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a></td></tr>
-          <tr><th scope="row">Online form</th><td>Built, not open</td><td>It cannot be sent until a secure destination and privacy process exist</td></tr>
-          <tr><th scope="row">Network of professionals</th><td>Not confirmed</td><td>We make no claim about who is available, how many, or where</td></tr>
-          <tr><th scope="row">Checking of professionals</th><td>No procedure in place</td><td>We do not call anyone verified. Check credentials yourself</td></tr>
-          <tr><th scope="row">Professional review of content</th><td>Not yet done</td><td>Treat guidance as general, and confirm anything important</td></tr>
-          <tr><th scope="row">Walk-in office</th><td>None published</td><td>Please do not visit an address on the basis of this site</td></tr>
-          <tr><th scope="row">Client counts, ratings, awards</th><td>None shown</td><td>We have none verified to show</td></tr>
+          <tr><th scope="row">Enquiries</th><td>By phone</td><td>Call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>. The <a href="/request-an-accountant/">enquiry page</a> shows what we ask and why</td></tr>
+          <tr><th scope="row">Online form</th><td>Opens once its secure connection and privacy process are in place</td><td>Until then, nothing you type there is sent anywhere</td></tr>
+          <tr><th scope="row">Introductions</th><td>Made where a suitable professional is available</td><td>We do not publish names, numbers or locations of professionals</td></tr>
+          <tr><th scope="row">Credentials</th><td>Checked by you, at the source</td><td>Use {% ext "https://caconnect.icai.org/search-your-ca", "ICAI CA Connect" %} for CAs. We do not label anyone verified</td></tr>
+          <tr><th scope="row">Guides and service pages</th><td>Written from official and published sources, with the date checked</td><td>Confirm how a rule applies to you with a qualified professional</td></tr>
+          <tr><th scope="row">Office</th><td>Phone-based, no walk-in office</td><td>Please call rather than visit</td></tr>
+          <tr><th scope="row">Client counts, ratings, awards</th><td>Not published</td><td>We show only what can be verified</td></tr>
         </tbody>
       </table>
     </section>

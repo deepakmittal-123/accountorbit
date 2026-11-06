@@ -109,7 +109,7 @@ GitHub Pages cannot set custom response headers, so the policies in `_headers` d
 
 The preview does not count as a launch. Before a production deployment:
 
-- The production build must pass: `npm run build:production`. It stops while any page still has a highlighted open fact, and this safeguard should stay on.
+- The production build must pass: `npm run build:production`. It stops while any page still has an open fact (a `{% pending %}` shortcode, rendered only as an HTML comment in preview builds), and this safeguard should stay on.
 - The enquiry form needs a real, reviewed endpoint, set through `ENQUIRY_ENDPOINT`. Without one, the form stays disabled and says so.
 - The host must serve `404.html` for missing pages, use HTTPS, and redirect to one canonical host.
 - If the host does not read `_headers`, apply the same headers in its own configuration.

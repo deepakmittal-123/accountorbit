@@ -87,7 +87,7 @@ for (const r of built) {
     check(`${label} images loaded`, f.imagesBroken === 0, f.imagesBroken);
     check(`${label} no sideways overflow`, f.overflow <= 0, f.overflow);
     check(`${label} noindex, nofollow, no canonical`, f.robots === 'noindex, nofollow' && !f.canonical, f.robots);
-    check(`${label} preview notice shown`, /Public preview/.test(f.banner), f.banner);
+    check(`${label} no preview banner shown to visitors`, f.banner === '', f.banner);
     const esc = f.links.filter((u) => u && u.startsWith('/') && !u.startsWith(PREFIX));
     check(`${label} no link escapes ${PREFIX}`, esc.length === 0, esc.slice(0, 3).join(' '));
     await ctx.close();

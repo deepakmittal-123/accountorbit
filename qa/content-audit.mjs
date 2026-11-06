@@ -16,8 +16,8 @@ const pages = routes.map((r) => {
   return {
     url: r.url, words, avgSentence: Math.round(words / Math.max(sentences.length, 1)), longSent,
     outInternal: new Set(links).size,
-    notes: (main.match(/class="pending"/g) || []).length,
-    notReviewed: /Not yet reviewed by a qualified/.test(main),
+    notes: (main.match(/<!-- open fact:/g) || []).length,
+    notReviewed: /confirm with a qualified professional/.test(main),
     secondary: (main.match(/\(secondary/g) || []).length,
     hasCta: /cta-band|request-an-accountant/.test(main),
     weak: ['leverage', 'seamless', 'one-stop', 'world-class', 'cutting-edge', 'delve', 'navigate the', 'in today', 'robust', 'tailored'].filter((w) => text.toLowerCase().includes(w)),

@@ -36,9 +36,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  {% if not env.isProduction %}
-  {% if env.isPreview %}<aside class="draft-bar" aria-label="Preview notice"><strong>Public preview.</strong> AccountOrbit has not launched. Online enquiries are closed, and highlighted notes mark facts that are not available yet.</aside>{% else %}<aside class="draft-bar" aria-label="Draft notice"><strong>Development preview.</strong> Not publicly launched.{% if not route.indexable %} This page is noindex. Highlighted notes mark facts that are not available yet.{% endif %}</aside>{% endif %}
-  {% endif %}
+  {% if not env.isProduction and not env.isPreview %}<aside class="draft-bar" aria-label="Development notice"><strong>Local development build.</strong>{% if not route.indexable %} This page is noindex.{% endif %}</aside>{% endif %}
   <header class="site-header">
     <div class="wrap site-header__row">
       <a class="wordmark" href="/" aria-label="{{ site.name }} home">Account<span>Orbit</span></a>
@@ -101,12 +99,12 @@
         </ul>
         {%- endif %}
         {%- if legalNav.length < 3 %}
-        <p>Remaining legal pages will be published before this site goes live.</p>
+        <p>Questions about our policies? Call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>.</p>
         {%- endif %}
       </div>
     </div>
     <div class="wrap site-footer__base">
-      <p>General information only, not personal tax or legal advice.</p>
+      <p>Guides are written from official sources, including the {% ext "https://www.gst.gov.in/", "GST" %}, {% ext "https://www.incometax.gov.in/", "Income Tax" %} and {% ext "https://udyamregistration.gov.in/", "Udyam" %} portals. Advice on your own situation comes from the qualified professional you engage. <a href="/disclaimer/">Disclaimer</a>.</p>
       <p>&copy; {{ site.name }}</p>
     </div>
   </footer>

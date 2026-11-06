@@ -204,8 +204,8 @@ check('Owner profile links are labelled personal', own.length === 2 && /personal
 check('Owner profiles are not in Organization schema', !/sameAs|deepak/i.test(JSON.stringify(schema)));
 check('Owner title not upgraded', !/(founder|managing director|chartered accountant) deepak|deepak mittal,? (ca|founder|fca|aca)/i.test(html));
 check('Social image present and declared', (await fetch(base + '/assets/og-image.png')).ok && /og:image"/.test(html));
-const noteCount = (html.match(/class="pending"/g) || []).length;
-check('Missing facts still visible on home (3 notes)', noteCount === 3, String(noteCount));
+const noteCount = (html.match(/<!-- open fact:/g) || []).length;
+check('Open facts on home still tracked (3), hidden from visitors', noteCount === 3 && !/Not yet available:/.test(html), String(noteCount));
 const routeData = JSON.parse(await readFile('src/_data/routes.json', 'utf8'));
 check('All 77 routes preserved', routeData.length === 77 && new Set(routeData.map((r) => r.url)).size === 77);
 check('Homepage is held while it has open facts', routeData.find((r) => r.url === '/').indexable !== true);

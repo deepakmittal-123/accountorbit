@@ -5,7 +5,7 @@ title: Request an Accountant in Delhi | AccountOrbit Enquiry
 description: Describe the accounting or tax help you need in Delhi. See what we ask, why we ask it, what happens next, and what you should never send with an enquiry.
 eyebrow: Enquiry
 h1: Tell us what accounting help you need
-lede: A short description of the work is enough to start. An introduction depends on a suitable professional being available, and the decision to engage anyone stays with you.
+lede: A short description of the work is enough to start. Enquiries are taken by phone, and the decision to engage anyone stays with you.
 extraJs: /assets/js/enquiry-form.js
 ---
 <section class="section section--tight">
@@ -13,8 +13,8 @@ extraJs: /assets/js/enquiry-form.js
     <div class="enquiry__main">
       {% if not form.endpoint %}
       <div class="notice" role="note">
-        <h2>Online enquiries are not open yet</h2>
-        <p>You can see the form below, but it cannot be sent until its secure destination and privacy process are in place. To enquire today, call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>.</p>
+        <h2>Enquire by phone on {{ site.phoneDisplay }}</h2>
+        <p>Call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a> to enquire. The form below shows what we will ask you. It will accept submissions once its secure connection and privacy process are in place, and until then nothing typed into it is sent.</p>
       </div>
       {% endif %}
 
@@ -113,7 +113,7 @@ extraJs: /assets/js/enquiry-form.js
           <div class="privacy-note">
             <p><strong>What we collect:</strong> your name, mobile number, email if you give it, the type of help you need, your type of business, your area of Delhi, how often you need help, and your description.</p>
             <p><strong>Why:</strong> to review your enquiry and, only if you agree below, to share these details with a professional being considered for your work.</p>
-            <p><strong>Changing your mind:</strong> {% pending "how to withdraw consent, have details deleted or complain, and how long enquiries are kept." %}</p>
+            <p><strong>Changing your mind:</strong> the route for withdrawing consent or asking for deletion will be set out in the privacy policy before this form opens. Questions now: call {{ site.phoneDisplay }}. {% pending "how to withdraw consent, have details deleted or complain, and how long enquiries are kept." %}</p>
             {% if '/privacy-policy/' | built %}<p>Read the full {% routeLink "/privacy-policy/", "privacy policy" %}.</p>{% endif %}
           </div>
           <div class="check">
@@ -130,7 +130,7 @@ extraJs: /assets/js/enquiry-form.js
 
         <div class="form-actions">
           <button class="btn btn--large-text" type="submit"{% if not form.endpoint %} disabled aria-describedby="submit-note"{% endif %}>Send my enquiry</button>
-          {% if not form.endpoint %}<p id="submit-note" class="field__hint">Sending is switched off until the form is connected. Please call instead.</p>{% endif %}
+          {% if not form.endpoint %}<p id="submit-note" class="field__hint">Online sending opens once the form is connected. To enquire now, call {{ site.phoneDisplay }}.</p>{% endif %}
         </div>
       </form>
     </div>
@@ -149,7 +149,7 @@ extraJs: /assets/js/enquiry-form.js
           <li>If someone suitable is available and you have agreed, we introduce you.</li>
           <li>You check them, agree scope and fee with them, and decide.</li>
         </ol>
-        <p class="side-note">We cannot promise that a professional will be available. {% pending "how soon people hear back, and what they are told if there is no match." %}</p>
+        <p class="side-note">An introduction is made only where a suitable professional is available. {% pending "how soon people hear back, and what they are told if there is no match." %}</p>
       </div>
       <div class="side-card side-card--warn">
         <h2>Never send with an enquiry</h2>

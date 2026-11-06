@@ -50,7 +50,7 @@ layout: layouts/base.njk
     {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
     <h1>{{ h1 }}</h1>
     {% if lede %}<p class="page-lede">{{ lede | safe }}</p>{% endif %}
-    {% if reviewed %}<p class="page-meta">Sources checked {{ reviewedLabel or reviewed }}.{% if needsReview %} Not yet reviewed by a qualified professional.{% endif %}</p>{% endif %}
+    {% if reviewed %}<p class="page-meta">Sources checked {{ reviewedLabel or reviewed }}.{% if needsReview %} Based on the official and published sources cited here. For your own case, confirm with a qualified professional.{% endif %}</p>{% endif %}
       </div>
       {%- if heroPortrait %}
       {% include "partials/owner-portrait.njk" %}
