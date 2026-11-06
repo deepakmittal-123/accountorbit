@@ -32,7 +32,7 @@ check('robots.txt has no sitemap line and blocks nothing', !robots.includes('Sit
 const llms = readFileSync(join(OUT, 'llms.txt'), 'utf8');
 const llmsLinks = [...llms.matchAll(/\]\((https?:[^)]*)\)/g)].map((m) => m[1]);
 check('llms.txt links stay on the preview', llmsLinks.length > 0 && llmsLinks.every((u) => u.startsWith(ORIGIN + '/')));
-check('llms.txt says this is a preview', /temporary public preview/i.test(llms) && /independent referral platform/i.test(llms));
+check('llms.txt says this is a preview', /temporary public preview/i.test(llms) && /owner-managed/i.test(llms));
 const man = JSON.parse(readFileSync(join(OUT, 'site.webmanifest'), 'utf8'));
 check('Manifest paths are relative and exist', man.start_url === './' && man.icons.every((i) => !i.src.startsWith('/') && has(i.src)));
 const css = readFileSync(join(OUT, 'assets/css/site.css'), 'utf8');

@@ -48,8 +48,8 @@ check('robots.txt references the sitemap', robots.includes(`Sitemap: ${SITE}/sit
 // llms.txt
 const llms = read('llms.txt');
 check('llms.txt follows the format', /^# AccountOrbit\n\n> /.test(llms) && /\n## /.test(llms));
-check('llms.txt states the referral role', /independent referral platform/i.test(llms) && /not a Chartered Accountant firm/i.test(llms));
-check('llms.txt states what is not available', /no published list of partners/i.test(llms));
+check('llms.txt states the owner-managed role and the CA distinction', /owner-managed/i.test(llms) && /Deepak Mittal/.test(llms) && /not a firm of Chartered Accountants/i.test(llms));
+check('llms.txt states what is not claimed', /no published list of partner professionals/i.test(llms) && /No professional qualification, CA membership or firm registration is claimed/i.test(llms));
 const llmsLinks = [...llms.matchAll(new RegExp(`\\]\\((${esc(SITE)}[^)]*)\\)`, 'g'))].map((m) => m[1].replace(SITE, ''));
 check('llms.txt links only to built routes', llmsLinks.length > 0 && llmsLinks.every((u) => urls.has(u)), llmsLinks.filter((u) => !urls.has(u)).join(' '));
 const llmsWanted = [...eligible.map((r) => r.url), '/', '/how-it-works/', '/about-us/', '/contact-us/', '/request-an-accountant/'];
@@ -72,7 +72,7 @@ const og = readFileSync('_site/assets/og-image.png');
 check('Social image is 1200 x 630', pngSize(og)[0] === 1200 && pngSize(og)[1] === 630);
 const man = JSON.parse(read('site.webmanifest'));
 check('Manifest icons exist', man.icons.every((i) => existsSync(join('_site', i.src))));
-check('Manifest is accurate', man.name === 'AccountOrbit' && /referral/i.test(man.description));
+check('Manifest is accurate', man.name === 'AccountOrbit' && /owner-managed/i.test(man.description) && !/referral/i.test(man.description));
 
 // Head metadata on every page.
 for (const r of built) {

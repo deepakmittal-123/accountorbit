@@ -1,7 +1,7 @@
 {
   "name": "AccountOrbit",
   "short_name": "AccountOrbit",
-  "description": "Independent referral platform for accounting and tax help in Delhi.",
+  "description": "Owner-managed accounting and tax support in Delhi, run by Deepak Mittal.",
   "start_url": "./",
   "display": "browser",
   "background_color": "#f8f4ea",

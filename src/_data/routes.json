@@ -12,7 +12,7 @@
   "ownerApproved": true,
   "gaps": [
    "whether enquiries are free, and how AccountOrbit earns money.",
-   "how and when visitors are told when no introduction can be made.",
+   "how and when visitors are told when AccountOrbit cannot take on a requirement.",
    "the operating entity behind AccountOrbit."
   ]
  },
@@ -832,7 +832,7 @@
   "publication": "NOT_PUBLICATION_ELIGIBLE",
   "ownerApproved": true,
   "blockers": [
-   "whether enquiries are free, and whether professionals pay AccountOrbit.",
+   "whether enquiries are free, and how fees are charged.",
    "who reviews enquiries and how soon.",
    "how and when you are told."
   ]
@@ -883,7 +883,7 @@
  },
  {
   "url": "/request-an-accountant/",
-  "name": "Request an Accountant",
+  "name": "Discuss Your Requirements",
   "type": "Conversion page",
   "status": "QA_PASSED",
   "built": true,
@@ -894,7 +894,7 @@
   "ownerApproved": true,
   "blockers": [
    "how to withdraw consent, have details deleted or complain, and how long enquiries are kept.",
-   "how soon people hear back, and what they are told if there is no match."
+   "how soon people hear back, and what they are told if AccountOrbit cannot take a requirement on."
   ]
  },
  {
@@ -927,10 +927,10 @@
    "the operating entity and registered address, an email address, and the person who handles privacy requests and complaints.",
    "whether calls are recorded. If they are, this must be stated here and at the start of the call.",
    "the form processor, hosting and any other processors, and where they store data.",
-   "whether any professional pays for an introduction, which this policy would then need to disclose.",
+   "whether any professional pays AccountOrbit in connection with a customer's work, which this policy would then need to disclose.",
    "the exact route for withdrawing consent, asking to see, correct or delete your details, and making a complaint, with response times.",
    "whether AccountOrbit will pass on such requests.",
-   "the retention period for enquiries, including those that did not lead to an introduction.",
+   "the retention period for enquiries, including those that did not lead to any work.",
    "the safeguards in place once a form backend exists.",
    "the effective date."
   ]
@@ -948,7 +948,8 @@
   "ownerApproved": true,
   "blockers": [
    "the operating entity and address that these terms are made with.",
-   "whether AccountOrbit charges enquirers, and whether professionals pay it.",
+   "who the customer contracts with for work that AccountOrbit coordinates, and who is responsible for each part.",
+   "whether AccountOrbit charges enquirers, how fees are charged, and whether professionals pay it.",
    "a limitation of liability clause, which needs a lawyer.",
    "governing law, jurisdiction and dispute handling, which need a lawyer.",
    "the effective date."

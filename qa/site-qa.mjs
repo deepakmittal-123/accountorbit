@@ -32,7 +32,7 @@ const base = `http://localhost:${server.address().port}`;
 let pass = 0; const fails = [];
 const check = (name, ok, detail = '') => { if (ok) pass++; else { fails.push(`${name} [${detail}]`); console.log(`FAIL  ${name}  [${detail}]`); } };
 
-const banned = [/best accountant/i, /(?<!not |cannot |no |never )\bguarantee[ds]?\b/i, /\bour chartered accountants/i, /\bour accountants/i, /\bour (delhi |local )?offices?\b/i, /verified partners?/i, /happy (customers|clients)/i, /\b\d[\d]*\+ (clients|customers|businesses|accountants|professionals|cas)\b/i, /\b\d(\.\d)?\s?\/\s?5\b/, /certified partner/i, /government[- ]approved/i, /\bwe file\b/i, /instant match/i, /wa\.me|whatsapp/i, PRIVATE_TERMS];
+const banned = [/independent referral platform/i, /best accountant/i, /(?<!not |cannot |no |never )\bguarantee[ds]?\b/i, /\bour chartered accountants/i, /\bour accountants/i, /\bour (delhi |local )?offices?\b/i, /verified partners?/i, /happy (customers|clients)/i, /\b\d[\d]*\+ (clients|customers|businesses|accountants|professionals|cas)\b/i, /\b\d(\.\d)?\s?\/\s?5\b/, /certified partner/i, /government[- ]approved/i, /\bwe file\b/i, /instant match/i, /wa\.me|whatsapp/i, PRIVATE_TERMS];
 
 // Collect all generated HTML so IDs and link targets can be checked across pages.
 const walk = async (d) => (await Promise.all((await readdir(d, { withFileTypes: true })).map((e) => (e.isDirectory() ? walk(join(d, e.name)) : [join(d, e.name)])))).flat();
@@ -95,7 +95,7 @@ for (const url of targets) {
   check(`${url} phone links`, s.links.filter((l) => l.href.startsWith('tel:')).every((l) => l.href === 'tel:+918290728453'));
   const hits = banned.filter((b) => b.test(s.text)).map(String);
   check(`${url} no banned claims`, hits.length === 0, hits.join(' '));
-  check(`${url} referral role visible`, /independent referral platform/i.test(s.text));
+  check(`${url} owner-managed role and CA distinction visible`, /owned and managed by Deepak Mittal/i.test(s.text) && /not a firm of Chartered Accountants/i.test(s.text));
   check(`${url} no console or network errors`, errs.length === 0, errs.join(' | '));
   await p.close();
 

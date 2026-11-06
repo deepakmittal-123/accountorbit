@@ -4,7 +4,7 @@
 // otherwise the page's own topic and H1. Secondary terms are listed only where the page actually answers them.
 // intent: I = informational, C = commercial investigation, T = transactional, N = navigational.
 const K = {
-  '/': ['C', 'find an accountant in Delhi', 'accounting referral platform Delhi', 'accountant vs chartered accountant', 'GST and income tax help Delhi', 'how to choose an accountant'],
+  '/': ['C', 'find an accountant in Delhi', 'accounting and tax support Delhi', 'accountant vs chartered accountant', 'GST and income tax help Delhi', 'how to choose an accountant'],
   '/services/': ['C', 'accounting and tax services in Delhi', 'which professional can do GST work', 'work reserved for chartered accountants', 'bookkeeping, GST and ITR services'],
   '/industries/': ['C', 'accounting by industry Delhi', 'industry specific accounting', 'accountant for my type of business', 'trade-wise bookkeeping'],
   '/locations/': ['I', 'accountant near me Delhi', 'remote vs local accountant', 'accounting help across Delhi', 'Delhi business areas accounting'],
@@ -67,15 +67,15 @@ const K = {
   '/guides/accountant-vs-chartered-accountant/': ['I', 'accountant vs chartered accountant', 'difference between accountant and chartered accountant', 'are accountant and CA the same', 'how to verify chartered accountant membership number'],
   '/guides/accounting-services-cost-in-delhi/': ['I', 'accounting services cost in Delhi', 'monthly accounting fees for small business in India', 'monthly bookkeeping fees in India', 'what drives accounting fees'],
 
-  '/how-it-works/': ['I', 'how AccountOrbit works', 'how accountant referral works', 'how to find a good accountant', 'accounting referral process'],
-  '/about-us/': ['N', 'about AccountOrbit', 'AccountOrbit accounting referral platform', 'independent accounting referral Delhi', 'who runs AccountOrbit'],
+  '/how-it-works/': ['I', 'how AccountOrbit works', 'how to find a good accountant', 'accounting enquiry process', 'speak to an accountant Delhi'],
+  '/about-us/': ['N', 'about AccountOrbit', 'AccountOrbit Deepak Mittal', 'owner-managed accounting support Delhi', 'who runs AccountOrbit'],
   '/about-me/': ['N', 'Deepak Mittal AccountOrbit', 'owner of AccountOrbit', 'about Deepak Mittal', 'AccountOrbit owner'],
   '/contact-us/': ['N', 'contact AccountOrbit', 'AccountOrbit phone number', 'accounting enquiry Delhi', 'AccountOrbit complaints'],
-  '/request-an-accountant/': ['T', 'request an accountant in Delhi', 'find CA online', 'accountant enquiry', 'what to ask an accountant'],
-  '/for-accounting-professionals/': ['N', 'AccountOrbit for accounting professionals', 'accounting referral partner terms', 'ICAI rules on referrals', 'professional referral platform Delhi'],
+  '/request-an-accountant/': ['T', 'request an accountant in Delhi', 'discuss accounting requirements', 'accountant enquiry', 'what to ask an accountant'],
+  '/for-accounting-professionals/': ['N', 'AccountOrbit for accounting professionals', 'accounting partner terms', 'ICAI rules on referrals', 'working with accounting professionals Delhi'],
   '/privacy-policy/': ['N', 'AccountOrbit privacy policy', 'enquiry data handling', 'consent and personal data', 'DPDP Act enquiries'],
-  '/terms-and-conditions/': ['N', 'AccountOrbit terms and conditions', 'referral platform terms', 'website terms of use', 'introduction terms'],
-  '/disclaimer/': ['N', 'AccountOrbit disclaimer', 'not a chartered accountant firm', 'general information not advice', 'referral platform disclaimer'],
+  '/terms-and-conditions/': ['N', 'AccountOrbit terms and conditions', 'website terms of use', 'AccountOrbit service terms', 'accounting enquiry terms'],
+  '/disclaimer/': ['N', 'AccountOrbit disclaimer', 'not a chartered accountant firm', 'general information not advice', 'accounting website disclaimer'],
 };
 
 export default Object.fromEntries(Object.entries(K).map(([url, [intent, primary, ...secondary]]) => [url, { intent, primary, secondary, content: [primary, ...secondary].join(', ') }]));

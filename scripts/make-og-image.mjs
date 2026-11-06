@@ -13,7 +13,7 @@ body { width: 1200px; height: 630px; background: #16392c; color: #f8f4ea; paddin
 .w { font: 500 44px N; } .w i { color: #e7c56f; }
 h1 { font: 400 84px/1.05 N; letter-spacing: -0.02em; } h1 i { color: #e7c56f; }
 .b { font: 500 26px H; color: #e4eae3; padding-top: 22px; border-top: 6px double #b68a2c; }
-</style><div class="w">Account<i>Orbit</i></div><h1>Find accounting help in Delhi, and <i>know who is doing what.</i></h1><p class="b">Independent referral platform. Not a CA firm.</p>`;
+</style><div class="w">Account<i>Orbit</i></div><h1>Accounting and tax support in Delhi, <i>and talk to the owner.</i></h1><p class="b">Owner-managed by Deepak Mittal &middot; +91 82907 28453</p>`;
 
 const browser = await chromium.launch({ channel: 'chrome' });
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });

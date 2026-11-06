@@ -2,11 +2,11 @@
   <div class="wrap cta-band__inner">
     <div>
       <h2>{{ ctaTitle or 'Need help with this?' }}</h2>
-      <p>{{ ctaText or 'Describe the work to AccountOrbit.' }} We are a referral platform. An introduction depends on a suitable professional being available, and any engagement is directly between you and them.</p>
+      <p>{{ ctaText or 'Describe the work to AccountOrbit.' }} You speak with {{ site.owner.name }} directly on {{ site.phoneDisplay }}, and he coordinates the next steps.</p>
     </div>
     <div class="cta-band__actions">
-      <a class="btn btn--gold" href="/request-an-accountant/">Find an Accountant</a>
-      <a class="btn btn--ghost" href="{{ site.phoneHref }}">Call {{ site.phoneDisplay }}</a>
+      <a class="btn btn--gold" href="{{ site.phoneHref }}">Speak with {{ site.owner.name }}</a>
+      <a class="btn btn--ghost" href="/request-an-accountant/">What to prepare</a>
     </div>
     <img class="cta-band__art" src="/assets/illustrations/band-enquiry.svg" alt="" width="420" height="300" loading="lazy">
   </div>

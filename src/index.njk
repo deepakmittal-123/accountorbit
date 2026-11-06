@@ -1,13 +1,13 @@
 ---
 layout: layouts/base.njk
-title: Find an Accountant in Delhi | AccountOrbit Referral Platform
-description: AccountOrbit is an independent referral platform for Delhi businesses. See which professional fits your accounting work, then enquire about an introduction.
+title: Accounting and Tax Support in Delhi | AccountOrbit
+description: Speak directly with Deepak Mittal, owner of AccountOrbit, about your accounting, GST and income tax requirements in Delhi, and get clear on who does what.
 ---
 {% if not env.isPreview %}<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "Organization", "@id": "{{ site.url }}/#organization", "name": "{{ site.name }}", "url": "{{ site.url }}/", "telephone": "+918290728453", "description": "Independent referral platform that helps people in Delhi enquire about accounting and tax professionals." },
+    { "@type": "Organization", "@id": "{{ site.url }}/#organization", "name": "{{ site.name }}", "url": "{{ site.url }}/", "telephone": "+918290728453", "description": "Owner-managed accounting and tax support in Delhi. The owner speaks with customers directly and coordinates their accounting and tax work." },
     { "@type": "WebSite", "@id": "{{ site.url }}/#website", "name": "{{ site.name }}", "url": "{{ site.url }}/", "inLanguage": "en-IN", "publisher": { "@id": "{{ site.url }}/#organization" } },
     { "@type": "WebPage", "@id": "{{ site.url }}/#webpage", "url": "{{ site.url }}/", "name": "{{ title }}", "description": "{{ description }}", "isPartOf": { "@id": "{{ site.url }}/#website" }, "about": { "@id": "{{ site.url }}/#organization" }, "publisher": { "@id": "{{ site.url }}/#organization" }, "inLanguage": "en-IN" }
   ]
@@ -17,12 +17,12 @@ description: AccountOrbit is an independent referral platform for Delhi business
 <section class="hero">
   <div class="wrap hero__grid">
     <div class="hero__copy">
-      <p class="eyebrow eyebrow--gold">Independent referral platform &middot; Delhi</p>
-      <h1>Find accounting help in Delhi, and <em>know who is doing what.</em></h1>
-      <p class="hero__lede">Tell AccountOrbit what you need done. Where a suitable professional is available, we introduce you, and you deal with them directly. We are not a CA firm, and we do not do the accounting ourselves.</p>
+      <p class="eyebrow eyebrow--gold">Owner-managed accounting and tax support &middot; Delhi</p>
+      <h1>Find accounting and tax support in Delhi, <em>and talk to the owner.</em></h1>
+      <p class="hero__lede">Speak directly with {{ site.owner.name }}, the owner of AccountOrbit, about your accounting and tax requirements. Deepak manages customer communication himself, helps clarify the work involved and coordinates the next steps.</p>
       <div class="hero__actions">
-        <a class="btn btn--gold" href="/request-an-accountant/">Find an Accountant</a>
-        <a class="btn btn--ghost" href="#who">Which professional do I need?</a>
+        <a class="btn btn--gold" href="{{ site.phoneHref }}">Speak with {{ site.owner.name }}</a>
+        <a class="btn btn--ghost" href="/services/">Explore accounting services</a>
       </div>
     </div>
     <img class="hero__art" src="/assets/illustrations/home.svg" alt="" width="640" height="480">
@@ -32,23 +32,23 @@ description: AccountOrbit is an independent referral platform for Delhi business
       <figcaption id="taccount-title">Who does what, in one account</figcaption>
       <div class="taccount__cols">
         <div class="taccount__col">
-          <p class="taccount__head">AccountOrbit</p>
+          <p class="taccount__head">{{ site.owner.name }}, AccountOrbit</p>
           <ul>
-            <li>Takes your enquiry</li>
-            <li>Reviews what you need</li>
-            <li>Introduces a professional, where one suitable is available</li>
+            <li>Speaks with you directly</li>
+            <li>Clarifies what the work involves</li>
+            <li>Coordinates the next steps</li>
           </ul>
         </div>
         <div class="taccount__col">
-          <p class="taccount__head">The professional</p>
+          <p class="taccount__head">Work the law reserves</p>
           <ul>
-            <li>Does the accounting or tax work</li>
-            <li>Agrees scope and fee with you</li>
-            <li>Holds any qualification the work requires</li>
+            <li>Such as signing an audit report</li>
+            <li>Done and signed by someone qualified for it</li>
+            <li>Their qualification can be checked at the source</li>
           </ul>
         </div>
       </div>
-      <p class="taccount__total"><span>The decision to engage</span> <strong>Yours</strong></p>
+      <p class="taccount__total"><span>The decision to go ahead</span> <strong>Yours</strong></p>
     </figure>
     <nav class="explore-strip" aria-label="Ways into this site">
       <p class="explore-strip__label">Start with your work, your trade or your area.</p>
@@ -216,25 +216,25 @@ description: AccountOrbit is an independent referral platform for Delhi business
   <div class="wrap">
     <header class="section-head section-head--center">
       <p class="eyebrow">How an enquiry moves</p>
-      <h2 id="how-title">Four steps, and the last one is yours</h2>
-      <p>AccountOrbit makes the introduction. It does not become a party to the work.</p>
+      <h2 id="how-title">Four steps, with one person to talk to</h2>
+      <p>You speak with {{ site.owner.name }} from the first call, and he coordinates what happens next.</p>
     </header>
     <ol class="steps">
       <li>
-        <h3>You describe the work</h3>
-        <p>Tell us what you need done and a little about your business.</p>
+        <h3>Describe your requirement</h3>
+        <p>Tell AccountOrbit what accounting or tax work you need, and a little about your business.</p>
       </li>
       <li>
-        <h3>We review the requirement</h3>
-        <p>We look at what kind of professional the work calls for, including whether it is reserved for a particular qualification.</p>
+        <h3>Speak with {{ site.owner.name }}</h3>
+        <p>Discuss the requirement with Deepak directly, including any dates you are working to.</p>
       </li>
       <li>
-        <h3>An introduction, where possible</h3>
-        <p>If a suitable professional is available and you have agreed to your details being shared, we introduce you. If not, no introduction is made.</p>
+        <h3>Clarify the scope</h3>
+        <p>Pin down the task, the records involved, the timing, and whether any part is reserved for a particular qualification.</p>
       </li>
       <li>
-        <h3>You decide, and deal directly</h3>
-        <p>Check their credentials, and engage them only if you are satisfied. The engagement is between you and them.</p>
+        <h3>Coordinate the next steps</h3>
+        <p>Deepak coordinates the next steps and keeps you informed. Ask for the scope and fee in writing before work starts.</p>
       </li>
     </ol>
   </div>
@@ -244,11 +244,11 @@ description: AccountOrbit is an independent referral platform for Delhi business
   <div class="wrap about__intro">
     <div>
       <p class="eyebrow eyebrow--gold">About AccountOrbit</p>
-      <h2 id="about-title">A referral platform that shows its working</h2>
+      <h2 id="about-title">Owner-managed, and clear about who does what</h2>
       <div class="about__text">
-        <p>Looking for an accountant in Delhi usually means sorting through firms, directories and online filing services. It is rarely clear who will do the work, what they are qualified to do, or what happens to your phone number after you submit it.</p>
-        <p>AccountOrbit, owned by {{ site.owner.name }}, helps individuals and businesses in Delhi work out what kind of help they need and enquire about a suitable professional. The work, and the responsibility for it, stays with the professional you choose.</p>
-        <a class="btn btn--gold about__cta" href="/request-an-accountant/">Find an Accountant</a>
+        <p>Looking for an accountant in Delhi usually means sorting through firms, directories and online filing services. It is rarely clear who you will speak to, who will do the work, or what they are qualified to do.</p>
+        <p>AccountOrbit is owned and managed by {{ site.owner.name }}. He speaks with customers directly, helps them work out what their accounting or tax work involves, and coordinates the next steps. Where the law reserves a task for a qualified professional, this site says so.</p>
+        <a class="btn btn--gold about__cta" href="{{ site.phoneHref }}">Speak with {{ site.owner.name }}</a>
         <p class="about__more">More on <a href="/about-us/">who runs AccountOrbit</a> and <a href="/how-it-works/">how it works</a>.</p>
       </div>
     </div>
@@ -264,14 +264,14 @@ description: AccountOrbit is an independent referral platform for Delhi business
       <p class="eyebrow eyebrow--caps">Meet the owner</p>
       <h2 id="owner-title">Meet Deepak Mittal</h2>
       <p class="owner-role">Owner of AccountOrbit</p>
-      <p class="owner-intro">I'm Deepak Mittal, the owner of AccountOrbit. I want to make it easier for you to work out what accounting or tax help you actually need, whether that's keeping your books in order, getting ready for a GST or income tax return, or knowing what to ask before you choose a professional.</p>
-      <p class="owner-intro">On this site you can read how each service works, what different trades need from their accounts and which work the law reserves for qualified professionals. Where an introduction is possible, the independent professional explains their scope and fees, and does the work.</p>
-      <p class="owner-intro">I'd like you to go into that conversation knowing your requirement and the papers to have ready.</p>
+      <p class="owner-intro">I'm Deepak Mittal, the owner of AccountOrbit. I manage the business myself and speak with customers directly about their accounting and tax requirements, whether that's keeping books in order, getting ready for a GST or income tax return, or dealing with a notice.</p>
+      <p class="owner-intro">When you call, I focus on understanding the work involved: the task, the records, the dates and any part the law reserves for a qualified professional. Then I coordinate the next steps with you.</p>
+      <p class="owner-intro">On this site you can read how each service works and what different trades need from their accounts, so that our conversation starts in the right place.</p>
       <div class="info-cards info-cards--compact">
         <article class="info-card">
           <img class="card-icon" src="/assets/illustrations/icon-shield.svg" alt="" width="96" height="96" loading="lazy">
           <h3>About AccountOrbit</h3>
-          <p>My platform explains accounting and tax work and, where it can, introduces you to an independent professional. It does not do the accounting, tax or legal work itself.</p>
+          <p>I run AccountOrbit myself. When you call, you speak with me, and I coordinate the next steps. AccountOrbit is not a firm of Chartered Accountants.</p>
         </article>
         <article class="info-card">
           <img class="card-icon" src="/assets/illustrations/icon-checklist.svg" alt="" width="96" height="96" loading="lazy">
@@ -297,12 +297,12 @@ description: AccountOrbit is an independent referral platform for Delhi business
     <h2 class="about__sub" id="hold-title">What you can hold us to</h2>
     <ul class="trust-grid">
       <li class="trust-card">
-        <h3>An introduction, not a firm</h3>
-        <p>We take enquiries and make introductions. We are not a CA firm, law firm, audit practice, tax authority or government service.</p>
+        <h3>One person to talk to</h3>
+        <p>{{ site.owner.name }} owns AccountOrbit and speaks with customers himself, from the first call to coordinating the next steps.</p>
       </li>
       <li class="trust-card">
-        <h3>The professional does the work</h3>
-        <p>Advice, filings and professional responsibility sit with the person you engage. We do not set their fees, so ask for yours in writing.</p>
+        <h3>Reserved work by qualified people</h3>
+        <p>AccountOrbit is not a firm of Chartered Accountants. Work the law reserves, such as signing an audit report, must be done and signed by someone who holds that qualification.</p>
       </li>
       <li class="trust-card">
         <h3>Evidence, not claims</h3>
@@ -317,20 +317,20 @@ description: AccountOrbit is an independent referral platform for Delhi business
     <div id="questions" class="questions">
         <h2 class="about__sub" id="faq-title">Questions people ask first</h2>
         <details>
-          <summary>Is AccountOrbit a CA firm? Will you file my returns?</summary>
-          <p>No to both. AccountOrbit is an independent referral platform. It does not employ accountants or perform accounting, audit, tax or legal work. Any filing is done by the professional you engage, and your responsibilities as the taxpayer continue.</p>
+          <summary>Is AccountOrbit a CA firm? Who handles my work?</summary>
+          <p>AccountOrbit is not a firm of Chartered Accountants. It is owned and managed by {{ site.owner.name }}, who discusses your accounting and tax requirements with you and coordinates the next steps. Work the law reserves for a CA or another qualified professional must be done and signed by someone who holds that qualification. Your responsibilities as the taxpayer continue throughout.</p>
         </details>
         <details>
           <summary>What does this cost?</summary>
-          <p>Fees for professional work are agreed between you and the professional, and AccountOrbit does not set them. Ask the professional for their fee and scope in writing before you engage them. Questions about AccountOrbit itself can be asked on the call. {% gap "whether enquiries are free, and how AccountOrbit earns money." %}</p>
+          <p>It depends on the work. Ask Deepak about fees for your requirement on the call, and get the scope and the full fee in writing, with GST and government charges shown, before any work starts. {% gap "whether enquiries are free, and how AccountOrbit earns money." %}</p>
         </details>
         <details>
           <summary>Who will see my details?</summary>
-          <p>Your details are used to review your enquiry, and are shared with a professional being considered for your work only if you have agreed. The {% routeLink "/privacy-policy/", "privacy policy" %} sets this out in full.</p>
+          <p>{{ site.owner.name }} sees what you tell AccountOrbit. If part of your work needs another professional, your details are shared with them only if you have agreed. The {% routeLink "/privacy-policy/", "privacy policy" %} sets this out in full.</p>
         </details>
         <details>
-          <summary>Will I definitely be matched?</summary>
-          <p>An introduction is made only where a suitable professional is available for your work and your area. We will not describe someone as suitable just to close an enquiry. {% gap "how and when visitors are told when no introduction can be made." %}</p>
+          <summary>Can AccountOrbit help with every requirement?</summary>
+          <p>Not necessarily. Some work is reserved for particular professionals, and some may not be work AccountOrbit can coordinate. Deepak can talk this through with you on the call, and we will not suggest anyone unsuitable just to close an enquiry. {% gap "how and when visitors are told when AccountOrbit cannot take on a requirement." %}</p>
         </details>
         <details>
           <summary>Do you have an office in my area?</summary>
@@ -352,7 +352,7 @@ description: AccountOrbit is an independent referral platform for Delhi business
   <div class="wrap">
     <div id="delhi">
         <h2 class="about__sub" id="delhi-title">Delhi, by how businesses work</h2>
-        <p class="delhi-intro">We accept enquiries from across Delhi. These groups show how local accounting needs differ. They are not a list of offices or a promise that a professional is available in a given area.</p>
+        <p class="delhi-intro">AccountOrbit takes enquiries by phone from across Delhi. These groups show how local accounting needs differ. They are not a list of offices.</p>
         <ul class="delhi-list">
           <li>
             <h3>{% routeLink "/locations/commercial-professional/", "Offices and professional practices" %}</h3>
@@ -450,9 +450,9 @@ description: AccountOrbit is an independent referral platform for Delhi business
     <div class="start__box">
       <div class="start__grid">
         <div>
-          <p class="eyebrow eyebrow--gold">Find an accountant</p>
+          <p class="eyebrow eyebrow--gold">Speak with Deepak Mittal</p>
       <h2 id="start-title">Ready to describe the work?</h2>
-      <p class="start__lede">A clear enquiry is easier to review. Have these four things ready when you call.</p>
+      <p class="start__lede">You speak with Deepak directly, and a clear description makes the call quicker. Have these four things ready.</p>
       <ol class="start-list">
         <li>What you need done</li>
         <li>Your type of business</li>
@@ -461,9 +461,9 @@ description: AccountOrbit is an independent referral platform for Delhi business
       </ol>
     </div>
         <div class="start__panel">
-      <p class="start__label">Call to enquire</p>
+      <p class="start__label">Call {{ site.owner.name }}</p>
       <a class="btn btn--large" href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>
-      <p class="start__note">Enquiries are taken by phone. You can see in advance what we will ask on the <a href="/request-an-accountant/">enquiry page</a>.</p>
+      <p class="start__note">Enquiries are taken by phone. You can see in advance what Deepak will ask on the <a href="/request-an-accountant/">requirements page</a>.</p>
       <p class="start__warn"><strong>Never share an OTP or portal password</strong>, with us or with anyone who calls you about an enquiry. Bank statements, tax filings and PAN or Aadhaar scans are not needed at this stage either.</p>
     </div>
       </div>

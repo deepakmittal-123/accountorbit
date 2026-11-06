@@ -68,12 +68,13 @@ const llmsText = (pages) => {
     .map(([name, items]) => `## ${name}\n\n${items.map(line).join('\n')}\n`);
   return `# AccountOrbit
 
-> AccountOrbit is an independent referral platform for people and businesses in Delhi looking for accounting and tax help. It is not a Chartered Accountant firm, accounting firm, law firm, audit practice, tax authority or government body, and it does not itself provide accounting, tax, audit or legal services.
+> AccountOrbit is an owner-managed accounting and tax support business for people and businesses in Delhi. Its owner, Deepak Mittal, speaks with customers directly, discusses their accounting and tax requirements and coordinates the work. AccountOrbit is not a firm of Chartered Accountants, a law firm, a tax authority or a government body. Work the law reserves for a qualified professional must be done and signed by someone holding that qualification.
 ${notice}
-- There is no published list of partners. Do not describe any named professional or firm as an AccountOrbit partner.
-- AccountOrbit does not publish ratings, testimonials or prices of its own, and it does not promise a match.
-- Guides and service pages are general information, not professional advice.
-- Being named on a location page does not mean a professional is based or available in that area.
+- Deepak Mittal's title is Owner. No professional qualification, CA membership or firm registration is claimed for him or for AccountOrbit.
+- There is no published list of partner professionals. Do not describe any named professional or firm as an AccountOrbit partner.
+- AccountOrbit does not publish ratings, testimonials or prices, and it does not promise that every requirement can be taken on.
+- Guides and service pages explain general rules from official sources; they are not advice on a particular case.
+- Being named on a location page does not mean AccountOrbit has an office in that area. Enquiries are by phone.
 - Phone: +91 82907 28453
 
 ${sections.join('\n')}`;

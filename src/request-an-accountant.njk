@@ -1,11 +1,11 @@
 ---
 layout: layouts/page.njk
 permalink: /request-an-accountant/
-title: Request an Accountant in Delhi | AccountOrbit Enquiry
-description: Describe the accounting or tax help you need in Delhi. See what we ask, why we ask it, what happens next, and what you should never send with an enquiry.
-eyebrow: Enquiry
-h1: Tell us what accounting help you need
-lede: A short description of the work is enough to start. Enquiries are taken by phone, and the decision to engage anyone stays with you.
+title: Discuss Your Accounting Requirements | AccountOrbit, Delhi
+description: Get ready to discuss your accounting or tax requirement with Deepak Mittal. What he will ask, what happens on the call, and what never to send.
+eyebrow: Your requirements
+h1: Discuss your accounting requirements
+lede: A short description of the work is enough to start. Call and speak with Deepak Mittal, the owner, directly. The decision to go ahead stays with you.
 extraJs: /assets/js/enquiry-form.js
 ---
 <section class="section section--tight">
@@ -13,8 +13,8 @@ extraJs: /assets/js/enquiry-form.js
     <div class="enquiry__main">
       {% if not form.endpoint %}
       <div class="notice" role="note">
-        <h2>Enquire by phone on {{ site.phoneDisplay }}</h2>
-        <p>Call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a> to enquire. The form below shows what we will ask you. It will accept submissions once its secure connection and privacy process are in place, and until then nothing typed into it is sent.</p>
+        <h2>Speak with {{ site.owner.name }} on {{ site.phoneDisplay }}</h2>
+        <p>Call <a href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a> to discuss your requirement with Deepak directly. The form below shows what he will ask you. It will accept submissions once its secure connection and privacy process are in place, and until then nothing typed into it is sent.</p>
       </div>
       {% endif %}
 
@@ -123,8 +123,8 @@ extraJs: /assets/js/enquiry-form.js
           </div>
           <div class="check">
             <input id="consent_share" name="consent_share" type="checkbox" value="yes" aria-describedby="consent_share-hint">
-            <label for="consent_share">AccountOrbit may share these details with a professional being considered for my work.</label>
-            <p id="consent_share-hint" class="field__hint">Optional. Without this we cannot introduce you to anyone, but we can still talk to you about your enquiry.</p>
+            <label for="consent_share">AccountOrbit may share these details with another professional who may carry out part of my work.</label>
+            <p id="consent_share-hint" class="field__hint">Optional. Without this your details stay with AccountOrbit, and we can still talk to you about your requirement.</p>
           </div>
         </fieldset>
 
@@ -137,19 +137,19 @@ extraJs: /assets/js/enquiry-form.js
 
     <aside class="enquiry__side" aria-label="Before you enquire">
       <div class="side-card side-card--dark">
-        <h2>Prefer to talk?</h2>
-        <p>Have the same details ready and call. For anything else, see <a href="/contact-us/">contact</a>.</p>
+        <h2>Speak with {{ site.owner.name }}</h2>
+        <p>Have the same details ready and call. You speak with Deepak directly. For anything else, see <a href="/contact-us/">contact</a>.</p>
         <a class="btn btn--gold btn--wide" href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>
       </div>
       <div class="side-card">
         <h2>What happens next</h2>
         <ol class="mini-steps">
-          <li>We review what you have described.</li>
-          <li>We look at what kind of professional the work calls for.</li>
-          <li>If someone suitable is available and you have agreed, we introduce you.</li>
-          <li>You check them, agree scope and fee with them, and decide.</li>
+          <li>You call and speak with {{ site.owner.name }}.</li>
+          <li>He discusses the requirement with you.</li>
+          <li>The scope, records, timing and any reserved part are clarified.</li>
+          <li>Deepak coordinates the next steps. Get the scope, fee and who signs each part in writing before work starts.</li>
         </ol>
-        <p class="side-note">An introduction is made only where a suitable professional is available. {% pending "how soon people hear back, and what they are told if there is no match." %}</p>
+        <p class="side-note">Some requirements may not be work AccountOrbit can coordinate, and we will not suggest anyone unsuitable just to close an enquiry. {% pending "how soon people hear back, and what they are told if AccountOrbit cannot take a requirement on." %}</p>
       </div>
       <div class="side-card side-card--warn">
         <h2>Never send with an enquiry</h2>

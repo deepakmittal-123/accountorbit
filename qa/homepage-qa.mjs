@@ -80,7 +80,7 @@ check('External links open safely', ext.every((l) => l.rel.includes('noopener'))
 check('Phone link format', seo.links.filter((l) => l.href.startsWith('tel:')).every((l) => l.href === 'tel:+918290728453'), `${seo.links.filter((l) => l.href.startsWith('tel:')).length} links`);
 check('WhatsApp is not exposed', !/wa\.me|whatsapp/i.test(await page.content()));
 check('Private details are not exposed', !PRIVATE_TERMS.test(await page.content()));
-const APPROVED_ORDER = ['What do you need help with?', 'Your books depend on how you earn', 'Which professional does your work need?', 'Five questions to ask before you engage anyone', 'Four steps, and the last one is yours', 'A referral platform that shows its working', 'Meet Deepak Mittal', 'What you can hold us to', 'Questions people ask first', 'Delhi, by how businesses work', 'Useful without an enquiry', 'Ready to describe the work?'];
+const APPROVED_ORDER = ['What do you need help with?', 'Your books depend on how you earn', 'Which professional does your work need?', 'Five questions to ask before you engage anyone', 'Four steps, with one person to talk to', 'Owner-managed, and clear about who does what', 'Meet Deepak Mittal', 'What you can hold us to', 'Questions people ask first', 'Delhi, by how businesses work', 'Useful without an enquiry', 'Ready to describe the work?'];
 const h2s = (await page.locator('main h2').allInnerTexts()).map((t) => t.replace(/\s+/g, ' ').trim());
 check('Homepage sections are in the approved order', JSON.stringify(h2s) === JSON.stringify(APPROVED_ORDER), h2s.join(' | '));
 check('Header, one H1 and footer are present', await page.locator('.site-header').count() === 1 && await page.locator('h1').count() === 1 && await page.locator('.site-footer').count() === 1);
@@ -96,7 +96,7 @@ check('Owner photo loads at 4:5 with the approved alt text and no monogram', own
 const banned = [/best accountant/i, /guarantee/i, /our chartered accountants/i, /our accountants/i, /our .*offices/i, /verified partners?/i, /happy (customers|clients)/i, /\b\d[\d,]*\+/, /\b\d(\.\d)?\s?\/\s?5\b/, /certified partner/i, /government[- ]approved/i, /we file/i, /instant match/i];
 const hits = banned.filter((b) => b.test(seo.text)).map(String);
 check('No banned claims in visible text', hits.length === 0, hits.join(' '));
-check('Referral role stated in hero', /independent referral platform/i.test(seo.text.slice(0, 900)) && /not a CA firm/i.test(seo.text.slice(0, 900)));
+check('Owner-managed role stated in hero, CA distinction stated on the page', /owner-managed/i.test(seo.text.slice(0, 900)) && /Deepak Mittal/.test(seo.text.slice(0, 900)) && /not a firm of Chartered Accountants/i.test(seo.text));
 check('Console free of errors', errors.length === 0, errors.join(' | '));
 check('No failed network requests', failed.length === 0, failed.join(' | '));
 
@@ -186,9 +186,15 @@ await rm.close();
 const cta = await browser.newPage({ viewport: { width: 360, height: 780 } });
 await cta.goto(base + '/', { waitUntil: 'networkidle' });
 check('Phone: header CTA visible at 360px', await cta.locator('.site-header .btn--small').isVisible());
-await cta.locator('.hero__actions .btn--gold').click();
+const heroCall = cta.locator('.hero__actions .btn--gold');
+check('Hero primary CTA calls Deepak Mittal on the verified number', (await heroCall.getAttribute('href')) === 'tel:+918290728453' && /Speak with Deepak Mittal/.test(await heroCall.innerText()));
+await cta.locator('.hero__actions .btn--ghost').click();
+await cta.waitForURL('**/services/');
+check('Hero secondary CTA reaches the services hub', true);
+await cta.goto(base + '/', { waitUntil: 'networkidle' });
+await cta.locator('.site-header .btn--small').click();
 await cta.waitForURL('**/request-an-accountant/');
-check('Hero CTA reaches the enquiry page', true);
+check('Header CTA reaches the requirements page', true);
 await cta.close();
 
 const pc = await browser.newPage({ viewport: { width: 360, height: 780 } });
@@ -207,7 +213,10 @@ await pc.close();
 const html = await readFile('_site/index.html', 'utf8');
 const own = seo.links.filter((l) => /deepak\.mittal050/.test(l.href));
 check('Owner profile links are labelled personal', own.length === 2 && /personal profiles, not AccountOrbit company pages/.test(html), `${own.length} links`);
-check('Owner profiles are not in Organization schema', !/sameAs|deepak/i.test(JSON.stringify(schema)));
+{
+  const org = JSON.stringify((schema['@graph'] || [schema]).filter((n) => n['@type'] === 'Organization'));
+  check('Owner profiles are not in Organization schema', org.length > 2 && !/sameAs|deepak/i.test(org) && !/facebook\.com|instagram\.com/i.test(JSON.stringify(schema)));
+}
 check('Owner title not upgraded', !/(founder|managing director|chartered accountant) deepak|deepak mittal,? (ca|founder|fca|aca)/i.test(html));
 check('Social image present and declared', (await fetch(base + '/assets/og-image.png')).ok && /og:image"/.test(html));
 const noteCount = (html.match(/<!-- open fact:/g) || []).length;

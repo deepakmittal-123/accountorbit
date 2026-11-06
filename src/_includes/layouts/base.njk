@@ -34,7 +34,7 @@
   <meta property="og:image" content="{{ env.publicOrigin }}/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="AccountOrbit: find accounting help in Delhi, and know who is doing what. Independent referral platform, not a CA firm.">
+  <meta property="og:image:alt" content="AccountOrbit: accounting and tax support in Delhi, owner-managed by Deepak Mittal. Phone +91 82907 28453.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#16392c">
   <link rel="icon" href="/favicon.ico" sizes="32x32 48x48">
@@ -61,7 +61,7 @@
         {%- endfor %}
       </nav>
       <a class="header-phone" href="{{ site.phoneHref }}">{{ site.phoneDisplay }}</a>
-      <a class="btn btn--small" href="{{ ctaHref }}">Find an Accountant</a>
+      <a class="btn btn--small" href="{{ ctaHref }}">Talk to Deepak</a>
       <details class="site-menu">
         <summary>Menu</summary>
         <nav aria-label="Main, mobile">
@@ -85,7 +85,7 @@
     <div class="wrap site-footer__grid">
       <div>
         <p class="footer-logo"><img src="/assets/images/brand/accountorbit-logo-footer.webp" alt="" width="600" height="133" loading="lazy" decoding="async"></p>
-        <p class="footer-disclosure">AccountOrbit is an independent referral platform. It is not a Chartered Accountant firm, law firm, audit practice, tax authority or government service, and it does not perform accounting, tax or legal work. Services, fees and terms are agreed directly with the professional you engage.</p>
+        <p class="footer-disclosure">AccountOrbit is owned and managed by {{ site.owner.name }}, who speaks with customers directly and coordinates their accounting and tax work. It is not a firm of Chartered Accountants, a law firm, a tax authority or a government service. Work the law reserves for a qualified professional must be done and signed by someone who holds that qualification.</p>
       </div>
       <div>
         <p class="footer-title">Contact</p>
@@ -106,7 +106,7 @@
           {%- for item in platformNav %}
           <li><a href="{{ item.href }}">{{ item.label }}</a></li>
           {%- endfor %}
-          <li><a href="{{ ctaHref }}">Find an Accountant</a></li>
+          <li><a href="{{ ctaHref }}">Discuss your requirements</a></li>
         </ul>
       </div>
       <div>
@@ -133,7 +133,7 @@
           <li>{% ext "https://udyamregistration.gov.in/", "Udyam portal" %}</li>
         </ul>
         </div>
-        <p class="footer-sources__note">Advice on your own situation comes from the qualified professional you engage.</p>
+        <p class="footer-sources__note">For your own situation, confirm the position with a qualified professional before you act.</p>
       </div>
       <div class="footer-bar">
         <p class="footer-bar__copy">&copy; {{ buildYear }} {{ site.name }}. All Rights Reserved.</p>
