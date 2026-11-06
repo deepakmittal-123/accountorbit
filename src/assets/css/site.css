@@ -279,7 +279,8 @@ a:hover { color: var(--amber); }
 .eyebrow--caps { text-transform: uppercase; letter-spacing: 0.08em; }
 .owner-feature__grid { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
 .owner-portrait { margin: 0; width: 100%; max-width: 15rem; justify-self: center; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--rule); box-shadow: var(--shadow-up); outline: 4px solid var(--gold); outline-offset: 6px; }
-.owner-portrait img { display: block; width: 100%; aspect-ratio: 6 / 7; object-fit: cover; }
+.owner-portrait picture { display: block; }
+.owner-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; } /* the photo is 4:5 too, so nothing is cropped */
 .owner-role { margin-top: 0.35rem; font-size: 1.12rem; font-weight: 700; color: var(--deep); }
 .owner-intro { margin-top: 0.9rem; max-width: 46rem; color: var(--muted); }
 .info-cards { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
@@ -290,7 +291,7 @@ a:hover { color: var(--amber); }
 .info-card p { font-size: 0.96rem; color: var(--muted); }
 .info-card p + p { margin-top: 0.3rem; }
 .owner-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.4rem; }
-.page-head__grid--owner .owner-portrait { max-width: 14rem; background: var(--white); }
+.page-head__grid--owner .owner-portrait { order: -1; max-width: 14rem; background: var(--white); } /* portrait first at every width, as on the homepage */
 
 /* Homepage sections */
 .faq-wrap { max-width: 56rem; }

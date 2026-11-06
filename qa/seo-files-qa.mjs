@@ -80,7 +80,8 @@ for (const r of built) {
 const me = read('about-me/index.html');
 const meLd = JSON.parse(me.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
 const person = meLd.find((n) => n['@type'] === 'Person');
-check('About Me has one H1', (me.match(/<h1/g) || []).length === 1 && me.includes('>Meet Deepak Mittal</h1>'));
+check('About Me and homepage show the owner photo, not the monogram', [me, read('index.html')].every((h) => /owner-photo-deepak-mittal-1008\.webp 1008w/.test(h) && h.includes('alt="Portrait of Deepak Mittal, Owner of AccountOrbit"') && !h.includes('owner-monogram')));
+check('About Me has one H1',(me.match(/<h1/g) || []).length === 1 && me.includes('>Meet Deepak Mittal</h1>'));
 check('About Me Person data holds confirmed facts only', person && person.name === 'Deepak Mittal' && person.jobTitle === 'Owner' && Object.keys(person).sort().join() === '@id,@type,jobTitle,name,url,worksFor', Object.keys(person || {}).join());
 check('Organization data does not use personal profiles', !JSON.stringify(meLd.find((n) => n['@type'] === 'Organization')).includes('facebook'));
 check('About Me is linked from About Us and the homepage', read('about-us/index.html').includes('href="/about-me/"') && read('index.html').includes('href="/about-me/"'));

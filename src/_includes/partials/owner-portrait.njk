@@ -1,4 +1,10 @@
-{#- Holds Deepak Mittal's approved photograph once supplied. Until then it shows a monogram, never a generated face. -#}
+{#- Deepak Mittal's owner-supplied photograph, shared by the homepage owner section and the About Me hero.
+    Files are made by scripts/make-portrait.mjs from brand-source/. Set portraitLazy before the include when it is below the fold,
+    and portraitSizes when the frame is a different width. Defaults suit the About Me hero (14rem, 16rem from 60rem). -#}
+{%- set _sizes = portraitSizes or "(min-width: 60rem) 16rem, 14rem" -%}
 <figure class="owner-portrait">
-  <img src="/assets/illustrations/owner-monogram.svg" alt="DM monogram for Deepak Mittal, shown because a photograph has not been added yet" width="480" height="560">
+  <picture>
+    <source type="image/webp" srcset="/assets/images/owner/owner-photo-deepak-mittal-400.webp 400w, /assets/images/owner/owner-photo-deepak-mittal-672.webp 672w, /assets/images/owner/owner-photo-deepak-mittal-1008.webp 1008w" sizes="{{ _sizes }}">
+    <img src="/assets/images/owner/owner-photo-deepak-mittal-672.jpg" alt="Portrait of Deepak Mittal, Owner of AccountOrbit" width="672" height="840"{% if portraitLazy %} loading="lazy"{% else %} fetchpriority="high"{% endif %} decoding="async">
+  </picture>
 </figure>

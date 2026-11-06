@@ -84,7 +84,11 @@ check('Homepage sections are in the approved order', JSON.stringify(h2s) === JSO
 check('Header, one H1 and footer are present', await page.locator('.site-header').count() === 1 && await page.locator('h1').count() === 1 && await page.locator('.site-footer').count() === 1);
 check('Owner section links to About Me and Contact', await page.locator('#owner a[href="/about-me/"]').count() === 1 && await page.locator('#owner a[href="/contact-us/"]').count() === 1);
 check('Owner section has three cards', await page.locator('#owner .info-card').count() === 3);
-check('Owner section shows no WhatsApp link or generated portrait', await page.locator('#owner a[href*="wa.me"]').count() === 0 && /owner-monogram\.svg|owner-photo/.test(await page.locator('#owner .owner-portrait img').getAttribute('src')));
+check('Owner section shows no WhatsApp link or generated portrait', await page.locator('#owner a[href*="wa.me"]').count() === 0 && /owner-photo-deepak-mittal/.test(await page.locator('#owner .owner-portrait img').getAttribute('src')));
+await page.locator('#owner .owner-portrait img').scrollIntoViewIfNeeded();
+await page.waitForFunction(() => document.querySelector('#owner .owner-portrait img').complete);
+const ownerImg = await page.locator('#owner .owner-portrait img').evaluate((i) => ({ alt: i.alt, w: i.naturalWidth, h: i.naturalHeight, cur: i.currentSrc, box: i.getBoundingClientRect().width / i.getBoundingClientRect().height }));
+check('Owner photo loads at 4:5 with the approved alt text and no monogram', ownerImg.alt === 'Portrait of Deepak Mittal, Owner of AccountOrbit' && ownerImg.w > 0 && Math.abs(ownerImg.w / ownerImg.h - 0.8) < 0.01 && Math.abs(ownerImg.box - 0.8) < 0.02 && !/owner-monogram/.test(await page.content()), JSON.stringify(ownerImg));
 
 // Claims that must never appear as positive statements. Reviewed by hand when one is flagged.
 const banned = [/best accountant/i, /guarantee/i, /our chartered accountants/i, /our accountants/i, /our .*offices/i, /verified partners?/i, /happy (customers|clients)/i, /\b\d[\d,]*\+/, /\b\d(\.\d)?\s?\/\s?5\b/, /certified partner/i, /government[- ]approved/i, /we file/i, /instant match/i];
