@@ -36,7 +36,8 @@ const results = [];
 const check = (name, ok, detail = '') => { results.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${detail !== '' ? `  [${detail}]` : ''}`); };
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const open = async (w, h, url = '/', opts = {}) => {
-  const page = await browser.newPage({ viewport: { width: w, height: h }, ...opts });
+  // bypassCSP lets the test inject axe on hosts that send the site's strict CSP header (e.g. Cloudflare Pages).
+  const page = await browser.newPage({ viewport: { width: w, height: h }, bypassCSP: true, ...opts });
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(base + url, { waitUntil: 'networkidle' });
